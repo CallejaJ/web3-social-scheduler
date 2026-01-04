@@ -348,6 +348,116 @@ async function generateAllCourseImages() {
       style: 'dark'
     },
 
+    // --- Premium Courses ---
+
+    // DeFi Deep Dive
+    {
+      filename: 'defi-en',
+      title: 'DeFi Deep Dive',
+      subtitle: 'Master Decentralized Finance',
+      duration: 'Premium',
+      language: 'en',
+      style: 'blue'
+    },
+    {
+      filename: 'defi-es',
+      title: 'DeFi a Fondo',
+      subtitle: 'Domina las Finanzas Descentralizadas',
+      duration: 'Premium',
+      language: 'es',
+      style: 'blue'
+    },
+
+    // NFT Masterclass
+    {
+      filename: 'nft-en',
+      title: 'NFT Masterclass',
+      subtitle: 'Create, Collect and Trade',
+      duration: 'Premium',
+      language: 'en',
+      style: 'purple'
+    },
+    {
+      filename: 'nft-es',
+      title: 'Masterclass NFT',
+      subtitle: 'Crea, Colecciona y Comercia',
+      duration: 'Premium',
+      language: 'es',
+      style: 'purple'
+    },
+
+    // Smart Contracts
+    {
+      filename: 'smart-contracts-en',
+      title: 'Smart Contracts',
+      subtitle: 'Intro to Solidity',
+      duration: 'Premium',
+      language: 'en',
+      style: 'dark'
+    },
+    {
+      filename: 'smart-contracts-es',
+      title: 'Smart Contracts',
+      subtitle: 'Intro a Solidity',
+      duration: 'Premium',
+      language: 'es',
+      style: 'dark'
+    },
+
+    // Technical Analysis
+    {
+      filename: 'ta-en',
+      title: 'Technical Analysis',
+      subtitle: 'Read Charts Like a Pro',
+      duration: 'Premium',
+      language: 'en',
+      style: 'light'
+    },
+    {
+      filename: 'ta-es',
+      title: 'Análisis Técnico',
+      subtitle: 'Lee Gráficos como un Pro',
+      duration: 'Premium',
+      language: 'es',
+      style: 'light'
+    },
+
+    // Portfolio Management
+    {
+      filename: 'portfolio-en',
+      title: 'Portfolio Mgmt',
+      subtitle: 'Risk and Strategy',
+      duration: 'Premium',
+      language: 'en',
+      style: 'dark'
+    },
+    {
+      filename: 'portfolio-es',
+      title: 'Gestión de Cartera',
+      subtitle: 'Riesgo y Estrategia',
+      duration: 'Premium',
+      language: 'es',
+      style: 'dark'
+    },
+
+    // Blockchain Development
+    {
+      filename: 'blockchain-dev-en',
+      title: 'Blockchain Dev',
+      subtitle: 'Full-Stack dApps',
+      duration: 'Premium',
+      language: 'en',
+      style: 'purple'
+    },
+    {
+      filename: 'blockchain-dev-es',
+      title: 'Desarrollo Blockchain',
+      subtitle: 'dApps Full-Stack',
+      duration: 'Premium',
+      language: 'es',
+      style: 'purple'
+    },
+
     // Generic community images
     {
       filename: 'community-en',
