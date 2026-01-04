@@ -1,317 +1,171 @@
-# Bot de Twitter Automatizado
+# Memento Academy Twitter Bot
 
-Bot para publicar tweets programados automáticamente usando la API de Twitter (X).
+<div align="center">
+    <img src="https://img.shields.io/badge/Node.js-18-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+    <img src="https://img.shields.io/badge/Twitter_API-v2-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter API" />
+    <img src="https://img.shields.io/badge/Railway-Deployed-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="Railway" />
+    <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" alt="Status" />
+</div>
 
-## Requisitos
+<br />
 
-- Node.js (versión 14 o superior)
-- Una cuenta de Twitter Developer
-- Credenciales de la API de Twitter
+Automated Twitter marketing bot for **[Memento Academy](https://memento-academy.com)** - A Web3 education platform with 50K+ students.
 
-## Configuración
+This bot handles **scheduled tweets**, **course promotions**, **community engagement**, and **automatic follower welcomes** in both English and Spanish.
 
-### 1. Obtener credenciales de Twitter API
+---
 
-1. Ve a [Twitter Developer Portal](https://developer.twitter.com/en/portal/dashboard)
-2. Crea un nuevo proyecto y app (o usa uno existente)
-3. En la sección de tu app, ve a "Keys and tokens"
-4. Genera y guarda:
-   - API Key (Consumer Key)
-   - API Secret (Consumer Secret)
-   - Access Token
-   - Access Token Secret
+## Features
 
-**IMPORTANTE:** Asegúrate de que tu app tenga permisos de **Read and Write** en la configuración de "User authentication settings".
+- **Automated Tweet Scheduling** - 19 tweets per week on a strategic schedule
+- **Bilingual Content** - English & Spanish tweets targeting global crypto community
+- **Course Promotion** - Automated marketing for 4 free Web3 courses
+- **Follower Welcome System** - Auto-greet new followers with personalized messages
+- **Community Building** - Discord and newsletter promotion
+- **Railway Deployment** - Runs 24/7 in the cloud
 
-### 2. Configurar el bot
+---
 
-1. Copia el archivo de ejemplo:
+## Architecture Overview
 
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Edita el archivo `.env` y añade tus credenciales:
-   ```
-   TWITTER_API_KEY=tu_api_key_aqui
-   TWITTER_API_SECRET=tu_api_secret_aqui
-   TWITTER_ACCESS_TOKEN=tu_access_token_aqui
-   TWITTER_ACCESS_SECRET=tu_access_secret_aqui
-   ```
-
-### 3. Configurar tweets programados
-
-Edita el archivo `scheduled-tweets.json` para añadir tus tweets y horarios.
-
-#### Formato de horarios (Cron)
-
-El formato cron es: `minuto hora día mes día_semana`
-
-**Ejemplos:**
-
-- `0 9 * * *` - Todos los días a las 9:00 AM
-- `30 14 * * *` - Todos los días a las 2:30 PM
-- `0 8 * * 1` - Cada lunes a las 8:00 AM
-- `0 20 * * 5` - Cada viernes a las 8:00 PM
-- `*/30 * * * *` - Cada 30 minutos
-
-**Días de la semana:**
-
-- 0 = Domingo
-- 1 = Lunes
-- 2 = Martes
-- 3 = Miércoles
-- 4 = Jueves
-- 5 = Viernes
-- 6 = Sábado
-
-#### Ejemplo de configuración:
-
-```json
-{
-  "tweets": [
-    {
-      "schedule": "0 9 * * *",
-      "text": "¡Buenos días! 🌅"
-    },
-    {
-      "schedule": "0 12 * * 1",
-      "text": "¡Feliz lunes! Nueva semana, nuevas oportunidades."
-    }
-  ]
-}
+```
+┌─────────────────┐
+│   Twitter API   │
+│      (v2)       │
+└────────┬────────┘
+         │
+    ┌────▼────────────────────────┐
+    │   Twitter Bot (Node.js)     │
+    │                             │
+    │  ┌─────────────────────┐   │
+    │  │  Tweet Scheduler    │   │
+    │  │  (node-cron)        │   │
+    │  └──────────┬──────────┘   │
+    │             │               │
+    │  ┌──────────▼──────────┐   │
+    │  │  Follower Monitor   │   │
+    │  │  (Every 2 hours)    │   │
+    │  └─────────────────────┘   │
+    └─────────────────────────────┘
+             │
+    ┌────────▼────────┐
+    │  Railway Cloud  │
+    │  (24/7 Hosting) │
+    └─────────────────┘
 ```
 
-## Uso
+---
 
-### Instalar dependencias
+## Quick Start
+
+### Prerequisites
+
+- Node.js 18+ installed
+- Twitter Developer Account with API access
+- Railway account (for deployment)
+
+### Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/CallejaJ/twitter-bot.git
+cd twitter-bot
+```
+
+2. **Install dependencies**
 
 ```bash
 npm install
 ```
 
-### Ejecutar el bot
+3. **Configure environment variables**
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your Twitter API credentials:
+
+```env
+TWITTER_API_KEY=your_api_key
+TWITTER_API_SECRET=your_api_secret
+TWITTER_ACCESS_TOKEN=your_access_token
+TWITTER_ACCESS_SECRET=your_access_secret
+```
+
+4. **Run the bot**
 
 ```bash
 node index.js
 ```
 
-El bot:
+---
 
-1. Verificará la conexión con Twitter
-2. Cargará los tweets programados desde `scheduled-tweets.json`
-3. Se quedará ejecutando y publicará tweets según los horarios configurados
+## Twitter API Setup
 
-### Detener el bot
+### 1. Create Twitter Developer App
 
-Presiona `Ctrl+C` en la terminal.
+1. Go to [Twitter Developer Portal](https://developer.twitter.com/en/portal/dashboard)
+2. Create a new Project and App
+3. Navigate to "Settings" → "User authentication settings"
+4. Set **App permissions** to: **Read and Write**
+5. Select **App type**: **Web App, Automated App or Bot**
+6. Fill required URLs (use `http://localhost:3000` for callback if needed)
 
-## Ejecutar como servicio
+### 2. Generate Tokens
 
-Para mantener el bot ejecutándose permanentemente, puedes usar:
+1. Go to "Keys and tokens" tab
+2. Click **"Regenerate"** on API Key and Secret
+3. Click **"Generate"** on Access Token and Secret
+4. Copy all 4 credentials to your `.env` file
 
-### En Windows (con PM2):
-
-```bash
-npm install -g pm2
-pm2 start index.js --name twitter-bot
-pm2 save
-pm2 startup
-```
-
-### En Linux/Mac (con systemd o PM2):
-
-Opción 1 - PM2 (recomendado):
-
-```bash
-npm install -g pm2
-pm2 start index.js --name twitter-bot
-pm2 save
-pm2 startup
-```
-
-Opción 2 - screen:
-
-```bash
-screen -S twitter-bot
-node index.js
-# Presiona Ctrl+A, luego D para desconectar
-# Para reconectar: screen -r twitter-bot
-```
-
-## Límites de la API de Twitter
-
-- API Gratuita: 1,500 tweets por mes
-- Respeta los límites de tasa para evitar suspensiones
-- No hagas spam ni violes las políticas de Twitter
-
-## Solución de problemas
-
-### Error 401 (Unauthorized)
-
-- Verifica que tus credenciales en `.env` sean correctas
-- Asegúrate de que tu app tenga permisos de "Read and Write"
-
-### Error 403 (Forbidden)
-
-- Tu cuenta puede estar restringida
-- Verifica que tu app esté aprobada en el Developer Portal
-
-### Error 429 (Rate Limit)
-
-- Has excedido los límites de tasa
-- Espera antes de intentar publicar más tweets
-
-## Seguridad
-
-- **NUNCA** compartas tu archivo `.env` ni lo subas a Git
-- Mantén tus credenciales privadas
-- El archivo `.gitignore` ya está configurado para proteger `.env`
-
-## Licencia
-
-Uso personal libre.
-
-# Memento Academy - Twitter Marketing Strategy
-
-## Overview
-
-Complete marketing automation system for Memento Academy with:
-
-- **Bilingual content** (English & Spanish)
-- **Course promotion** for all 4 free courses
-- **Weekly posting schedule** optimized for engagement
-- **New follower welcome system** (auto-reply)
+⚠️ **Important**: You MUST regenerate tokens AFTER changing permissions to "Read and Write"
 
 ---
 
-## Weekly Posting Schedule
+## Marketing Strategy
 
-### Distribution (19 tweets/week)
+### Weekly Posting Schedule
 
-**Monday** (3 tweets)
+**19 tweets per week** distributed across 7 days:
 
-- 09:00 UTC - Motivation (EN)
-- 14:00 UTC - Web3 Basics course (EN)
-- 20:00 UTC - Industry insight (ES)
+| Day | Time (UTC) | Type | Language |
+|-----|------------|------|----------|
+| **Monday** | 09:00 | Motivation | EN |
+|  | 14:00 | Web3 Basics Course | EN |
+|  | 20:00 | Industry Insight | ES |
+| **Tuesday** | 09:00 | Crypto 101 Course | ES |
+|  | 14:00 | Community | EN |
+|  | 20:00 | Educational Value | EN |
+| **Wednesday** | 09:00 | Question | ES |
+|  | 14:00 | CBDC Course | EN |
+|  | 20:00 | Community | ES |
+| **Thursday** | 09:00 | Educational Value | EN |
+|  | 14:00 | Security Course | ES |
+|  | 20:00 | Educational Value | EN |
+| **Friday** | 09:00 | Call-to-Action | ES |
+|  | 14:00 | Question | EN |
+|  | 20:00 | Web3 Basics Course | ES |
+| **Saturday** | 10:00 | Weekend Learning | EN |
+|  | 16:00 | Educational Value | ES |
+| **Sunday** | 10:00 | Week Prep | ES |
+|  | 18:00 | Call-to-Action | EN |
 
-**Tuesday** (3 tweets)
+### Content Distribution
 
-- 09:00 UTC - Crypto 101 course (ES)
-- 14:00 UTC - Community engagement (EN)
-- 20:00 UTC - Educational value (EN)
+- **40%** - Course Promotions
+- **25%** - Educational Value (tips, insights)
+- **20%** - Community Building
+- **10%** - Engagement Questions
+- **5%** - Calls-to-Action
 
-**Wednesday** (3 tweets)
+### Promoted Courses
 
-- 09:00 UTC - Engagement question (ES)
-- 14:00 UTC - CBDC course (EN)
-- 20:00 UTC - Community engagement (ES)
-
-**Thursday** (3 tweets)
-
-- 09:00 UTC - Educational value (EN)
-- 14:00 UTC - Security course (ES)
-- 20:00 UTC - Educational value (EN)
-
-**Friday** (3 tweets)
-
-- 09:00 UTC - Call-to-action (ES)
-- 14:00 UTC - Engagement question (EN)
-- 20:00 UTC - Web3 Basics course (ES)
-
-**Saturday** (2 tweets)
-
-- 10:00 UTC - Weekend learning (EN)
-- 16:00 UTC - Educational value (ES)
-
-**Sunday** (2 tweets)
-
-- 10:00 UTC - Week prep (ES)
-- 18:00 UTC - Call-to-action (EN)
-
----
-
-## Content Strategy
-
-### 1. Course Promotions (40%)
-
-Rotating promotion of all 4 free courses:
-
-#### Web3 Basics
-
-- URL: `https://memento-academy.com/[en/es]/learn/web3-basics`
-- Duration: 45 min
-- Target: Absolute beginners
-- Key message: "Understanding the new era of the internet"
-
-#### Crypto 101
-
-- URL: `https://memento-academy.com/[en/es]/learn/crypto-101`
-- Duration: 60 min
-- Target: Crypto newcomers
-- Key message: "Everything about cryptocurrencies without the noise"
-
-#### Understanding CBDCs
-
-- URL: `https://memento-academy.com/[en/es]/learn/cbdc`
-- Duration: 40 min
-- Target: Finance-conscious users
-- Key message: "How digital currencies will affect your money"
-
-#### Security Guide
-
-- URL: `https://memento-academy.com/[en/es]/learn/safety`
-- Duration: 50 min
-- Target: Anyone holding crypto
-- Key message: "Protect yourself from scams"
-
-### 2. Educational Value (25%)
-
-Quick tips and insights:
-
-- Fun facts about crypto history
-- Simple explanations of complex concepts
-- Industry trends and predictions
-- Key differences (Bitcoin vs Ethereum, etc.)
-
-### 3. Community Building (20%)
-
-- Discord community links: `https://discord.gg/MWfHKfjYS7`
-- Highlight 50K+ learners milestone
-- Encourage questions and discussions
-- Beginner-friendly messaging
-
-### 4. Engagement Questions (10%)
-
-- Ask about first crypto experience
-- Request topic suggestions
-- Solicit feedback on content format
-- Identify learning barriers
-
-### 5. Calls-to-Action (5%)
-
-- Newsletter signup
-- Course exploration
-- Community joining
-- Social proof (testimonials)
-
----
-
-## Language Distribution
-
-**Bilingual Strategy:**
-
-- ~50% English tweets
-- ~50% Spanish tweets
-- Alternating throughout the week
-- Both languages link to respective course URLs
-
-**Why Bilingual?**
-
-- Crypto/Web3 is global
-- Large Spanish-speaking crypto community
-- Memento Academy supports both languages
-- Expands reach significantly
+1. **Web3 Basics** (45 min) - [EN](https://memento-academy.com/en/learn/web3-basics) | [ES](https://memento-academy.com/es/learn/web3-basics)
+2. **Crypto 101** (60 min) - [EN](https://memento-academy.com/en/learn/crypto-101) | [ES](https://memento-academy.com/es/learn/crypto-101)
+3. **Understanding CBDCs** (40 min) - [EN](https://memento-academy.com/en/learn/cbdc) | [ES](https://memento-academy.com/es/learn/cbdc)
+4. **Security Guide** (50 min) - [EN](https://memento-academy.com/en/learn/safety) | [ES](https://memento-academy.com/es/learn/safety)
 
 ---
 
@@ -319,195 +173,277 @@ Quick tips and insights:
 
 ### How It Works
 
-1. **Check Frequency**: Every 2 hours
-2. **Detection**: Compares current followers vs previous check
-3. **Welcome Action**: Sends public welcome tweet mentioning new follower
-4. **Tracking**: Stores welcomed users to avoid duplicates
+The bot automatically welcomes new followers every 2 hours:
 
-### Welcome Messages (3 variations per language)
+1. **Detects** new followers by comparing with previous check
+2. **Sends** a public welcome tweet mentioning the user
+3. **Tracks** welcomed users to avoid duplicates
+4. **Randomizes** language (EN/ES) and message variation
 
-**English:**
+### Welcome Messages
 
-1. "Welcome to Memento Academy! We're excited to have you here. Start your Web3 journey with our free courses: https://memento-academy.com/en/courses"
-2. "Thanks for following! New to Web3? No problem. We break down complex topics into simple lessons. Check out our free courses: https://memento-academy.com/en/courses"
-3. "Hey there! Welcome to the Memento Academy community. Explore our free Web3 courses and join 50K+ learners: https://memento-academy.com/en/courses"
+**English (3 variations)**:
+- "Welcome to Memento Academy! We're excited to have you here. Start your Web3 journey with our free courses"
+- "Thanks for following! New to Web3? No problem. We break down complex topics into simple lessons"
+- "Hey there! Welcome to the Memento Academy community. Explore our free Web3 courses and join 50K+ learners"
 
-**Spanish:**
-
-1. "¡Bienvenido a Memento Academy! Nos emociona tenerte aquí. Comienza tu viaje Web3 con nuestros cursos gratuitos: https://memento-academy.com/es/courses"
-2. "¡Gracias por seguirnos! ¿Nuevo en Web3? No hay problema. Desglosamos temas complejos en lecciones simples. Mira nuestros cursos gratuitos: https://memento-academy.com/es/courses"
-3. "¡Hola! Bienvenido a la comunidad de Memento Academy. Explora nuestros cursos gratuitos de Web3 y únete a más de 50K estudiantes: https://memento-academy.com/es/courses"
-
-### Alternative: Direct Messages
-
-If you have Twitter API v2 elevated access with DM permissions:
-
-- Uncomment DM functionality in `follower-welcome.js`
-- Sends private welcome message instead of public tweet
-- More personal, less spammy
-- Requires user to follow you back
+**Spanish (3 variations)**:
+- "¡Bienvenido a Memento Academy! Nos emociona tenerte aquí. Comienza tu viaje Web3 con nuestros cursos gratuitos"
+- "¡Gracias por seguirnos! ¿Nuevo en Web3? No hay problema. Desglosamos temas complejos en lecciones simples"
+- "¡Hola! Bienvenido a la comunidad de Memento Academy. Explora nuestros cursos gratuitos de Web3"
 
 ---
 
-## Files Structure
+## Project Structure
 
 ```
 twitter-bot/
-├── index.js                          # Main bot with scheduling
-├── follower-welcome.js               # New follower detection & welcome
-├── scheduled-tweets.json             # Active tweet schedule (marketing)
-├── scheduled-tweets-basic.json.backup # Original simple tweets
-├── marketing-tweets-bilingual.json   # Tweet library (reference)
+├── index.js                          # Main bot entry point
+├── follower-welcome.js               # Follower detection & welcome logic
+├── scheduled-tweets.json             # Active marketing tweet schedule
+├── scheduled-tweets-basic.json.backup # Original basic tweets
+├── marketing-tweets-bilingual.json   # Full tweet library (reference)
 ├── followers-data.json               # Tracked followers (auto-generated)
-└── MARKETING_STRATEGY.md            # This file
+├── .env                              # API credentials (DO NOT COMMIT)
+├── .env.example                      # Template for credentials
+├── package.json                      # Dependencies
+├── railway.json                      # Railway deployment config
+└── README.md                         # This file
 ```
-
----
-
-## Key Metrics to Track
-
-1. **Engagement Rate**
-
-   - Likes, retweets, replies per tweet
-   - Best performing content types
-   - Best performing times
-
-2. **Course Click-Through Rate**
-
-   - Track URL clicks to course pages
-   - Compare EN vs ES performance
-   - Identify most popular courses
-
-3. **Community Growth**
-
-   - New followers per week
-   - Discord joins from Twitter
-   - Newsletter signups
-
-4. **Content Performance**
-   - Questions vs statements
-   - Course promos vs educational value
-   - EN vs ES engagement
-
----
-
-## Optimization Tips
-
-### If Engagement is Low:
-
-- Increase question tweets (drive replies)
-- Add more visual content (images/videos)
-- Adjust posting times for audience timezone
-- Test different CTAs
-
-### If Course Clicks are Low:
-
-- Shorten tweet text, emphasize value
-- Test different course descriptions
-- Highlight "FREE" more prominently
-- Add social proof (number of students)
-
-### If Follower Growth is Low:
-
-- Engage with Web3/crypto influencers
-- Reply to relevant conversations
-- Use trending hashtags strategically
-- Run Twitter polls
-
----
-
-## Content Rotation Strategy
-
-### Weekly Rotation
-
-**Week 1**: Focus on Web3 Basics + Crypto 101
-**Week 2**: Focus on CBDCs + Security
-**Week 3**: Mix all four courses
-**Week 4**: Premium course teasers + community
-
-### Monthly Themes
-
-**Month 1**: Beginner onboarding
-**Month 2**: Security and safety
-**Month 3**: Advanced topics teasers
-**Month 4**: Community success stories
 
 ---
 
 ## Deployment on Railway
 
-When you update content or strategy:
+### One-Click Deploy
+
+1. Push your code to GitHub
+2. Go to [Railway.app](https://railway.app) and login with GitHub
+3. Click "New Project" → "Deploy from GitHub repo"
+4. Select `twitter-bot` repository
+5. Add environment variables in Railway dashboard:
+   - `TWITTER_API_KEY`
+   - `TWITTER_API_SECRET`
+   - `TWITTER_ACCESS_TOKEN`
+   - `TWITTER_ACCESS_SECRET`
+6. Railway auto-deploys and runs the bot 24/7
+
+### Update Deployment
 
 ```bash
-# Update tweets
-git add scheduled-tweets.json
+# Make changes to tweets or code
+git add .
 git commit -m "Update: new tweet schedule"
 git push
 
-# Railway auto-deploys!
+# Railway automatically redeploys!
 ```
 
-Bot will automatically:
+---
 
-- Load new schedule
-- Continue follower checks
-- Apply changes without downtime
+## Customization
+
+### Add New Tweets
+
+Edit `scheduled-tweets.json`:
+
+```json
+{
+  "tweets": [
+    {
+      "schedule": "0 9 * * 1",
+      "text": "Your tweet content here",
+      "language": "en",
+      "type": "course_promo"
+    }
+  ]
+}
+```
+
+### Cron Schedule Format
+
+```
+┌─────────── minute (0 - 59)
+│ ┌───────── hour (0 - 23)
+│ │ ┌─────── day of month (1 - 31)
+│ │ │ ┌───── month (1 - 12)
+│ │ │ │ ┌─── day of week (0 - 7, Sunday = 0 or 7)
+│ │ │ │ │
+* * * * *
+```
+
+**Examples**:
+- `0 9 * * *` - Every day at 9:00 AM
+- `0 9 * * 1-5` - Monday to Friday at 9:00 AM
+- `*/30 * * * *` - Every 30 minutes
+- `0 */2 * * *` - Every 2 hours
+
+---
+
+## Monitoring & Analytics
+
+### Key Metrics to Track
+
+1. **Engagement Rate**
+   - Likes, retweets, replies per tweet
+   - Best performing content types
+   - Optimal posting times
+
+2. **Course Click-Through Rate**
+   - URL clicks to course pages
+   - EN vs ES performance
+   - Most popular courses
+
+3. **Community Growth**
+   - New followers per week
+   - Discord joins from Twitter
+   - Newsletter signups
+
+4. **Content Performance**
+   - Questions vs statements engagement
+   - Course promos vs educational content
+   - Language preference (EN vs ES)
+
+### View Logs
+
+**Railway Dashboard**:
+- Navigate to your project → Deployments → View Logs
+- Monitor tweet posting and follower checks in real-time
+
+**Local**:
+```bash
+node index.js
+# Logs appear in console
+```
+
+---
+
+## Optimization Tips
+
+### Increase Engagement
+- Add more question tweets to drive replies
+- Include visual content (images/videos)
+- Adjust posting times for target timezone
+- Test different CTAs (Call-to-Actions)
+
+### Improve Click-Through Rate
+- Shorten tweet text, emphasize value
+- Test different course descriptions
+- Highlight "FREE" prominently
+- Add social proof (number of students)
+
+### Boost Follower Growth
+- Engage with Web3/crypto influencers
+- Reply to relevant industry conversations
+- Use trending hashtags strategically
+- Run Twitter polls on hot topics
+
+---
+
+## Troubleshooting
+
+### Error 401 (Unauthorized)
+- ❌ Invalid credentials
+- ✅ Check your `.env` file values
+- ✅ Regenerate tokens in Twitter Developer Portal
+
+### Error 403 (Forbidden)
+- ❌ App doesn't have write permissions
+- ✅ Set app permissions to "Read and Write"
+- ✅ Regenerate Access Token after changing permissions
+
+### Error 429 (Rate Limit)
+- ❌ Too many requests
+- ✅ Wait before retrying
+- ✅ Reduce tweet frequency
+
+### Bot Not Posting
+- ✅ Check Railway logs for errors
+- ✅ Verify environment variables are set correctly
+- ✅ Confirm `scheduled-tweets.json` has valid cron schedules
+
+---
+
+## Security Best Practices
+
+- ✅ **NEVER** commit `.env` to git
+- ✅ Keep `.env` in `.gitignore`
+- ✅ Regenerate tokens if accidentally exposed
+- ✅ Use Railway environment variables for production
+- ✅ Review Twitter API usage regularly
+
+---
+
+## API Rate Limits
+
+| Tier | Monthly Tweets | Rate Limit |
+|------|----------------|------------|
+| **Free** | 1,500 | 50 tweets/15 min |
+| **Basic** | 3,000 | 100 tweets/15 min |
+| **Pro** | 10,000 | 300 tweets/15 min |
+
+Current bot usage: **~570 tweets/month** (well within Free tier)
 
 ---
 
 ## Future Enhancements
 
-### Planned Features:
+### Planned Features
+- [ ] Auto-reply to mentions with common FAQs
+- [ ] Thread posting for educational content
+- [ ] Media attachments (images/GIFs)
+- [ ] A/B testing for tweet variations
+- [ ] Analytics dashboard
+- [ ] Sentiment analysis
+- [ ] Trending topics integration
 
-1. **Reply to mentions** - Auto-respond to common questions
-2. **Thread posting** - Multi-tweet educational threads
-3. **Media support** - Images/infographics in tweets
-4. **A/B testing** - Test different tweet variations
-5. **Analytics dashboard** - Track performance metrics
-6. **Sentiment analysis** - Monitor community sentiment
-7. **Trending topics** - Auto-post about Web3 news
-
-### Premium Features (if budget allows):
-
-1. **Twitter Ads** - Promote high-performing tweets
-2. **Influencer outreach** - Partner with Web3 educators
-3. **Giveaways** - Course completion NFTs
-4. **AMA sessions** - Live Q&A with experts
+### Premium Features
+- [ ] Twitter Ads integration
+- [ ] Influencer outreach automation
+- [ ] NFT giveaways for course completion
+- [ ] Live AMA scheduling
 
 ---
 
-## Support & Maintenance
+## Contributing
 
-### Daily Tasks (Automated):
+Contributions welcome! Please:
 
-- Tweet posting per schedule
-- New follower detection and welcome
-- Error logging
-
-### Weekly Tasks (Manual):
-
-- Review engagement metrics
-- Adjust poorly performing tweets
-- Respond to high-value replies
-- Check Railway logs for errors
-
-### Monthly Tasks (Manual):
-
-- Rotate tweet content
-- Update course links if needed
-- Analyze growth trends
-- Plan next month's themes
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ---
 
-## Contact & Resources
+## License
 
-- **Main Site**: https://memento-academy.com
-- **Discord**: https://discord.gg/MWfHKfjYS7
-- **Twitter**: @memento_academy
-- **GitHub**: https://github.com/CallejaJ/twitter-bot
+MIT License - Free for personal and commercial use
 
 ---
 
-_Last Updated: January 2026_
-_Bot Version: 2.0 (Marketing Edition)_
+## Resources
+
+- **Memento Academy**: [https://memento-academy.com](https://memento-academy.com)
+- **Discord Community**: [https://discord.gg/MWfHKfjYS7](https://discord.gg/MWfHKfjYS7)
+- **Twitter**: [@memento_academy](https://twitter.com/memento_academy)
+- **Twitter API Docs**: [https://developer.twitter.com/en/docs/twitter-api](https://developer.twitter.com/en/docs/twitter-api)
+- **Railway Docs**: [https://docs.railway.app](https://docs.railway.app)
+
+---
+
+## Support
+
+Need help? Reach out:
+- Open an [Issue](https://github.com/CallejaJ/twitter-bot/issues)
+- Join our [Discord](https://discord.gg/MWfHKfjYS7)
+- DM [@memento_academy](https://twitter.com/memento_academy)
+
+---
+
+<div align="center">
+  <strong>Built with ❤️ for the Web3 community</strong>
+  <br />
+  <sub>Last updated: January 2026 | Bot Version: 2.0 (Marketing Edition)</sub>
+</div>
