@@ -4,6 +4,7 @@ const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
 const { checkNewFollowers } = require('./follower-welcome');
+const { checkMentions } = require('./mention-replies');
 
 // Configure Twitter client
 const client = new TwitterApi({
@@ -116,6 +117,14 @@ async function startBot() {
   });
 
   console.log('✓ Follower welcome system enabled (checks every 2 hours)');
+
+  // Schedule mention check every 30 minutes
+  cron.schedule('*/30 * * * *', async () => {
+    console.log(`\n[${new Date().toLocaleString()}] Checking for new mentions...`);
+    await checkMentions();
+  });
+
+  console.log('✓ Auto-reply system enabled (checks every 30 minutes)');
   console.log('');
 }
 

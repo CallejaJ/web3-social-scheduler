@@ -21,6 +21,7 @@ This bot handles **scheduled tweets**, **course promotions**, **community engage
 - **Bilingual Content** - English & Spanish tweets targeting global crypto community
 - **Course Promotion** - Automated marketing for 4 free Web3 courses
 - **Follower Welcome System** - Auto-greet new followers with personalized messages
+- **Auto-Reply to Mentions** - Smart FAQ system responds to common questions automatically
 - **Community Building** - Discord and newsletter promotion
 - **Railway Deployment** - Runs 24/7 in the cloud
 
@@ -194,16 +195,52 @@ The bot automatically welcomes new followers every 2 hours:
 
 ---
 
+## Auto-Reply to Mentions
+
+### How It Works
+
+The bot monitors mentions every 30 minutes and automatically replies with relevant information:
+
+1. **Monitors** mentions using Twitter API v2
+2. **Detects** language (EN/ES) from tweet text
+3. **Matches** keywords to FAQ database
+4. **Replies** with contextual answer in user's language
+5. **Tracks** replied tweets to avoid duplicates
+
+### FAQ Categories
+
+| Category | Keywords | Response |
+|----------|----------|----------|
+| **Courses** | course, learn, tutorial | Links to free courses catalog |
+| **Pricing** | free, price, cost | Confirms 100% free, no hidden fees |
+| **Getting Started** | start, beginner, new | Recommends Web3 Basics course |
+| **CBDC** | cbdc, central bank | Links to CBDC course |
+| **Security** | safe, scam, protect | Links to Security Guide |
+| **Community** | discord, help, support | Discord invitation |
+| **Crypto Basics** | bitcoin, ethereum, crypto | Links to Crypto 101 course |
+
+### Example Interactions
+
+**User**: "@memento_academy How do I start learning about Web3?"
+**Bot**: "Perfect for beginners! Start with our Web3 Basics course (45 min): https://memento-academy.com/en/learn/web3-basics - No prior knowledge needed."
+
+**User**: "@memento_academy ¿Los cursos son gratis?"
+**Bot**: "Todos nuestros cursos son 100% GRATUITOS. Sin tarjeta de crédito, sin suscripción, sin trucos. Solo educación Web3 de calidad para todos."
+
+---
+
 ## Project Structure
 
 ```
 twitter-bot/
 ├── index.js                          # Main bot entry point
 ├── follower-welcome.js               # Follower detection & welcome logic
+├── mention-replies.js                # Auto-reply to mentions (NEW)
 ├── scheduled-tweets.json             # Active marketing tweet schedule
 ├── scheduled-tweets-basic.json.backup # Original basic tweets
 ├── marketing-tweets-bilingual.json   # Full tweet library (reference)
 ├── followers-data.json               # Tracked followers (auto-generated)
+├── mentions-data.json                # Tracked mentions (auto-generated)
 ├── .env                              # API credentials (DO NOT COMMIT)
 ├── .env.example                      # Template for credentials
 ├── package.json                      # Dependencies
