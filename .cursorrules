@@ -1,0 +1,275 @@
+# Twitter Bot - Development Rules
+
+## Project Context
+
+Automated Twitter bot that:
+- Publishes scheduled tweets using cron jobs
+- Uses Twitter API v2 (twitter-api-v2)
+- Manages content from JSON files
+- OAuth 1.0a User Context authentication
+
+## Technologies
+
+- **Runtime**: Node.js
+- **Main Libraries**:
+  - `twitter-api-v2`: Official Twitter API client
+  - `node-cron`: Task scheduling
+  - `dotenv`: Environment variables management
+
+## Project Structure
+
+```
+twitter-bot/
+├── index.js                   # Main bot file
+├── scheduled-tweets.json      # Scheduled tweets configuration
+├── .env                       # Credentials (DO NOT COMMIT)
+├── .env.example              # Credentials template
+├── package.json              # Dependencies
+└── README.md                 # Documentation
+```
+
+## Development Methodology
+
+### 1. Core Principles
+
+- **Security first**: NEVER commit credentials
+- **Simplicity**: Clean and maintainable code
+- **Clear logging**: Informative messages with emojis (✓, ✗, ⚠)
+- **Validation**: Verify data before using the API
+- **Error handling**: Catch and log all errors
+
+### 2. Code Conventions
+
+#### JavaScript Style
+```javascript
+// Use async/await over Promises
+async function example() {
+  try {
+    const result = await asyncOperation();
+    return result;
+  } catch (error) {
+    console.error('Error:', error.message);
+    throw error;
+  }
+}
+
+// Descriptive and modular functions
+function descriptiveName() {
+  // One function = One responsibility
+}
+
+// Comments only when necessary to explain "why"
+// Code should explain the "what"
+```
+
+#### Log Format
+```javascript
+// Success
+console.log('✓ Operation successful');
+
+// Error
+console.error('✗ Operation error');
+
+// Warning
+console.warn('⚠ Important warning');
+
+// Info with timestamp
+console.log(`[${new Date().toLocaleString()}] Event`);
+```
+
+### 3. Working with Twitter API
+
+#### Required Credentials
+```env
+TWITTER_API_KEY=your_api_key
+TWITTER_API_SECRET=your_api_secret
+TWITTER_ACCESS_TOKEN=your_access_token
+TWITTER_ACCESS_SECRET=your_access_secret
+```
+
+#### Twitter Client
+```javascript
+// ALWAYS validate credentials at startup
+const client = new TwitterApi({
+  appKey: process.env.TWITTER_API_KEY,
+  appSecret: process.env.TWITTER_API_SECRET,
+  accessToken: process.env.TWITTER_ACCESS_TOKEN,
+  accessSecret: process.env.TWITTER_ACCESS_SECRET,
+});
+
+// Use v2 API (modern)
+const rwClient = client.readWrite;
+```
+
+#### API Limits
+- Free Tier: 1,500 tweets/month
+- Maximum 280 characters per tweet
+- Rate limits: always respect them
+
+### 4. Tweet Scheduling
+
+#### JSON Format
+```json
+{
+  "tweets": [
+    {
+      "schedule": "0 9 * * 1-5",
+      "text": "Tweet content"
+    }
+  ]
+}
+```
+
+#### Cron Syntax
+```
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of week (0 - 7) (0 or 7 is Sunday)
+# │ │ │ │ │
+# * * * * *
+
+Examples:
+"0 9 * * *"      # Every day at 9:00 AM
+"0 9 * * 1-5"    # Monday to Friday at 9:00 AM
+"*/30 * * * *"   # Every 30 minutes
+"0 */2 * * *"    # Every 2 hours
+```
+
+### 5. Development Flow
+
+#### Before Coding
+1. Fully understand the requirement
+2. Check if it affects credentials/security
+3. Plan minimal necessary changes
+4. Consider error handling
+
+#### During Development
+1. Write clean and commented code
+2. Validate inputs before using the API
+3. Log important operations
+4. Test error cases
+
+#### After Coding
+1. Test functionality manually
+2. Verify .env is not in git
+3. Update README if necessary
+4. Confirm logs are clear
+
+### 6. Common Error Handling
+
+```javascript
+// Error 401: Invalid credentials
+if (error.code === 401) {
+  console.error('Check your credentials in .env');
+}
+
+// Error 403: Insufficient permissions
+if (error.code === 403) {
+  console.error('Your app needs read/write permissions');
+}
+
+// Error 429: Rate limit exceeded
+if (error.code === 429) {
+  console.error('Rate limit exceeded, wait before retrying');
+}
+
+// Cron validation error
+if (!cron.validate(schedule)) {
+  console.error(`Invalid schedule: ${schedule}`);
+}
+```
+
+### 7. Testing and Verification
+
+#### Connection Test
+```javascript
+// ALWAYS test connection before scheduling
+async function testConnection() {
+  try {
+    const user = await rwClient.v2.me();
+    console.log(`✓ Connected as: @${user.data.username}`);
+    return true;
+  } catch (error) {
+    console.error('✗ Connection error:', error.message);
+    return false;
+  }
+}
+```
+
+#### Manual Testing
+```bash
+# Test configuration loading
+node index.js
+
+# Verify environment variables
+node -e "require('dotenv').config(); console.log(process.env.TWITTER_API_KEY ? 'OK' : 'MISSING')"
+```
+
+### 8. Security
+
+#### NEVER DO
+- ❌ Commit .env file
+- ❌ Hardcode credentials
+- ❌ Share access tokens
+- ❌ Log complete credentials
+
+#### ALWAYS DO
+- ✅ Use .env for credentials
+- ✅ Keep .env in .gitignore
+- ✅ Provide .env.example
+- ✅ Validate variables at startup
+- ✅ Regenerate tokens if exposed
+
+### 9. Git Workflow
+
+```bash
+# .gitignore MUST include
+.env
+node_modules/
+
+# Descriptive commits
+git commit -m "feat: add cron schedule validation"
+git commit -m "fix: correct 403 error handling"
+git commit -m "docs: update README with examples"
+```
+
+### 10. Future Extensions
+
+If you need to add:
+- **Auto-replies**: Use Twitter streams
+- **Analytics**: Save metrics to database
+- **Multi-account**: Create separate instances
+- **Dynamic content**: Integrate external APIs
+- **Images**: Use `client.v1.uploadMedia()`
+
+## Useful Commands
+
+```bash
+# Install dependencies
+npm install
+
+# Run bot
+node index.js
+
+# View logs in real-time (if using pm2)
+pm2 logs twitter-bot
+
+# Validate JSON
+node -e "console.log(JSON.parse(require('fs').readFileSync('scheduled-tweets.json')))"
+```
+
+## Quick References
+
+- [Twitter API v2 Docs](https://developer.twitter.com/en/docs/twitter-api)
+- [twitter-api-v2 npm](https://www.npmjs.com/package/twitter-api-v2)
+- [node-cron Docs](https://www.npmjs.com/package/node-cron)
+- [Crontab Guru](https://crontab.guru/) - Cron expression validator
+
+## Final Notes
+
+- This bot is designed to be simple and maintainable
+- Prioritize clarity over complexity
+- Document significant changes
+- Always keep credentials secure
