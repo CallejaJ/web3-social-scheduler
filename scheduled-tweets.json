@@ -119,7 +119,8 @@
       "schedule": "0 18 * * 0",
       "text": "The future of the internet is being built right now. Don't get left behind. Start learning Web3 today. https://memento-academy.com/en/courses #Web3 #Education",
       "language": "en",
-      "type": "cta"
+      "type": "cta",
+      "media": "web3-basics-en.png"
     }
   ]
 }
