@@ -4,7 +4,8 @@
       "schedule": "0 9 * * 1",
       "text": "New week, new opportunities to expand your knowledge. Ready to master Web3? Start with our free courses. https://memento-academy.com/en/courses #MondayMotivation #Web3",
       "language": "en",
-      "type": "motivation"
+      "type": "motivation",
+      "media": "web3-basics-en.png"
     },
     {
       "schedule": "0 14 * * 1",
@@ -103,7 +104,7 @@
       "text": "Weekend learning: Dive deep into blockchain fundamentals with our free courses. Perfect for your Saturday morning coffee. https://memento-academy.com/en/courses #WeekendLearning",
       "language": "en",
       "type": "weekend_learning",
-      "media": "crypto-101-en.png"
+      "media": "web3-basics-en.png"
     },
     {
       "schedule": "0 16 * * 6",
