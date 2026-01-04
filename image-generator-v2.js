@@ -411,7 +411,7 @@ async function generateAllCourseImages() {
       subtitle: 'Read Charts Like a Pro',
       duration: 'Premium',
       language: 'en',
-      style: 'light'
+      style: 'dark'
     },
     {
       filename: 'ta-es',
@@ -419,7 +419,7 @@ async function generateAllCourseImages() {
       subtitle: 'Lee Gráficos como un Pro',
       duration: 'Premium',
       language: 'es',
-      style: 'light'
+      style: 'dark'
     },
 
     // Portfolio Management
