@@ -131,27 +131,27 @@ node index.js
 
 **19 tweets per week** distributed across 7 days:
 
-| Day | Time (UTC) | Type | Language |
-|-----|------------|------|----------|
-| **Monday** | 09:00 | Motivation | EN |
-|  | 14:00 | Web3 Basics Course | EN |
-|  | 20:00 | Industry Insight | ES |
-| **Tuesday** | 09:00 | Crypto 101 Course | ES |
-|  | 14:00 | Community | EN |
-|  | 20:00 | Educational Value | EN |
-| **Wednesday** | 09:00 | Question | ES |
-|  | 14:00 | CBDC Course | EN |
-|  | 20:00 | Community | ES |
-| **Thursday** | 09:00 | Educational Value | EN |
-|  | 14:00 | Security Course | ES |
-|  | 20:00 | Educational Value | EN |
-| **Friday** | 09:00 | Call-to-Action | ES |
-|  | 14:00 | Question | EN |
-|  | 20:00 | Web3 Basics Course | ES |
-| **Saturday** | 10:00 | Weekend Learning | EN |
-|  | 16:00 | Educational Value | ES |
-| **Sunday** | 10:00 | Week Prep | ES |
-|  | 18:00 | Call-to-Action | EN |
+| Day           | Time (UTC) | Type               | Language |
+| ------------- | ---------- | ------------------ | -------- |
+| **Monday**    | 09:00      | Motivation         | EN       |
+|               | 14:00      | Web3 Basics Course | EN       |
+|               | 20:00      | Industry Insight   | ES       |
+| **Tuesday**   | 09:00      | Crypto 101 Course  | ES       |
+|               | 14:00      | Community          | EN       |
+|               | 20:00      | Educational Value  | EN       |
+| **Wednesday** | 09:00      | Question           | ES       |
+|               | 14:00      | CBDC Course        | EN       |
+|               | 20:00      | Community          | ES       |
+| **Thursday**  | 09:00      | Educational Value  | EN       |
+|               | 14:00      | Security Course    | ES       |
+|               | 20:00      | Educational Value  | EN       |
+| **Friday**    | 09:00      | Call-to-Action     | ES       |
+|               | 14:00      | Question           | EN       |
+|               | 20:00      | Web3 Basics Course | ES       |
+| **Saturday**  | 10:00      | Weekend Learning   | EN       |
+|               | 16:00      | Educational Value  | ES       |
+| **Sunday**    | 10:00      | Week Prep          | ES       |
+|               | 18:00      | Call-to-Action     | EN       |
 
 ### Content Distribution
 
@@ -184,11 +184,13 @@ The bot automatically welcomes new followers every 2 hours:
 ### Welcome Messages
 
 **English (3 variations)**:
+
 - "Welcome to Memento Academy! We're excited to have you here. Start your Web3 journey with our free courses"
 - "Thanks for following! New to Web3? No problem. We break down complex topics into simple lessons"
 - "Hey there! Welcome to the Memento Academy community. Explore our free Web3 courses and join 50K+ learners"
 
 **Spanish (3 variations)**:
+
 - "¡Bienvenido a Memento Academy! Nos emociona tenerte aquí. Comienza tu viaje Web3 con nuestros cursos gratuitos"
 - "¡Gracias por seguirnos! ¿Nuevo en Web3? No hay problema. Desglosamos temas complejos en lecciones simples"
 - "¡Hola! Bienvenido a la comunidad de Memento Academy. Explora nuestros cursos gratuitos de Web3"
@@ -210,15 +212,15 @@ The bot monitors mentions every 30 minutes and automatically replies with releva
 
 ### FAQ Categories
 
-| Category | Keywords | Response |
-|----------|----------|----------|
-| **Courses** | course, learn, tutorial | Links to free courses catalog |
-| **Pricing** | free, price, cost | Confirms 100% free, no hidden fees |
-| **Getting Started** | start, beginner, new | Recommends Web3 Basics course |
-| **CBDC** | cbdc, central bank | Links to CBDC course |
-| **Security** | safe, scam, protect | Links to Security Guide |
-| **Community** | discord, help, support | Discord invitation |
-| **Crypto Basics** | bitcoin, ethereum, crypto | Links to Crypto 101 course |
+| Category            | Keywords                  | Response                           |
+| ------------------- | ------------------------- | ---------------------------------- |
+| **Courses**         | course, learn, tutorial   | Links to free courses catalog      |
+| **Pricing**         | free, price, cost         | Confirms 100% free, no hidden fees |
+| **Getting Started** | start, beginner, new      | Recommends Web3 Basics course      |
+| **CBDC**            | cbdc, central bank        | Links to CBDC course               |
+| **Security**        | safe, scam, protect       | Links to Security Guide            |
+| **Community**       | discord, help, support    | Discord invitation                 |
+| **Crypto Basics**   | bitcoin, ethereum, crypto | Links to Crypto 101 course         |
 
 ### Example Interactions
 
@@ -233,6 +235,7 @@ The bot monitors mentions every 30 minutes and automatically replies with releva
 The bot includes intelligent spam filtering to avoid responding to scam/spam mentions:
 
 **Detected as spam**:
+
 - Multiple spam keywords (pump, dump, claim, airdrop, rewards, giveaway)
 - Token symbols combined with spam keywords (e.g., "$TOKEN claim now")
 - Multiple URLs in one tweet
@@ -240,6 +243,7 @@ The bot includes intelligent spam filtering to avoid responding to scam/spam men
 - Very short tweets with URLs
 
 **Spam examples** (bot will ignore):
+
 - "🔥 BIGGEST Crypto PUMP! Join now! 🚀"
 - "$TOKEN airdrop LIVE! Claim rewards: link"
 - "Free tokens! Click here! Limited time!"
@@ -329,6 +333,7 @@ Edit `scheduled-tweets.json`:
 ```
 
 **Examples**:
+
 - `0 9 * * *` - Every day at 9:00 AM
 - `0 9 * * 1-5` - Monday to Friday at 9:00 AM
 - `*/30 * * * *` - Every 30 minutes
@@ -341,16 +346,19 @@ Edit `scheduled-tweets.json`:
 ### Key Metrics to Track
 
 1. **Engagement Rate**
+
    - Likes, retweets, replies per tweet
    - Best performing content types
    - Optimal posting times
 
 2. **Course Click-Through Rate**
+
    - URL clicks to course pages
    - EN vs ES performance
    - Most popular courses
 
 3. **Community Growth**
+
    - New followers per week
    - Discord joins from Twitter
    - Newsletter signups
@@ -363,10 +371,12 @@ Edit `scheduled-tweets.json`:
 ### View Logs
 
 **Railway Dashboard**:
+
 - Navigate to your project → Deployments → View Logs
 - Monitor tweet posting and follower checks in real-time
 
 **Local**:
+
 ```bash
 node index.js
 # Logs appear in console
@@ -377,18 +387,21 @@ node index.js
 ## Optimization Tips
 
 ### Increase Engagement
+
 - Add more question tweets to drive replies
 - Include visual content (images/videos)
 - Adjust posting times for target timezone
 - Test different CTAs (Call-to-Actions)
 
 ### Improve Click-Through Rate
+
 - Shorten tweet text, emphasize value
 - Test different course descriptions
 - Highlight "FREE" prominently
 - Add social proof (number of students)
 
 ### Boost Follower Growth
+
 - Engage with Web3/crypto influencers
 - Reply to relevant industry conversations
 - Use trending hashtags strategically
@@ -399,21 +412,25 @@ node index.js
 ## Troubleshooting
 
 ### Error 401 (Unauthorized)
+
 - ❌ Invalid credentials
 - ✅ Check your `.env` file values
 - ✅ Regenerate tokens in Twitter Developer Portal
 
 ### Error 403 (Forbidden)
+
 - ❌ App doesn't have write permissions
 - ✅ Set app permissions to "Read and Write"
 - ✅ Regenerate Access Token after changing permissions
 
 ### Error 429 (Rate Limit)
+
 - ❌ Too many requests
 - ✅ Wait before retrying
 - ✅ Reduce tweet frequency
 
 ### Bot Not Posting
+
 - ✅ Check Railway logs for errors
 - ✅ Verify environment variables are set correctly
 - ✅ Confirm `scheduled-tweets.json` has valid cron schedules
@@ -432,11 +449,11 @@ node index.js
 
 ## API Rate Limits
 
-| Tier | Monthly Tweets | Rate Limit |
-|------|----------------|------------|
-| **Free** | 1,500 | 50 tweets/15 min |
-| **Basic** | 3,000 | 100 tweets/15 min |
-| **Pro** | 10,000 | 300 tweets/15 min |
+| Tier      | Monthly Tweets | Rate Limit        |
+| --------- | -------------- | ----------------- |
+| **Free**  | 1,500          | 50 tweets/15 min  |
+| **Basic** | 3,000          | 100 tweets/15 min |
+| **Pro**   | 10,000         | 300 tweets/15 min |
 
 Current bot usage: **~570 tweets/month** (well within Free tier)
 
@@ -445,14 +462,16 @@ Current bot usage: **~570 tweets/month** (well within Free tier)
 ## Future Enhancements
 
 ### Planned Features
+
 - [ ] Thread posting for educational content
-- [ ] Media attachments (images/GIFs)
+- [x] Media attachments (images/GIFs)
 - [ ] A/B testing for tweet variations
 - [ ] Analytics dashboard
 - [ ] Sentiment analysis
 - [ ] Trending topics integration
 
 ### Premium Features
+
 - [ ] Twitter Ads integration
 - [ ] Influencer outreach automation
 - [ ] NFT giveaways for course completion
@@ -491,6 +510,7 @@ MIT License - Free for personal and commercial use
 ## Support
 
 Need help? Reach out:
+
 - Open an [Issue](https://github.com/CallejaJ/twitter-bot/issues)
 - Join our [Discord](https://discord.gg/MWfHKfjYS7)
 - DM [@memento_academy](https://twitter.com/memento_academy)
