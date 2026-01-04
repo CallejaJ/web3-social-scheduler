@@ -167,7 +167,7 @@ async function generateCourseImage(options) {
       <!-- Free badge -->
       <rect x="80" y="80" width="180" height="60" fill="${badgeColor}" rx="30"/>
       <text x="170" y="118"
-            font-family="Arial, Helvetica, sans-serif"
+            font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="28"
             font-weight="700"
             fill="${badgeTextColor}"
@@ -187,7 +187,7 @@ async function generateCourseImage(options) {
 
       <!-- Main title -->
       <text x="80" y="300"
-            font-family="Arial, Helvetica, sans-serif"
+            font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="90"
             font-weight="900"
             fill="${textColor}"

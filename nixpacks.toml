@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["nodejs", "npm", "fontconfig", "dejavu_fonts"]
+
+[phases.build]
+cmds = ["npm install", "bash build.sh"]
+
+[start]
+cmd = "node index.js"
