@@ -202,10 +202,11 @@ The bot automatically welcomes new followers every 2 hours:
 The bot monitors mentions every 30 minutes and automatically replies with relevant information:
 
 1. **Monitors** mentions using Twitter API v2
-2. **Detects** language (EN/ES) from tweet text
-3. **Matches** keywords to FAQ database
-4. **Replies** with contextual answer in user's language
-5. **Tracks** replied tweets to avoid duplicates
+2. **Filters spam** - Automatically detects and ignores scam/spam mentions
+3. **Detects** language (EN/ES) from tweet text
+4. **Matches** keywords to FAQ database
+5. **Replies** with contextual answer in user's language
+6. **Tracks** replied tweets to avoid duplicates
 
 ### FAQ Categories
 
@@ -226,6 +227,24 @@ The bot monitors mentions every 30 minutes and automatically replies with releva
 
 **User**: "@memento_academy ¿Los cursos son gratis?"
 **Bot**: "Todos nuestros cursos son 100% GRATUITOS. Sin tarjeta de crédito, sin suscripción, sin trucos. Solo educación Web3 de calidad para todos."
+
+### Spam Protection
+
+The bot includes intelligent spam filtering to avoid responding to scam/spam mentions:
+
+**Detected as spam**:
+- Multiple spam keywords (pump, dump, claim, airdrop, rewards, giveaway)
+- Token symbols combined with spam keywords (e.g., "$TOKEN claim now")
+- Multiple URLs in one tweet
+- Excessive emojis (5+)
+- Very short tweets with URLs
+
+**Spam examples** (bot will ignore):
+- "🔥 BIGGEST Crypto PUMP! Join now! 🚀"
+- "$TOKEN airdrop LIVE! Claim rewards: link"
+- "Free tokens! Click here! Limited time!"
+
+This protects your account from engaging with scammers and maintains professional reputation.
 
 ---
 

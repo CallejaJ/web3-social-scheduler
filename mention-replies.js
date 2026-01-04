@@ -97,6 +97,84 @@ const FALLBACK_REPLY = {
   es: "¡Gracias por tu mensaje! Para preguntas específicas, únete a nuestro Discord: https://discord.gg/MWfHKfjYS7 o explora nuestros cursos gratuitos: https://memento-academy.com/es/courses"
 };
 
+// Spam detection keywords and patterns
+const SPAM_INDICATORS = {
+  // Pump & dump / scam keywords
+  scamKeywords: [
+    'pump', 'dump', 'moon', 'lambo', '🚀', '🔥', '💎',
+    'claim', 'airdrop', 'free tokens', 'free coins', 'tokens',
+    'reward', 'rewards', 'giveaway', 'win',
+    'pool', 'staking pool', 'liquidity pool',
+    'presale', 'ico', 'ido',
+    '100x', '1000x', 'guaranteed',
+    'click here', 'link in bio', 'dm me',
+    'urgent', 'limited time', 'act now',
+    'wallet', 'connect wallet', 'verify wallet'
+  ],
+
+  // Suspicious token/coin mentions with $ prefix
+  tokenPattern: /\$[A-Z]{2,10}\b/g, // Matches $BTC, $ETH, $USDT, etc.
+
+  // Multiple URLs (spam often has many links)
+  urlPattern: /https?:\/\/[^\s]+/gi,
+
+  // Excessive emojis (more than 3 in a short tweet)
+  emojiPattern: /[\u{1F300}-\u{1F9FF}]/gu
+};
+
+// Check if a tweet is spam
+function isSpam(text) {
+  const textLower = text.toLowerCase();
+
+  // 1. Check for spam keywords
+  const spamKeywordCount = SPAM_INDICATORS.scamKeywords.filter(keyword =>
+    textLower.includes(keyword.toLowerCase())
+  ).length;
+
+  if (spamKeywordCount >= 2) {
+    console.log(`  🚫 SPAM: Contains ${spamKeywordCount} spam keywords`);
+    return true;
+  }
+
+  // 2. Check for multiple token mentions (e.g., $ENA, $USDT)
+  const tokenMatches = text.match(SPAM_INDICATORS.tokenPattern);
+  if (tokenMatches && tokenMatches.length >= 2) {
+    console.log(`  🚫 SPAM: Contains ${tokenMatches.length} token symbols`);
+    return true;
+  }
+
+  // 2b. Single token + spam keyword = spam (e.g., "claim $TOKEN")
+  if (tokenMatches && tokenMatches.length >= 1 && spamKeywordCount >= 1) {
+    console.log(`  🚫 SPAM: Token symbol + spam keyword`);
+    return true;
+  }
+
+  // 3. Check for multiple URLs (spam tweets often have many links)
+  const urlMatches = text.match(SPAM_INDICATORS.urlPattern);
+  if (urlMatches && urlMatches.length >= 2) {
+    console.log(`  🚫 SPAM: Contains ${urlMatches.length} URLs`);
+    return true;
+  }
+
+  // 4. Check for excessive emojis (more than 5)
+  const emojiMatches = text.match(SPAM_INDICATORS.emojiPattern);
+  if (emojiMatches && emojiMatches.length >= 5) {
+    console.log(`  🚫 SPAM: Contains ${emojiMatches.length} emojis`);
+    return true;
+  }
+
+  // 5. Check if tweet is very short and contains URL (likely automated)
+  if (text.length < 50 && urlMatches && urlMatches.length >= 1) {
+    const textWithoutUrls = text.replace(SPAM_INDICATORS.urlPattern, '').trim();
+    if (textWithoutUrls.length < 20) {
+      console.log(`  🚫 SPAM: Too short with URL (${textWithoutUrls.length} chars)`);
+      return true;
+    }
+  }
+
+  return false;
+}
+
 // Load mentions data
 function loadMentionsData() {
   try {
@@ -181,6 +259,7 @@ async function checkMentions() {
 
     let newMentionsCount = 0;
     let repliedCount = 0;
+    let spamCount = 0;
 
     for await (const mention of mentions) {
       newMentionsCount++;
@@ -191,6 +270,14 @@ async function checkMentions() {
       }
 
       console.log(`\nNew mention from @${mention.author_id}: "${mention.text.substring(0, 80)}..."`);
+
+      // Check for spam - skip if detected
+      if (isSpam(mention.text)) {
+        console.log(`  ⏭️  Skipping spam mention`);
+        data.repliedTweets.push(mention.id); // Mark as processed to avoid checking again
+        spamCount++;
+        continue;
+      }
 
       // Detect language
       const language = detectLanguage(mention.text);
@@ -222,6 +309,7 @@ async function checkMentions() {
 
     console.log(`\nMention check summary:`);
     console.log(`  New mentions found: ${newMentionsCount}`);
+    console.log(`  Spam filtered: ${spamCount}`);
     console.log(`  Replied to: ${repliedCount}`);
 
     // Update last check ID if we found any mentions
@@ -243,7 +331,8 @@ async function checkMentions() {
 
 module.exports = {
   checkMentions,
-  FAQ_DATABASE
+  FAQ_DATABASE,
+  isSpam
 };
 
 // Run if called directly
