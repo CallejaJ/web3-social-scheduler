@@ -22,7 +22,7 @@ const IMAGE_WIDTH = 1200;
 const IMAGE_HEIGHT = 675;
 
 const LOGO_SOURCE = path.join(__dirname, 'images', 'logo.png');
-const LOGO_PATH = path.join(__dirname, 'images', 'logo-cyan.png');
+const LOGO_PATH = path.join(__dirname, 'images', 'logo.png');
 const OUTPUT_DIR = path.join(__dirname, 'images', 'generated');
 
 if (!fs.existsSync(OUTPUT_DIR)) {
