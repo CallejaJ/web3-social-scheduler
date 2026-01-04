@@ -82,7 +82,8 @@
       "schedule": "0 9 * * 5",
       "text": "El conocimiento debe ser libre. Por eso todos nuestros recursos son open-source y accesibles para todos. https://memento-academy.com/es #OpenEducation",
       "language": "es",
-      "type": "cta"
+      "type": "cta",
+      "media": "community-es.png"
     },
     {
       "schedule": "0 14 * * 5",
@@ -101,7 +102,8 @@
       "schedule": "0 10 * * 6",
       "text": "Weekend learning: Dive deep into blockchain fundamentals with our free courses. Perfect for your Saturday morning coffee. https://memento-academy.com/en/courses #WeekendLearning",
       "language": "en",
-      "type": "weekend_learning"
+      "type": "weekend_learning",
+      "media": "crypto-101-en.png"
     },
     {
       "schedule": "0 16 * * 6",
@@ -113,7 +115,8 @@
       "schedule": "0 10 * * 0",
       "text": "Prepárate para la semana: ¿Qué aprenderás sobre Web3 esta semana? Explora nuestros cursos gratuitos. https://memento-academy.com/es/courses #DomingoDeAprendizaje",
       "language": "es",
-      "type": "week_prep"
+      "type": "week_prep",
+      "media": "web3-basics-es.png"
     },
     {
       "schedule": "0 18 * * 0",
