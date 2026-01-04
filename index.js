@@ -3,6 +3,7 @@ const { TwitterApi } = require('twitter-api-v2');
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
+const { checkNewFollowers } = require('./follower-welcome');
 
 // Configure Twitter client
 const client = new TwitterApi({
@@ -107,6 +108,15 @@ async function startBot() {
   }
 
   scheduleTwitterBot();
+
+  // Schedule follower check every 2 hours
+  cron.schedule('0 */2 * * *', async () => {
+    console.log(`\n[${new Date().toLocaleString()}] Checking for new followers...`);
+    await checkNewFollowers();
+  });
+
+  console.log('✓ Follower welcome system enabled (checks every 2 hours)');
+  console.log('');
 }
 
 // Run the bot

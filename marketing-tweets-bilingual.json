@@ -1,0 +1,131 @@
+{
+  "strategy": "Bilingual content - Mix Spanish and English tweets throughout the week",
+  "free_courses": [
+    {
+      "name": "Web3 Basics",
+      "url_en": "https://memento-academy.com/en/learn/web3-basics",
+      "url_es": "https://memento-academy.com/es/learn/web3-basics",
+      "duration": "45 min",
+      "tweets_en": [
+        "What is Web3 and why does it matter? The definitive guide to understanding the new era of the internet. Free 45-min course. https://memento-academy.com/en/learn/web3-basics #Web3 #Blockchain",
+        "Blockchain sounds complicated? We make it simple. Start your Web3 journey today, completely free. https://memento-academy.com/en/learn/web3-basics",
+        "From Web1 to Web3: Understand the evolution of the internet in just 45 minutes. No prerequisites needed. https://memento-academy.com/en/learn/web3-basics"
+      ],
+      "tweets_es": [
+        "¿Qué es Web3 y por qué importa? La guía definitiva para entender la nueva era de internet. Curso gratuito de 45 min. https://memento-academy.com/es/learn/web3-basics #Web3 #Blockchain",
+        "¿Blockchain te parece complicado? Lo hacemos simple. Empieza tu viaje Web3 hoy, completamente gratis. https://memento-academy.com/es/learn/web3-basics",
+        "De Web1 a Web3: Entiende la evolución de internet en solo 45 minutos. Sin requisitos previos. https://memento-academy.com/es/learn/web3-basics"
+      ]
+    },
+    {
+      "name": "Crypto 101",
+      "url_en": "https://memento-academy.com/en/learn/crypto-101",
+      "url_es": "https://memento-academy.com/es/learn/crypto-101",
+      "duration": "60 min",
+      "tweets_en": [
+        "Bitcoin, Ethereum, altcoins... feeling lost? Everything you need to know about cryptocurrencies in one free course. https://memento-academy.com/en/learn/crypto-101 #Crypto",
+        "Learn about crypto without the market noise. Objective education, zero cost. 60 minutes that will change your perspective. https://memento-academy.com/en/learn/crypto-101",
+        "The first step in crypto is education. Master the fundamentals before investing a single dollar. https://memento-academy.com/en/learn/crypto-101"
+      ],
+      "tweets_es": [
+        "Bitcoin, Ethereum, altcoins... ¿te sientes perdido? Todo lo que necesitas saber sobre criptomonedas en un curso gratuito. https://memento-academy.com/es/learn/crypto-101 #Crypto",
+        "Aprende sobre crypto sin el ruido del mercado. Educación objetiva, costo cero. 60 minutos que cambiarán tu perspectiva. https://memento-academy.com/es/learn/crypto-101",
+        "El primer paso en crypto es la educación. Domina los fundamentos antes de invertir un solo dólar. https://memento-academy.com/es/learn/crypto-101"
+      ]
+    },
+    {
+      "name": "Understanding CBDCs",
+      "url_en": "https://memento-academy.com/en/learn/cbdc",
+      "url_es": "https://memento-academy.com/es/learn/cbdc",
+      "duration": "40 min",
+      "tweets_en": [
+        "Central Bank Digital Currencies are reshaping finance. Understand how CBDCs will affect your money. Free 40-min course. https://memento-academy.com/en/learn/cbdc #CBDC",
+        "What are CBDCs and how do they differ from Bitcoin? Expert research, explained simply. https://memento-academy.com/en/learn/cbdc",
+        "Governments worldwide are launching digital currencies. Are you prepared? Learn about CBDCs now. https://memento-academy.com/en/learn/cbdc"
+      ],
+      "tweets_es": [
+        "Las Monedas Digitales de Bancos Centrales están transformando las finanzas. Entiende cómo te afectarán. Curso gratis de 40 min. https://memento-academy.com/es/learn/cbdc #CBDC",
+        "¿Qué son las CBDC y en qué se diferencian de Bitcoin? Investigación experta, explicada simplemente. https://memento-academy.com/es/learn/cbdc",
+        "Gobiernos de todo el mundo lanzan monedas digitales. ¿Estás preparado? Aprende sobre CBDCs ahora. https://memento-academy.com/es/learn/cbdc"
+      ]
+    },
+    {
+      "name": "Security Guide",
+      "url_en": "https://memento-academy.com/en/learn/safety",
+      "url_es": "https://memento-academy.com/es/learn/safety",
+      "duration": "50 min",
+      "tweets_en": [
+        "Protect yourself from scams and keep your crypto assets safe. Complete security guide for beginners. https://memento-academy.com/en/learn/safety #CryptoSecurity",
+        "Crypto scams are real. Learn to identify them and protect yourself. Free 50-min security course. https://memento-academy.com/en/learn/safety",
+        "Your security comes first. Best practices to protect your digital assets explained step-by-step. https://memento-academy.com/en/learn/safety"
+      ],
+      "tweets_es": [
+        "Protégete de estafas y mantén seguros tus activos crypto. Guía completa de seguridad para principiantes. https://memento-academy.com/es/learn/safety #CryptoSecurity",
+        "Las estafas crypto son reales. Aprende a identificarlas y protegerte. Curso gratuito de seguridad de 50 min. https://memento-academy.com/es/learn/safety",
+        "Tu seguridad es primero. Mejores prácticas para proteger tus activos digitales explicadas paso a paso. https://memento-academy.com/es/learn/safety"
+      ]
+    }
+  ],
+  "engagement_tweets": {
+    "questions_en": [
+      "What was your first interaction with cryptocurrency? Share your story below. 👇",
+      "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it. 💭",
+      "What's the biggest barrier stopping you from learning about blockchain? Let's solve it together. 🤔"
+    ],
+    "questions_es": [
+      "¿Cuál fue tu primera interacción con criptomonedas? Comparte tu historia abajo. 👇",
+      "¿Qué tema de Web3 te confunde más? Dinos y crearemos contenido para aclararlo. 💭",
+      "¿Cuál es la mayor barrera que te impide aprender sobre blockchain? Resolvámosla juntos. 🤔"
+    ],
+    "educational_value_en": [
+      "Fun fact: The first Bitcoin transaction was for 2 pizzas. Today they'd be worth millions. #CryptoHistory",
+      "Web3 isn't just about money. It's about returning control of data to individuals. #Decentralization",
+      "A smart contract is simply code that executes automatically when conditions are met. Simple, right? #Blockchain",
+      "Key difference: Bitcoin is digital money. Ethereum is a platform to build decentralized applications. #Crypto101",
+      "Blockchain = A distributed ledger that no single entity controls. That's the revolution. #Web3",
+      "You don't need to be a programmer to understand Web3. You just need the right teacher. #Education"
+    ],
+    "educational_value_es": [
+      "Dato curioso: La primera transacción de Bitcoin fue por 2 pizzas. Hoy valdrían millones. #CryptoHistory",
+      "Web3 no es solo sobre dinero. Es sobre devolver el control de los datos a las personas. #Decentralization",
+      "Un smart contract es simplemente código que se ejecuta automáticamente cuando se cumplen condiciones. Simple, ¿verdad? #Blockchain",
+      "Diferencia clave: Bitcoin es dinero digital. Ethereum es una plataforma para crear aplicaciones descentralizadas. #Crypto101",
+      "Blockchain = Un libro contable distribuido que ninguna entidad controla. Esa es la revolución. #Web3",
+      "No necesitas ser programador para entender Web3. Solo necesitas el maestro correcto. #Education"
+    ],
+    "community_en": [
+      "Join 50,000+ students learning Web3 together. Our Discord community is open 24/7. https://memento-academy.com/en #Community",
+      "Questions about blockchain? Our Discord is full of experts ready to help. Completely free. https://discord.gg/MWfHKfjYS7",
+      "Learning is better together. Join fellow Web3 enthusiasts in our beginner-friendly Discord. https://memento-academy.com/en #Learning"
+    ],
+    "community_es": [
+      "Únete a más de 50,000 estudiantes aprendiendo Web3 juntos. Nuestra comunidad Discord está abierta 24/7. https://memento-academy.com/es #Community",
+      "¿Preguntas sobre blockchain? Nuestro Discord está lleno de expertos listos para ayudar. Completamente gratis. https://discord.gg/MWfHKfjYS7",
+      "Aprender es mejor en comunidad. Únete a otros entusiastas de Web3 en nuestro Discord amigable para principiantes. https://memento-academy.com/es"
+    ],
+    "cta_en": [
+      "All our courses are 100% free. No credit cards, no subscriptions, no tricks. Just pure education. https://memento-academy.com/en/courses",
+      "Subscribe to our weekly newsletter for curated Web3 news and beginner guides. https://memento-academy.com/en #Newsletter",
+      "Ready to understand Web3? Explore our catalog of free courses designed for absolute beginners. https://memento-academy.com/en/courses",
+      "Knowledge should be free. That's why all our resources are open-source and accessible to everyone. https://memento-academy.com/en"
+    ],
+    "cta_es": [
+      "Todos nuestros cursos son 100% gratuitos. Sin tarjetas de crédito, sin suscripciones, sin trucos. Solo educación pura. https://memento-academy.com/es/courses",
+      "Suscríbete a nuestro newsletter semanal para noticias curadas de Web3 y guías para principiantes. https://memento-academy.com/es #Newsletter",
+      "¿Listo para entender Web3? Explora nuestro catálogo de cursos gratuitos diseñados para principiantes absolutos. https://memento-academy.com/es/courses",
+      "El conocimiento debe ser libre. Por eso todos nuestros recursos son open-source y accesibles para todos. https://memento-academy.com/es"
+    ],
+    "insights_en": [
+      "2026 will be the year of mass Web3 adoption in traditional enterprises. Is your company ready? #Web3Adoption",
+      "CBDCs aren't the enemy of crypto. They're parallel systems that will coexist. Understanding both is key. #CBDC",
+      "Education is the biggest barrier to crypto adoption. That's why we exist. #CryptoEducation",
+      "The future of the internet is being built right now. Don't get left behind. Start learning today. #Web3"
+    ],
+    "insights_es": [
+      "2026 será el año de adopción masiva de Web3 en empresas tradicionales. ¿Tu empresa está lista? #Web3Adoption",
+      "Las CBDC no son enemigas de crypto. Son sistemas paralelos que coexistirán. Entender ambos es clave. #CBDC",
+      "La educación es la mayor barrera para la adopción crypto. Por eso existimos. #CryptoEducation",
+      "El futuro de internet se está construyendo ahora mismo. No te quedes atrás. Empieza a aprender hoy. #Web3"
+    ]
+  }
+}

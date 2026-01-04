@@ -1,0 +1,116 @@
+{
+  "courses": [
+    {
+      "category": "Web3 Basics",
+      "url": "https://memento-academy.com/es/learn/web3-basics",
+      "tweets": [
+        "¿Qué es Web3 y por qué todos hablan de ello? Descubre los fundamentos en nuestro curso gratuito. 🔗 https://memento-academy.com/es/learn/web3-basics #Web3 #Blockchain",
+        "El futuro de internet está aquí. Aprende Web3 desde cero, gratis y sin complicaciones. https://memento-academy.com/es/learn/web3-basics #Education #Web3",
+        "¿Blockchain te parece complicado? Lo hacemos simple. Curso gratuito de Web3 para principiantes. https://memento-academy.com/es/learn/web3-basics"
+      ]
+    },
+    {
+      "category": "Crypto 101",
+      "url": "https://memento-academy.com/es/learn/crypto-101",
+      "tweets": [
+        "Bitcoin, Ethereum, altcoins... ¿Te sientes perdido? Empieza tu viaje crypto con nuestro curso gratuito. https://memento-academy.com/es/learn/crypto-101 #Crypto #Education",
+        "Aprende sobre criptomonedas sin el ruido del mercado. Educación objetiva y gratuita. https://memento-academy.com/es/learn/crypto-101 #Bitcoin #Blockchain",
+        "El primer paso en crypto es la educación. Descubre los fundamentos con nosotros. https://memento-academy.com/es/learn/crypto-101 #CryptoEducation"
+      ]
+    },
+    {
+      "category": "CBDC",
+      "url": "https://memento-academy.com/es/learn/cbdc",
+      "tweets": [
+        "Las monedas digitales de bancos centrales (CBDC) están cambiando el sistema financiero. Entiende cómo te afectarán. https://memento-academy.com/es/learn/cbdc #CBDC #Finance",
+        "¿Qué son las CBDC y en qué se diferencian de Bitcoin? Investigación experta, gratis. https://memento-academy.com/es/learn/cbdc #DigitalCurrency",
+        "Los gobiernos están lanzando dinero digital. ¿Estás preparado? Aprende sobre CBDCs ahora. https://memento-academy.com/es/learn/cbdc #Fintech"
+      ]
+    },
+    {
+      "category": "Security",
+      "url": "https://memento-academy.com/es/learn/safety",
+      "tweets": [
+        "Protege tus activos digitales. Guía completa de seguridad en Web3 y criptomonedas. https://memento-academy.com/es/learn/safety #CryptoSecurity #Web3",
+        "Las estafas crypto son reales. Aprende a identificarlas y protegerte. Curso gratuito. https://memento-academy.com/es/learn/safety #Security",
+        "Tu seguridad es primero. Aprende las mejores prácticas para proteger tus criptos. https://memento-academy.com/es/learn/safety #CryptoSafety"
+      ]
+    }
+  ],
+  "general_engagement": [
+    {
+      "type": "question",
+      "tweets": [
+        "¿Cuál fue tu primer contacto con las criptomonedas? Cuéntanos tu historia. 👇",
+        "¿Qué tema de Web3 te gustaría entender mejor? Dinos y creamos contenido para ti. 💭",
+        "¿Prefieres tutoriales en video o artículos escritos? Ayúdanos a mejorar nuestros cursos. 🎓",
+        "¿Qué es lo más confuso de blockchain para ti? Queremos explicarlo mejor. 🤔"
+      ]
+    },
+    {
+      "type": "value_content",
+      "tweets": [
+        "Dato curioso: La primera transacción de Bitcoin fue por... ¡2 pizzas! 🍕 Hoy valdrían millones. #CryptoHistory",
+        "Web3 no es solo sobre dinero. Es sobre devolver el control de los datos a las personas. #Decentralization",
+        "Un smart contract es como un contrato que se ejecuta solo cuando se cumplen las condiciones. Simple, ¿verdad? #Blockchain",
+        "La diferencia clave: Bitcoin es una moneda. Ethereum es una plataforma para crear aplicaciones. #Crypto101"
+      ]
+    },
+    {
+      "type": "community",
+      "tweets": [
+        "Únete a nuestra comunidad de +50,000 estudiantes aprendiendo Web3. Discord abierto 24/7. https://memento-academy.com/es #Community",
+        "¿Tienes dudas sobre blockchain? Nuestro Discord está lleno de expertos dispuestos a ayudar. Gratis. https://memento-academy.com/es",
+        "Aprende mejor en comunidad. Únete a otros entusiastas de Web3 en nuestro Discord. https://memento-academy.com/es #Learning"
+      ]
+    },
+    {
+      "type": "call_to_action",
+      "tweets": [
+        "Todos nuestros cursos son 100% gratuitos. Sin trucos, sin pagos ocultos. Empieza hoy. https://memento-academy.com/es/courses #FreeEducation",
+        "Suscríbete a nuestro newsletter y recibe las noticias más importantes de Web3 cada semana. https://memento-academy.com/es #Newsletter",
+        "¿Listo para entender Web3? Explora nuestro catálogo de cursos gratuitos. https://memento-academy.com/es/courses #Blockchain #Education",
+        "El conocimiento debe ser libre. Por eso todos nuestros recursos son open-source y gratuitos. https://memento-academy.com/es #OpenEducation"
+      ]
+    },
+    {
+      "type": "industry_insights",
+      "tweets": [
+        "El 2026 será el año de adopción masiva de Web3 en empresas tradicionales. ¿Tu empresa está preparada? #Web3Adoption",
+        "Las CBDCs no son el enemigo de crypto. Son dos sistemas paralelos que coexistirán. #CBDC #Crypto",
+        "La educación es la barrera más grande para adopción crypto. Por eso existimos. #CryptoEducation",
+        "Web3 no reemplazará Web2. Lo complementará. Ambos coexistirán por décadas. #Technology"
+      ]
+    }
+  ],
+  "weekly_themes": {
+    "monday": {
+      "theme": "Motivation & Week Planning",
+      "focus": "Start the week with educational goals"
+    },
+    "tuesday": {
+      "theme": "Course Promotion",
+      "focus": "Highlight specific courses"
+    },
+    "wednesday": {
+      "theme": "Community Engagement",
+      "focus": "Questions and discussions"
+    },
+    "thursday": {
+      "theme": "Value Content",
+      "focus": "Educational tips and insights"
+    },
+    "friday": {
+      "theme": "Industry News",
+      "focus": "Weekly recap and insights"
+    },
+    "saturday": {
+      "theme": "Community Building",
+      "focus": "Weekend reading and Discord"
+    },
+    "sunday": {
+      "theme": "Preparation",
+      "focus": "Week ahead in crypto/Web3"
+    }
+  }
+}
