@@ -426,7 +426,6 @@ Current bot usage: **~570 tweets/month** (well within Free tier)
 ## Future Enhancements
 
 ### Planned Features
-- [ ] Auto-reply to mentions with common FAQs
 - [ ] Thread posting for educational content
 - [ ] Media attachments (images/GIFs)
 - [ ] A/B testing for tweet variations
