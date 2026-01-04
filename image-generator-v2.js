@@ -337,7 +337,7 @@ async function generateAllCourseImages() {
       subtitle: 'Protect Your Assets',
       duration: '50 min',
       language: 'en',
-      style: 'light'
+      style: 'dark'
     },
     {
       filename: 'security-es',
@@ -345,7 +345,7 @@ async function generateAllCourseImages() {
       subtitle: 'Protege Tus Activos',
       duration: '50 min',
       language: 'es',
-      style: 'light'
+      style: 'dark'
     },
 
     // Generic community images
