@@ -23,3 +23,10 @@ Thumbs.db
 
 # Railway
 .railway/
+
+# Generated images (regenerated on deploy)
+images/generated/
+
+# Data files (auto-generated)
+followers-data.json
+mentions-data.json

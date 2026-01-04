@@ -28,10 +28,20 @@ function loadScheduledTweets() {
   }
 }
 
-// Post a tweet
-async function postTweet(text) {
+// Post a tweet with optional media attachment
+async function postTweet(text, mediaPath = null) {
   try {
-    const tweet = await rwClient.v2.tweet(text);
+    let tweetData = { text };
+
+    // Upload media if provided
+    if (mediaPath) {
+      console.log(`  Uploading media: ${mediaPath}`);
+      const mediaId = await rwClient.v1.uploadMedia(mediaPath);
+      tweetData.media = { media_ids: [mediaId] };
+      console.log(`  ✓ Media uploaded: ${mediaId}`);
+    }
+
+    const tweet = await rwClient.v2.tweet(tweetData);
     console.log(`✓ Tweet posted successfully: "${text.substring(0, 50)}..."`);
     console.log(`  Tweet ID: ${tweet.data.id}`);
     return tweet;
@@ -69,7 +79,12 @@ function scheduleTwitterBot() {
     cron.schedule(item.schedule, async () => {
       console.log(`\n[${new Date().toLocaleString()}] Executing scheduled tweet #${index + 1}`);
       try {
-        await postTweet(item.text);
+        // Build media path if specified
+        const mediaPath = item.media
+          ? path.join(__dirname, 'images', 'generated', item.media)
+          : null;
+
+        await postTweet(item.text, mediaPath);
       } catch (error) {
         console.error(`Error in scheduled tweet #${index + 1}`);
       }
