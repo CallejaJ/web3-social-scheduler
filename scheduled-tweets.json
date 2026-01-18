@@ -120,11 +120,92 @@
       "media": "web3-basics-es.png"
     },
     {
-      "schedule": "15 19 * * 0",
-      "text": "The future of the internet is being built right now. Don't get left behind. Start learning Web3 today. https://memento-academy.com/en/courses #Web3 #Education",
+      "schedule": "30 18 * * 0",
+      "text": "The future of the internet is being built right now. Don't get left behind. Start learning Web3 today. https://memento-academy.com/en/courses",
       "language": "en",
       "type": "cta",
-      "media": "web3-basics-en.png"
+      "media": "web3-basics-en.png",
+      "hashtags_category": "general"
+    },
+    {
+      "schedule": "0 10 * * 1",
+      "text": "Centralized vs Decentralized systems. Understanding the shift in power and control.",
+      "language": "en",
+      "type": "education",
+      "media": "centralized-vs-decentralized.png",
+      "hashtags_category": "general"
+    },
+    {
+      "schedule": "0 16 * * 1",
+      "text": "Sistemas Centralizados vs Descentralizados. Entendiendo el cambio de poder y control.",
+      "language": "es",
+      "type": "education",
+      "media": "centralized-vs-decentralized-es.png",
+      "hashtags_category": "general"
+    },
+    {
+      "schedule": "0 10 * * 2",
+      "text": "The evolution of the web: From static pages (Web1) to social (Web2) to ownership (Web3).",
+      "language": "en",
+      "type": "education",
+      "media": "web-evolution.png",
+      "hashtags_category": "general"
+    },
+    {
+      "schedule": "0 16 * * 2",
+      "text": "La evolución de la web: De páginas estáticas (Web1) a social (Web2) a propiedad (Web3).",
+      "language": "es",
+      "type": "education",
+      "media": "web-evolution-es.png",
+      "hashtags_category": "general"
+    },
+    {
+      "schedule": "0 10 * * 3",
+      "text": "Crypto Chart Types explained. Master the basics of technical analysis.",
+      "language": "en",
+      "type": "education",
+      "media": "chart-types.png",
+      "hashtags_category": "defi"
+    },
+    {
+      "schedule": "0 16 * * 3",
+      "text": "Tipos de gráficos Crypto explicados. Domina los básicos del análisis técnico.",
+      "language": "es",
+      "type": "education",
+      "media": "chart-types-es.png",
+      "hashtags_category": "defi"
+    },
+    {
+      "schedule": "0 10 * * 4",
+      "text": "The Lending Lifecycle in DeFi. How your assets work for you.",
+      "language": "en",
+      "type": "education",
+      "media": "lending-lifecycle.png",
+      "hashtags_category": "defi"
+    },
+    {
+      "schedule": "0 16 * * 4",
+      "text": "El Ciclo de Préstamos en DeFi. Cómo tus activos trabajan para ti.",
+      "language": "es",
+      "type": "education",
+      "media": "lending-lifecycle-es.png",
+      "hashtags_category": "defi"
+    },
+    {
+      "schedule": "0 10 * * 5",
+      "text": "Blockchain Security Layers. Understanding how your assets are protected.",
+      "language": "en",
+      "type": "education",
+      "media": "security_layers.png",
+      "hashtags_category": "security"
+    },
+    {
+      "schedule": "0 16 * * 5",
+      "text": "Capas de Seguridad Blockchain. Entendiendo cómo se protegen tus activos.",
+      "language": "es",
+      "type": "education",
+      "media": "security_layers_es.png",
+      "hashtags_category": "security"
     }
   ]
 }

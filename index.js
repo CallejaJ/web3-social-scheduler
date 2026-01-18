@@ -28,6 +28,36 @@ function loadScheduledTweets() {
   }
 }
 
+// Hashtag categories for variety
+const HASHTAGS_POOL = {
+  general: {
+    en: ['#Web3', '#Blockchain', '#LearnCrypto', '#FutureOfFinance', '#Decentralization', '#TechEducation'],
+    es: ['#Web3', '#Blockchain', '#CriptoEducación', '#FuturoFinanciero', '#Descentralización', '#AprendeCripto']
+  },
+  defi: {
+    en: ['#DeFi', '#Finance', '#PassiveIncome', '#YieldFarming', '#SmartMoney', '#FinancialFreedom'],
+    es: ['#DeFi', '#Finanzas', '#IngresosPasivos', '#YieldFarming', '#DineroInteligente', '#LibertadFinanciera']
+  },
+  security: {
+    en: ['#CyberSecurity', '#SafetyFirst', '#CryptoTips', '#StaySafe', '#SelfCustody', '#WalletSecurity'],
+    es: ['#Ciberseguridad', '#SeguridadCripto', '#TipsCripto', '#MantenteSeguro', '#Autocustodia', '#CriptoSeguridad']
+  },
+  dev: {
+    en: ['#SmartContracts', '#Solidity', '#DevLife', '#Coding', '#Web3Dev', '#Builder'],
+    es: ['#SmartContracts', '#Solidity', '#VidaDev', '#Programación', '#DesarrolloWeb3', '#Builder']
+  },
+  nft: {
+    en: ['#NFTs', '#DigitalArt', '#Collectibles', '#Web3Community', '#CreatorEconomy'],
+    es: ['#NFTs', '#ArteDigital', '#Coleccionables', '#ComunidadWeb3', '#EconomíaCreador']
+  }
+};
+
+function getRandomHashtags(category = 'general', language = 'en', count = 2) {
+  const pool = (HASHTAGS_POOL[category] || HASHTAGS_POOL['general'])[language];
+  const shuffled = [...pool].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count).join(' ');
+}
+
 // Post a tweet with optional media attachment
 async function postTweet(text, mediaPath = null) {
   try {
@@ -36,6 +66,11 @@ async function postTweet(text, mediaPath = null) {
     // Upload media if provided
     if (mediaPath) {
       console.log(`  Uploading media: ${mediaPath}`);
+      // Check if file exists in either location
+      if (!fs.existsSync(mediaPath)) {
+         throw new Error(`Media file not found: ${mediaPath}`);
+      }
+      
       const mediaId = await rwClient.v1.uploadMedia(mediaPath);
       tweetData.media = { media_ids: [mediaId] };
       console.log(`  ✓ Media uploaded: ${mediaId}`);
@@ -79,12 +114,29 @@ function scheduleTwitterBot() {
     cron.schedule(item.schedule, async () => {
       console.log(`\n[${new Date().toLocaleString()}] Executing scheduled tweet #${index + 1}`);
       try {
-        // Build media path if specified
-        const mediaPath = item.media
-          ? path.join(__dirname, 'images', 'generated', item.media)
-          : null;
+        // Determine media path - check both generated and content folders
+        let mediaPath = null;
+        if (item.media) {
+           const generatedPath = path.join(__dirname, 'images', 'generated', item.media);
+           const contentPath = path.join(__dirname, 'images', 'content', item.media);
+           
+           if (fs.existsSync(generatedPath)) {
+             mediaPath = generatedPath;
+           } else if (fs.existsSync(contentPath)) {
+             mediaPath = contentPath;
+           } else {
+             console.warn(`Warning: Media ${item.media} not found in generated or content folders`);
+           }
+        }
 
-        await postTweet(item.text, mediaPath);
+        // Add dynamic hashtags if requested in item config
+        let finalText = item.text;
+        if (item.hashtags_category) {
+            const addedTags = getRandomHashtags(item.hashtags_category, item.language || 'en');
+            finalText += ` ${addedTags}`;
+        }
+
+        await postTweet(finalText, mediaPath);
       } catch (error) {
         console.error(`Error in scheduled tweet #${index + 1}`);
       }
