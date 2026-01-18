@@ -123,7 +123,7 @@ const GRADIENT_STYLES = {
 };
 
 /**
- * Generate professional course image
+ * Generate professional course image with quiz-bg-dark background
  */
 async function generateCourseImage(options) {
   const {
@@ -132,14 +132,13 @@ async function generateCourseImage(options) {
     subtitle = '',
     duration = '',
     language = 'en',
-    style = 'blue' // blue, purple, dark, light
+    style = 'blue' // kept for backwards compatibility but not used for background now
   } = options;
 
-  const isDark = ['blue', 'purple', 'dark'].includes(style);
-  const textColor = isDark ? COLORS.white : COLORS.navy.dark;
-  // Use Cyan for badges in dark mode for that "glowing" effect
-  const badgeColor = isDark ? 'rgba(0, 217, 255, 0.15)' : 'rgba(10, 22, 40, 0.05)';
-  const badgeTextColor = isDark ? COLORS.cyan : COLORS.navy.medium;
+  const BACKGROUND_PATH = path.join(__dirname, 'images', 'quiz-bg-dark.png');
+  const textColor = COLORS.white;
+  const badgeColor = 'rgba(0, 217, 255, 0.15)';
+  const badgeTextColor = COLORS.cyan;
 
   // Split title into lines if too long
   const maxCharsPerLine = 20;
@@ -155,11 +154,9 @@ async function generateCourseImage(options) {
     }
   }
 
-  const svg = `
+  // Create SVG overlay (transparent background, just text elements)
+  const svgOverlay = `
     <svg width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-      <!-- Background gradient -->
-      ${GRADIENT_STYLES[style]}
-
       <!-- Decorative circles -->
       <circle cx="100" cy="100" r="150" fill="${badgeColor}" opacity="0.3"/>
       <circle cx="${IMAGE_WIDTH - 100}" cy="${IMAGE_HEIGHT - 100}" r="200" fill="${badgeColor}" opacity="0.2"/>
@@ -171,14 +168,14 @@ async function generateCourseImage(options) {
             font-size="28"
             font-weight="700"
             fill="${badgeTextColor}"
-            text-anchor="middle">FREE</text>
+            text-anchor="middle">${language === 'es' ? 'GRATIS' : 'FREE'}</text>
 
       <!-- Duration badge -->
       ${duration ? `
       <rect x="280" y="80" width="${duration.length * 16 + 40}" height="60"
             fill="${badgeColor}" rx="30"/>
       <text x="${280 + (duration.length * 16 + 40) / 2}" y="118"
-            font-family="Arial, Helvetica, sans-serif"
+            font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="24"
             font-weight="600"
             fill="${badgeTextColor}"
@@ -195,7 +192,7 @@ async function generateCourseImage(options) {
 
       ${titleLine2 ? `
       <text x="80" y="400"
-            font-family="Arial, Helvetica, sans-serif"
+            font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="90"
             font-weight="900"
             fill="${textColor}"
@@ -205,7 +202,7 @@ async function generateCourseImage(options) {
       <!-- Subtitle -->
       ${subtitle ? `
       <text x="80" y="${titleLine2 ? 480 : 380}"
-            font-family="Arial, Helvetica, sans-serif"
+            font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="40"
             font-weight="500"
             fill="${textColor}"
@@ -214,23 +211,42 @@ async function generateCourseImage(options) {
 
       <!-- Footer branding -->
       <text x="80" y="${IMAGE_HEIGHT - 60}"
-            font-family="Arial, Helvetica, sans-serif"
+            font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="32"
             font-weight="700"
             fill="${textColor}"
             opacity="0.9">Memento Academy</text>
 
       <text x="80" y="${IMAGE_HEIGHT - 20}"
-            font-family="Arial, Helvetica, sans-serif"
+            font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="24"
             font-weight="400"
             fill="${textColor}"
-            opacity="0.7">50,000+ Students • 100% Free</text>
+            opacity="0.7">${language === 'es' ? 'Formación Web3 a tu alcance • Gratuita' : 'Web3 Training within your reach • Free'}</text>
     </svg>
   `;
 
   try {
-    // Process logo - resize and prepare
+    // Load and resize background image
+    let backgroundBuffer;
+    try {
+      backgroundBuffer = await sharp(BACKGROUND_PATH)
+        .resize(IMAGE_WIDTH, IMAGE_HEIGHT, { fit: 'cover' })
+        .png()
+        .toBuffer();
+    } catch (err) {
+      console.warn('Background image not found, falling back to solid color');
+      backgroundBuffer = await sharp({
+        create: {
+          width: IMAGE_WIDTH,
+          height: IMAGE_HEIGHT,
+          channels: 4,
+          background: COLORS.navy.dark
+        }
+      }).png().toBuffer();
+    }
+
+    // Process logo
     let logoBuffer;
     try {
       logoBuffer = await sharp(LOGO_PATH)
@@ -247,8 +263,11 @@ async function generateCourseImage(options) {
 
     const outputPath = path.join(OUTPUT_DIR, `${filename}.png`);
 
-    // Composite logo if available
-    const composites = [];
+    // Composite layers: background -> text overlay -> logo
+    const composites = [
+      { input: Buffer.from(svgOverlay), top: 0, left: 0 }
+    ];
+    
     if (logoBuffer) {
       composites.push({
         input: logoBuffer,
@@ -257,7 +276,7 @@ async function generateCourseImage(options) {
       });
     }
 
-    await sharp(Buffer.from(svg))
+    await sharp(backgroundBuffer)
       .composite(composites)
       .png({ quality: 95, compressionLevel: 9 })
       .toFile(outputPath);
