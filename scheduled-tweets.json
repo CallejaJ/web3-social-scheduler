@@ -206,6 +206,34 @@
       "type": "education",
       "media": "security_layers_es.png",
       "hashtags_category": "security"
+    },
+    {
+      "schedule": "0 18 * * 1",
+      "text": "¿Cuánto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas. 🧠💰 https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn",
+      "language": "es",
+      "type": "quiz_promo",
+      "media": "crypto-quiz-og-es.png"
+    },
+    {
+      "schedule": "0 18 * * 3",
+      "text": "Think you know Crypto? Test your skills and earn rewards. 🧠💰 https://memento-academy.com/en/game #CryptoQuiz #Web3",
+      "language": "en",
+      "type": "quiz_promo",
+      "media": "crypto-quiz-og-en.png"
+    },
+    {
+      "schedule": "0 12 * * 6",
+      "text": "Desafía a tus amigos y demuestra quién sabe más de Web3. ¡Juega gratis ahora! 🎮 https://memento-academy.com/es/game #Web3Gaming #Education",
+      "language": "es",
+      "type": "quiz_promo",
+      "media": "crypto-quiz-og-es-1.png"
+    },
+    {
+      "schedule": "0 12 * * 0",
+      "text": "Challenge your friends and prove your Web3 mastery. Play for free now! 🎮 https://memento-academy.com/en/game #Web3Game #CryptoEducation",
+      "language": "en",
+      "type": "quiz_promo",
+      "media": "crypto-quiz-og-en-1.png"
     }
   ]
 }

@@ -119,13 +119,16 @@ function scheduleTwitterBot() {
         if (item.media) {
            const generatedPath = path.join(__dirname, 'images', 'generated', item.media);
            const contentPath = path.join(__dirname, 'images', 'content', item.media);
+           const quizzPath = path.join(__dirname, 'images', 'quizz', item.media);
            
            if (fs.existsSync(generatedPath)) {
              mediaPath = generatedPath;
            } else if (fs.existsSync(contentPath)) {
              mediaPath = contentPath;
+           } else if (fs.existsSync(quizzPath)) {
+             mediaPath = quizzPath;
            } else {
-             console.warn(`Warning: Media ${item.media} not found in generated or content folders`);
+             console.warn(`Warning: Media ${item.media} not found in generated, content, or quizz folders`);
            }
         }
 
