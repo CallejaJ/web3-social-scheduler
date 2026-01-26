@@ -5,7 +5,8 @@
       "text": "New week, new opportunities to expand your knowledge. Ready to master Web3? Start with our free courses. https://memento-academy.com/en/courses #MondayMotivation #Web3",
       "language": "en",
       "type": "motivation",
-      "media": "web3-basics-en.png"
+      "media": "web3-basics-en.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 14 * * 1",
@@ -233,7 +234,15 @@
       "text": "Challenge your friends and prove your Web3 mastery. Play for free now! 🎮 https://memento-academy.com/en/game #Web3Game #CryptoEducation",
       "language": "en",
       "type": "quiz_promo",
+      "type": "quiz_promo",
       "media": "crypto-quiz-og-en-1.png"
+    },
+    {
+      "schedule": "0 15 * * *",
+      "text": "¡Hola Bluesky! Estamos expandiendo nuestra comunidad educativa aquí. Síguenos para aprender sobre Web3, Blockchain y DeFi gratis. 🦋 #Web3 #Educacion",
+      "language": "es",
+      "type": "bluesky_welcome",
+      "platforms": ["bluesky"]
     }
   ]
 }

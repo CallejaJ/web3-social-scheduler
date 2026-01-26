@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { checkNewFollowers } = require('./follower-welcome');
 const { checkMentions } = require('./mention-replies');
+const { loginToBluesky, postToBluesky } = require('./bluesky-client');
 
 // Configure Twitter client
 const client = new TwitterApi({
@@ -139,9 +140,30 @@ function scheduleTwitterBot() {
             finalText += ` ${addedTags}`;
         }
 
-        await postTweet(finalText, mediaPath);
+        // Determine platforms to post to
+        const platforms = item.platforms || ['twitter']; // Default to Twitter if not specified
+
+        // Post to Twitter
+        if (platforms.includes('twitter')) {
+          try {
+             await postTweet(finalText, mediaPath);
+          } catch (tError) {
+             console.error('Failed to post to Twitter:', tError.message);
+          }
+        }
+
+        // Post to Bluesky
+        if (platforms.includes('bluesky')) {
+          try {
+             console.log(`\n  [Bluesky] Posting: "${finalText.substring(0, 40)}..."`);
+             await postToBluesky(finalText, mediaPath);
+          } catch (bError) {
+             console.error('Failed to post to Bluesky:', bError.message);
+          }
+        }
+
       } catch (error) {
-        console.error(`Error in scheduled tweet #${index + 1}`);
+        console.error(`Error in scheduled tweet #${index + 1}: ${error.message}`);
       }
     });
 
@@ -169,14 +191,29 @@ async function testConnection() {
   }
 }
 
+// Test Bluesky connection
+async function testBlueskyConnection() {
+  console.log('Testing Bluesky connection...');
+  const success = await loginToBluesky();
+  if (success) {
+    console.log('✓ Connected to Bluesky');
+  } 
+  console.log('');
+  return success;
+}
+
 // Start the bot
 async function startBot() {
   const connected = await testConnection();
+  const blueskyConnected = await testBlueskyConnection();
 
-  if (!connected) {
-    console.error('\nCould not connect to Twitter. Check your configuration.');
+  if (!connected && !blueskyConnected) {
+    console.error('\nCould not connect to ANY platform. Check your configuration.');
     process.exit(1);
   }
+  
+  if (!connected) console.warn('⚠ Twitter connection failed. Bot will only run for Bluesky (if configured).');
+  if (!blueskyConnected) console.warn('⚠ Bluesky connection failed. Bot will only run for Twitter.');
 
   scheduleTwitterBot();
 
