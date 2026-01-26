@@ -52,7 +52,8 @@
       "text": "Central Bank Digital Currencies are reshaping finance. Understand how CBDCs will affect your money. Free 40-min course. https://memento-academy.com/en/learn/cbdc #CBDC",
       "language": "en",
       "type": "course_promo",
-      "media": "cbdc-en.png"
+      "media": "cbdc-en.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 20 * * 3",
@@ -72,7 +73,8 @@
       "text": "Protégete de estafas y mantén seguros tus activos crypto. Guía completa de seguridad para principiantes. https://memento-academy.com/es/learn/safety #CryptoSecurity",
       "language": "es",
       "type": "course_promo",
-      "media": "security-es.png"
+      "media": "security-es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 20 * * 4",
@@ -98,7 +100,8 @@
       "text": "¿Blockchain te parece complicado? Lo hacemos simple. Empieza tu viaje Web3 hoy, completamente gratis. https://memento-academy.com/es/learn/web3-basics #Web3",
       "language": "es",
       "type": "course_promo",
-      "media": "web3-basics-es.png"
+      "media": "web3-basics-es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 10 * * 6",
@@ -118,7 +121,8 @@
       "text": "Prepárate para la semana: ¿Qué aprenderás sobre Web3 esta semana? Explora nuestros cursos gratuitos. https://memento-academy.com/es/courses #DomingoDeAprendizaje",
       "language": "es",
       "type": "week_prep",
-      "media": "web3-basics-es.png"
+      "media": "web3-basics-es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "30 18 * * 0",
@@ -213,7 +217,8 @@
       "text": "¿Cuánto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas. 🧠💰 https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn",
       "language": "es",
       "type": "quiz_promo",
-      "media": "crypto-quiz-og-es.png"
+      "media": "crypto-quiz-og-es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 18 * * 3",
@@ -227,14 +232,16 @@
       "text": "Desafía a tus amigos y demuestra quién sabe más de Web3. ¡Juega gratis ahora! 🎮 https://memento-academy.com/es/game #Web3Gaming #Education",
       "language": "es",
       "type": "quiz_promo",
-      "media": "crypto-quiz-og-es-1.png"
+      "media": "crypto-quiz-og-es-1.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 12 * * 0",
       "text": "Challenge your friends and prove your Web3 mastery. Play for free now! 🎮 https://memento-academy.com/en/game #Web3Game #CryptoEducation",
       "language": "en",
       "type": "quiz_promo",
-      "media": "crypto-quiz-og-en-1.png"
+      "media": "crypto-quiz-og-en-1.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 15 * * *",
