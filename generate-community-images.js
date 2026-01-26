@@ -50,7 +50,7 @@ async function prepareLogo() {
 }
 
 async function generateCommunityImage(options) {
-  const { filename, title, subtitle, label, style = 'blue' } = options;
+  const { filename, title, subtitle, label, footerText, style = 'blue' } = options;
   
   // Choose background gradient based on style
   let backgroundBuffer;
@@ -110,7 +110,7 @@ async function generateCommunityImage(options) {
       <text x="80" y="${IMAGE_HEIGHT - 25}"
             font-family="'DejaVu Sans', Verdana, sans-serif"
             font-size="20" font-weight="400"
-            fill="${COLORS.white}" opacity="0.6">github.com/orgs/Memento-Academy/discussions</text>
+            fill="${COLORS.white}" opacity="0.6">${footerText || 'memento-academy.com'}</text>
     </svg>
   `;
 
@@ -156,6 +156,7 @@ async function generateAll() {
        title: 'Community Updates',
        subtitle: 'Stay up to date with Memento',
        label: 'Announcements',
+       footerText: 'Contribute your ideas to the Web3 community',
        style: 'blue'
     },
     {
@@ -163,6 +164,7 @@ async function generateAll() {
        title: 'Rules & Intro',
        subtitle: 'Start your journey here',
        label: 'Community',
+       footerText: 'Contribute your ideas to the Web3 community',
        style: 'purple'
     },
     {
@@ -170,6 +172,7 @@ async function generateAll() {
        title: 'Join the Discussion',
        subtitle: 'Share your ideas & questions',
        label: 'Forum',
+       footerText: 'Contribute your ideas to the Web3 community',
        style: 'blue'
     },
     // Spanish
@@ -178,6 +181,7 @@ async function generateAll() {
        title: 'Actualizaciones',
        subtitle: 'Novedades de Memento Academy',
        label: 'Anuncios',
+       footerText: 'Contribuye con tus ideas en la comunidad Web3',
        style: 'blue'
     },
     {
@@ -185,6 +189,7 @@ async function generateAll() {
        title: 'Reglas e Intro',
        subtitle: 'Empieza tu camino aquí',
        label: 'Comunidad',
+       footerText: 'Contribuye con tus ideas en la comunidad Web3',
        style: 'purple'
     },
     {
@@ -192,6 +197,7 @@ async function generateAll() {
        title: 'Únete al Debate',
        subtitle: 'Comparte ideas y preguntas',
        label: 'Foro',
+       footerText: 'Contribuye con tus ideas en la comunidad Web3',
        style: 'blue'
     }
   ];
