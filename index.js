@@ -180,13 +180,13 @@ async function startBot() {
 
   scheduleTwitterBot();
 
-  // Schedule follower check every 2 hours
-  cron.schedule('0 */2 * * *', async () => {
-    console.log(`\n[${new Date().toLocaleString()}] Checking for new followers...`);
-    await checkNewFollowers();
-  });
+  // Follower welcome disabled - requires Twitter API Basic tier ($100/month)
+  // cron.schedule('0 */2 * * *', async () => {
+  //   console.log(`\n[${new Date().toLocaleString()}] Checking for new followers...`);
+  //   await checkNewFollowers();
+  // });
 
-  console.log('✓ Follower welcome system enabled (checks every 2 hours)');
+  console.log('⚠ Follower welcome system disabled (requires paid API tier)');
 
   // Schedule mention check every 30 minutes
   cron.schedule('*/30 * * * *', async () => {
