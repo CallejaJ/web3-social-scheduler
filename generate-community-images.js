@@ -54,21 +54,30 @@ async function generateCommunityImage(options) {
   
   // Choose background gradient based on style
   let backgroundBuffer;
+  const BACKGROUND_PATH = path.join(__dirname, 'images', 'quiz-bg-dark.png');
   
-  // Simple gradient generation via SVG if no base image
-  const svgGradient = `
-    <svg width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}">
-      <defs>
-        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:${COLORS.navy.dark};stop-opacity:1" />
-          <stop offset="100%" style="stop-color:${style === 'purple' ? COLORS.navy.light : COLORS.navy.medium};stop-opacity:1" />
-        </linearGradient>
-      </defs>
-      <rect width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}" fill="url(#grad)"/>
-      <circle cx="${style === 'purple' ? IMAGE_WIDTH : 0}" cy="0" r="600" fill="${style === 'purple' ? COLORS.teal : COLORS.cyan}" opacity="0.1"/>
-    </svg>
-  `;
-  backgroundBuffer = Buffer.from(svgGradient);
+  try {
+     backgroundBuffer = await sharp(BACKGROUND_PATH)
+        .resize(IMAGE_WIDTH, IMAGE_HEIGHT, { fit: 'cover' })
+        .png()
+        .toBuffer();
+  } catch (err) {
+      console.warn('Background image not found, falling back to gradient');
+      // Simple gradient generation via SVG if no base image
+      const svgGradient = `
+        <svg width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}">
+          <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:${COLORS.navy.dark};stop-opacity:1" />
+              <stop offset="100%" style="stop-color:${style === 'purple' ? COLORS.navy.light : COLORS.navy.medium};stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <rect width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}" fill="url(#grad)"/>
+          <circle cx="${style === 'purple' ? IMAGE_WIDTH : 0}" cy="0" r="600" fill="${style === 'purple' ? COLORS.teal : COLORS.cyan}" opacity="0.1"/>
+        </svg>
+      `;
+      backgroundBuffer = Buffer.from(svgGradient);
+  }
 
   // SVG Overlay for text
   const svgOverlay = `
