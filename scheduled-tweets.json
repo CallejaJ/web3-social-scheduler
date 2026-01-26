@@ -17,9 +17,11 @@
     },
     {
       "schedule": "0 20 * * 1",
-      "text": "2026 será el año de adopción masiva de Web3 en empresas tradicionales. ¿Tu empresa está lista? #Web3Adoption",
-      "language": "es",
-      "type": "insight"
+      "text": "Keep up with the latest updates from Memento Academy. Check our Announcements. 📢 https://github.com/orgs/Memento-Academy/discussions/categories/announcements #Web3 #Updates",
+      "language": "en",
+      "type": "announcements",
+      "media": "community-announcements-en.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 9 * * 2",
@@ -30,10 +32,11 @@
     },
     {
       "schedule": "0 14 * * 2",
-      "text": "Learning is better together. Join 50,000+ students in our beginner-friendly Discord community. https://discord.gg/MWfHKfjYS7 #Community #Web3",
+      "text": "Join the conversation! Ask questions and share ideas in our new GitHub Community. 💬 https://github.com/orgs/Memento-Academy/discussions #Community #Web3",
       "language": "en",
       "type": "community",
-      "media": "community-en.png"
+      "media": "community-discussion-en.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 20 * * 2",
@@ -57,10 +60,11 @@
     },
     {
       "schedule": "0 20 * * 3",
-      "text": "Aprender es mejor en comunidad. Únete a más de 50,000 estudiantes en nuestro Discord amigable para principiantes. https://discord.gg/MWfHKfjYS7 #Community",
+      "text": "¿Nuevo en la comunidad? Lee nuestras reglas y preséntate aquí. 👋 https://github.com/orgs/Memento-Academy/discussions/5 #Comunidad #Web3",
       "language": "es",
-      "type": "community",
-      "media": "community-es.png"
+      "type": "community_rules",
+      "media": "community-rules-es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 9 * * 4",
@@ -84,10 +88,11 @@
     },
     {
       "schedule": "0 9 * * 5",
-      "text": "El conocimiento debe ser libre. Por eso todos nuestros recursos son open-source y accesibles para todos. https://memento-academy.com/es #OpenEducation",
+      "text": "El conocimiento es libre. Únete a nuestros debates abiertos en GitHub. 💬 https://github.com/orgs/Memento-Academy/discussions #OpenSource #Educacion",
       "language": "es",
-      "type": "cta",
-      "media": "community-es.png"
+      "type": "community_discussion",
+      "media": "community-discussion-es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
       "schedule": "0 14 * * 5",
