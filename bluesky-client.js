@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { BskyAgent } = require('@atproto/api');
+const { BskyAgent, RichText } = require('@atproto/api');
 const fs = require('fs');
 const path = require('path');
 
@@ -34,8 +34,12 @@ async function postToBluesky(text, mediaPath = null) {
       if (!loggedIn) throw new Error('Could not log in to Bluesky');
     }
 
+    const rt = new RichText({ text });
+    await rt.detectFacets(agent); // Automatically detects links and mentions
+
     let postRecord = {
-      text: text,
+      text: rt.text,
+      facets: rt.facets,
       createdAt: new Date().toISOString()
     };
 
