@@ -6,6 +6,10 @@ const path = require('path');
 const { checkNewFollowers } = require('./follower-welcome');
 const { checkMentions } = require('./mention-replies');
 const { loginToBluesky, postToBluesky } = require('./bluesky-client');
+const { LensClient } = require('./lens-client');
+
+// Initialize Lens Client
+const lensClient = new LensClient();
 
 // Configure Twitter client
 const client = new TwitterApi({
@@ -159,6 +163,17 @@ function scheduleTwitterBot() {
              await postToBluesky(finalText, mediaPath);
           } catch (bError) {
              console.error('Failed to post to Bluesky:', bError.message);
+          }
+        }
+
+        // Post to Hey / Lens
+        if (platforms.includes('hey') || platforms.includes('lens')) {
+          try {
+             console.log(`\n  [Hey/Lens] Posting: "${finalText.substring(0, 40)}..."`);
+             await lensClient.post(finalText, mediaPath);
+             console.log('  [Hey/Lens] ✓ Post initiated');
+          } catch (lError) {
+             console.error('Failed to post to Lens:', lError.message);
           }
         }
 

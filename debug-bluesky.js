@@ -15,7 +15,7 @@ async function testBluesky() {
 
   console.log('2. Testing Text Post...');
   try {
-    await postToBluesky('Hello Bluesky! This is a test from my automated bot. 🤖 #Web3 #BotTest');
+    await postToBluesky('Hello Bluesky! This is a test with a link: https://memento-academy.com 🤖 #Web3 #BotTest');
     console.log('✓ Text post successful!\n');
   } catch (e) {
     console.error('✗ Text post failed:', e.message);
