@@ -37,6 +37,12 @@ async function postToBluesky(text, mediaPath = null) {
     const rt = new RichText({ text });
     await rt.detectFacets(agent); // Automatically detects links and mentions
 
+    console.log(`  [Bluesky] Detected ${rt.facets ? rt.facets.length : 0} facets (hashtags/links)`);
+    if (!rt.facets || rt.facets.length === 0) {
+        console.warn(`  [Bluesky] ⚠ No facets detected in text: "${text.substring(0, 50)}..."`);
+    }
+
+    // IMPORTANT: Facets are required for hashtags to be clickable
     let postRecord = {
       text: rt.text,
       facets: rt.facets,

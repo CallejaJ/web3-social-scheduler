@@ -145,7 +145,8 @@ function scheduleTwitterBot() {
         }
 
         // Determine platforms to post to
-        const platforms = item.platforms || ['twitter']; // Default to Twitter if not specified
+        // Determine platforms to post to
+        const platforms = item.platforms || ['twitter', 'bluesky', 'hey']; // Default to ALL platforms if not specified
 
         // Post to Twitter
         if (platforms.includes('twitter')) {
