@@ -171,7 +171,7 @@ class LensClient {
     }
   }
 
-  async query(query, variables = {}) {
+  async query(query, variables = {}, retryCount = 0) {
     const headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -188,8 +188,21 @@ class LensClient {
     );
 
     if (response.data.errors) {
+      const errorMsg = response.data.errors[0].message;
+      const errorCode = response.data.errors[0].extensions?.code;
+      
+      // Auto-refresh logic
+      if ((errorMsg.includes('Unauthenticated') || errorCode === 'UNAUTHENTICATED') && retryCount < 1) {
+          console.log('  [Lens] Authentication failed (Token expired?). Refreshing...');
+          const refreshed = await this.refreshToken();
+          if (refreshed) {
+              console.log('  [Lens] Retrying request with new token...');
+              return this.query(query, variables, retryCount + 1);
+          }
+      }
+
       console.error('  [Lens] GraphQL Error:', JSON.stringify(response.data.errors));
-      throw new Error(response.data.errors[0].message);
+      throw new Error(errorMsg);
     }
 
     if (!response.data.data) {
