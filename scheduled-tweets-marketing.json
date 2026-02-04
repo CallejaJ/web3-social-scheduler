@@ -26,7 +26,7 @@
     },
     {
       "schedule": "0 14 * * 2",
-      "text": "Learning is better together. Join 50,000+ students in our beginner-friendly Discord community. https://discord.gg/MWfHKfjYS7 #Community #Web3",
+      "text": "Learning is better together. Join 50,000+ students in our beginner-friendly GitHub community. https://github.com/orgs/Memento-Academy/discussions #Community #Web3",
       "language": "en",
       "type": "community"
     },
@@ -38,7 +38,7 @@
     },
     {
       "schedule": "0 9 * * 3",
-      "text": "¿Cuál fue tu primera interacción con criptomonedas? Comparte tu historia abajo. 👇",
+      "text": "¿Cuál fue tu primera interacción con las criptomonedas? 🤔\n\nCuéntanos tu historia: ¿Fue Bitcoin, Ethereum o algo más? 👇\n\n#Crypto #Bitcoin #Web3 #Comunidad #HistoriaCripto",
       "language": "es",
       "type": "engagement_question"
     },
@@ -50,7 +50,7 @@
     },
     {
       "schedule": "0 20 * * 3",
-      "text": "Aprender es mejor en comunidad. Únete a más de 50,000 estudiantes en nuestro Discord amigable para principiantes. https://discord.gg/MWfHKfjYS7 #Community",
+      "text": "Aprender es mejor en comunidad. Únete a más de 50,000 estudiantes en nuestro GitHub amigable para principiantes. https://github.com/orgs/Memento-Academy/discussions #Community",
       "language": "es",
       "type": "community"
     },
