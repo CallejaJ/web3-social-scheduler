@@ -22,7 +22,7 @@ This bot handles **scheduled tweets**, **course promotions**, **community engage
 - **Course Promotion** - Automated marketing for 4 free Web3 courses
 - **Follower Welcome System** - Auto-greet new followers with personalized messages
 - **Auto-Reply to Mentions** - Smart FAQ system responds to common questions automatically
-- **Community Building** - Discord and newsletter promotion
+- **Community Building** - GitHub and newsletter promotion
 - **Railway Deployment** - Runs 24/7 in the cloud
 
 ---
@@ -157,7 +157,7 @@ node index.js
 
 - **40%** - Course Promotions
 - **25%** - Educational Value (tips, insights)
-- **20%** - Community Building
+- **20%** - Community Building (GitHub)
 - **10%** - Engagement Questions
 - **5%** - Calls-to-Action
 
@@ -219,7 +219,7 @@ The bot monitors mentions every 30 minutes and automatically replies with releva
 | **Getting Started** | start, beginner, new      | Recommends Web3 Basics course      |
 | **CBDC**            | cbdc, central bank        | Links to CBDC course               |
 | **Security**        | safe, scam, protect       | Links to Security Guide            |
-| **Community**       | discord, help, support    | Discord invitation                 |
+| **Community**       | github, help, support     | GitHub invitation                  |
 | **Crypto Basics**   | bitcoin, ethereum, crypto | Links to Crypto 101 course         |
 
 ### Example Interactions
@@ -346,24 +346,30 @@ Edit `scheduled-tweets.json`:
 ### Key Metrics to Track
 
 1. **Engagement Rate**
-
    - Likes, retweets, replies per tweet
    - Best performing content types
    - Optimal posting times
 
 2. **Course Click-Through Rate**
+   - URL clicks to course pages
+   - EN vs ES performance
 
+3. **Engagement Rate**
+   - Likes, retweets, replies per tweet
+   - Best performing content types
+   - Optimal posting times
+
+4. **Course Click-Through Rate**
    - URL clicks to course pages
    - EN vs ES performance
    - Most popular courses
 
-3. **Community Growth**
-
+5. **Community Growth**
    - New followers per week
-   - Discord joins from Twitter
+   - GitHub joins from Twitter
    - Newsletter signups
 
-4. **Content Performance**
+6. **Content Performance**
    - Questions vs statements engagement
    - Course promos vs educational content
    - Language preference (EN vs ES)
@@ -500,7 +506,7 @@ MIT License - Free for personal and commercial use
 ## Resources
 
 - **Memento Academy**: [https://memento-academy.com](https://memento-academy.com)
-- **Discord Community**: [https://discord.gg/MWfHKfjYS7](https://discord.gg/MWfHKfjYS7)
+- **GitHub Community**: [https://github.com/orgs/Memento-Academy/discussions](https://github.com/orgs/Memento-Academy/discussions)
 - **Twitter**: [@memento_academy](https://twitter.com/memento_academy)
 - **Twitter API Docs**: [https://developer.twitter.com/en/docs/twitter-api](https://developer.twitter.com/en/docs/twitter-api)
 - **Railway Docs**: [https://docs.railway.app](https://docs.railway.app)
@@ -512,7 +518,7 @@ MIT License - Free for personal and commercial use
 Need help? Reach out:
 
 - Open an [Issue](https://github.com/CallejaJ/twitter-bot/issues)
-- Join our [Discord](https://discord.gg/MWfHKfjYS7)
+- Join our [GitHub](https://github.com/orgs/Memento-Academy/discussions)
 - DM [@memento_academy](https://twitter.com/memento_academy)
 
 ---

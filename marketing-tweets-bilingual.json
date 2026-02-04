@@ -94,14 +94,14 @@
       "No necesitas ser programador para entender Web3. Solo necesitas el maestro correcto. #Education"
     ],
     "community_en": [
-      "Join 50,000+ students learning Web3 together. Our Discord community is open 24/7. https://memento-academy.com/en #Community",
-      "Questions about blockchain? Our Discord is full of experts ready to help. Completely free. https://discord.gg/MWfHKfjYS7",
-      "Learning is better together. Join fellow Web3 enthusiasts in our beginner-friendly Discord. https://memento-academy.com/en #Learning"
+      "Join 50,000+ students learning Web3 together. Our GitHub community is open 24/7. https://github.com/orgs/Memento-Academy/discussions #Community",
+      "Questions about blockchain? Our GitHub is full of experts ready to help. Completely free. https://github.com/orgs/Memento-Academy/discussions",
+      "Learning is better together. Join fellow Web3 enthusiasts in our beginner-friendly GitHub. https://github.com/orgs/Memento-Academy/discussions #Learning"
     ],
     "community_es": [
-      "Únete a más de 50,000 estudiantes aprendiendo Web3 juntos. Nuestra comunidad Discord está abierta 24/7. https://memento-academy.com/es #Community",
-      "¿Preguntas sobre blockchain? Nuestro Discord está lleno de expertos listos para ayudar. Completamente gratis. https://discord.gg/MWfHKfjYS7",
-      "Aprender es mejor en comunidad. Únete a otros entusiastas de Web3 en nuestro Discord amigable para principiantes. https://memento-academy.com/es"
+      "Únete a más de 50,000 estudiantes aprendiendo Web3 juntos. Nuestra comunidad GitHub está abierta 24/7. https://github.com/orgs/Memento-Academy/discussions #Community",
+      "¿Preguntas sobre blockchain? Nuestro GitHub está lleno de expertos listos para ayudar. Completamente gratis. https://github.com/orgs/Memento-Academy/discussions",
+      "Aprender es mejor en comunidad. Únete a otros entusiastas de Web3 en nuestro GitHub amigable para principiantes. https://github.com/orgs/Memento-Academy/discussions"
     ],
     "cta_en": [
       "All our courses are 100% free. No credit cards, no subscriptions, no tricks. Just pure education. https://memento-academy.com/en/courses",
@@ -126,6 +126,16 @@
       "Las CBDC no son enemigas de crypto. Son sistemas paralelos que coexistirán. Entender ambos es clave. #CBDC",
       "La educación es la mayor barrera para la adopción crypto. Por eso existimos. #CryptoEducation",
       "El futuro de internet se está construyendo ahora mismo. No te quedes atrás. Empieza a aprender hoy. #Web3"
+    ],
+    "quiz_en": [
+      "🧠 Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. 🏆 https://memento-academy.com/quiz #LearnToEarn",
+      "Thinking you know Web3? Prove it in our new quiz! 🚀 https://memento-academy.com/quiz #Web3Quiz",
+      "Educational challenge! 🤓 Complete the quiz and level up your knowledge. https://memento-academy.com/quiz"
+    ],
+    "quiz_es": [
+      "🧠 ¡Es hora de probar tus habilidades! Toma nuestro quiz 'Learn to Earn' y demuestra lo que sabes. 🏆 https://memento-academy.com/quiz #LearnToEarn",
+      "¿Crees que sabes de Web3? ¡Pruébalo en nuestro nuevo quiz! 🚀 https://memento-academy.com/quiz #Web3Quiz",
+      "¡Reto educativo! 🤓 Completa el quiz y sube de nivel tu conocimiento. https://memento-academy.com/quiz"
     ]
   }
 }

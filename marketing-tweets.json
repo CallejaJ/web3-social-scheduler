@@ -59,9 +59,9 @@
     {
       "type": "community",
       "tweets": [
-        "Únete a nuestra comunidad de +50,000 estudiantes aprendiendo Web3. Discord abierto 24/7. https://memento-academy.com/es #Community",
-        "¿Tienes dudas sobre blockchain? Nuestro Discord está lleno de expertos dispuestos a ayudar. Gratis. https://memento-academy.com/es",
-        "Aprende mejor en comunidad. Únete a otros entusiastas de Web3 en nuestro Discord. https://memento-academy.com/es #Learning"
+        "Únete a nuestra comunidad de +50,000 estudiantes aprendiendo Web3. GitHub Discussions abierto 24/7. https://github.com/orgs/Memento-Academy/discussions #Community",
+        "¿Tienes dudas sobre blockchain? Nuestro GitHub está lleno de expertos dispuestos a ayudar. Gratis. https://github.com/orgs/Memento-Academy/discussions",
+        "Aprende mejor en comunidad. Únete a otros entusiastas de Web3 en nuestro GitHub. https://github.com/orgs/Memento-Academy/discussions #Learning"
       ]
     },
     {
@@ -81,6 +81,16 @@
         "La educación es la barrera más grande para adopción crypto. Por eso existimos. #CryptoEducation",
         "Web3 no reemplazará Web2. Lo complementará. Ambos coexistirán por décadas. #Technology"
       ]
+    },
+    {
+      "type": "quiz",
+      "tweets": [
+        "🧠 Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. 🏆 https://memento-academy.com/quiz #LearnToEarn",
+        "Thinking you know Web3? Prove it in our new quiz! 🚀 https://memento-academy.com/quiz #Web3Quiz",
+        "Educational challenge! 🤓 Complete the quiz and level up your knowledge. https://memento-academy.com/quiz",
+        "¿Listo para un reto? Participa en nuestro quiz 'Learn to Earn' y demuestra tus conocimientos. 💡 https://memento-academy.com/quiz"
+      ],
+      "media": "learn-to-earn.jpg"
     }
   ],
   "weekly_themes": {

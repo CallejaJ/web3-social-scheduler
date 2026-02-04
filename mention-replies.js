@@ -65,10 +65,10 @@ const FAQ_DATABASE = {
 
   // Community questions
   community: {
-    keywords: ['discord', 'community', 'help', 'support', 'question', 'comunidad', 'ayuda', 'soporte', 'pregunta'],
+    keywords: ['github', 'discord', 'community', 'help', 'support', 'question', 'comunidad', 'ayuda', 'soporte', 'pregunta'],
     replies: {
-      en: "Join our Discord community with 50K+ students! Get help, ask questions, and learn together: https://discord.gg/MWfHKfjYS7",
-      es: "¡Únete a nuestra comunidad Discord con más de 50K estudiantes! Obtén ayuda, haz preguntas y aprende en comunidad: https://discord.gg/MWfHKfjYS7"
+      en: "Join our GitHub community! Ask questions, propose ideas, and learn together: https://github.com/orgs/Memento-Academy/discussions",
+      es: "¡Únete a nuestra comunidad en GitHub! Haz preguntas, propón ideas y aprende en comunidad: https://github.com/orgs/Memento-Academy/discussions"
     }
   },
 
@@ -85,16 +85,16 @@ const FAQ_DATABASE = {
   greeting: {
     keywords: ['hello', 'hi', 'hey', 'thanks', 'thank you', 'hola', 'gracias'],
     replies: {
-      en: "Hello! Thanks for reaching out. Check out our free Web3 courses or join our Discord community. How can we help you today?",
-      es: "¡Hola! Gracias por contactarnos. Mira nuestros cursos gratuitos de Web3 o únete a nuestra comunidad Discord. ¿Cómo podemos ayudarte hoy?"
+      en: "Hello! Thanks for reaching out. Check out our free Web3 courses or join our GitHub community. How can we help you today?",
+      es: "¡Hola! Gracias por contactarnos. Mira nuestros cursos gratuitos de Web3 o únete a nuestra comunidad en GitHub. ¿Cómo podemos ayudarte hoy?"
     }
   }
 };
 
 // Generic fallback reply
 const FALLBACK_REPLY = {
-  en: "Thanks for your message! For specific questions, join our Discord: https://discord.gg/MWfHKfjYS7 or explore our free courses: https://memento-academy.com/en/courses",
-  es: "¡Gracias por tu mensaje! Para preguntas específicas, únete a nuestro Discord: https://discord.gg/MWfHKfjYS7 o explora nuestros cursos gratuitos: https://memento-academy.com/es/courses"
+  en: "Thanks for your message! For specific questions, join our GitHub: https://github.com/orgs/Memento-Academy/discussions or explore our free courses: https://memento-academy.com/en/courses",
+  es: "¡Gracias por tu mensaje! Para preguntas específicas, únete a nuestro GitHub: https://github.com/orgs/Memento-Academy/discussions o explora nuestros cursos gratuitos: https://memento-academy.com/es/courses"
 };
 
 // Spam detection keywords and patterns

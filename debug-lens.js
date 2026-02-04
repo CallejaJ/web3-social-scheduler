@@ -43,7 +43,9 @@ async function debugLens() {
   try {
      const testImage = path.join(__dirname, 'images', 'logo.png'); // Assuming logo exists
      // Or just text
-     const result = await client.post("Hello from Memento Academy Bot! 🌿 Testing automatic integration.", testImage);
+     const uniqueTag = `MementoBotTest_${Math.floor(Math.random() * 10000)}`;
+     const result = await client.post(`Testing Feed Visibility! 🧪\n\nChecking if custom hashtags create visibility.\nUnique Tag: #${uniqueTag} #Web3`, testImage);
+     console.log(`\n🔎 SEARCH FOR THIS TAG ON HEY.XYZ: #${uniqueTag}\n`);
      console.log('✓ Post prepared/sent!');
      console.log('  Metadata URI:', result.metadataURI);
      console.log('\nCheck your Profile (or Dispatcher logs) to see if it appeared.');

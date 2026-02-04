@@ -1,0 +1,3 @@
+Starting Me Query Test...
+URL: https://api.lens.xyz/graphql
+✗ Error: [{"message":"Unknown field \"id\" on type \"AccountAvailable\".","locations":[{"line":5,"column":9}]}]
