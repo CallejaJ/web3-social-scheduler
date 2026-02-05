@@ -59,7 +59,7 @@
       "platforms": ["twitter", "bluesky", "hey"]
     },
     {
-      "schedule": "0 20 * * 3",
+      "schedule": "0 20 * * 6",
       "text": "¿Nuevo en la comunidad? Lee nuestras reglas y preséntate aquí. 👋 https://github.com/orgs/Memento-Academy/discussions/5 #Comunidad #Web3",
       "language": "es",
       "type": "community_rules",
@@ -67,13 +67,13 @@
       "platforms": ["twitter", "bluesky"]
     },
     {
-      "schedule": "0 9 * * 4",
+      "schedule": "0 14 * * 6",
       "text": "Web3 isn't just about money. It's about returning control of data to individuals. #Decentralization #Web3",
       "language": "en",
       "type": "educational_value"
     },
     {
-      "schedule": "0 14 * * 4",
+      "schedule": "0 14 * * 0",
       "text": "Protégete de estafas y mantén seguros tus activos crypto. Guía completa de seguridad para principiantes. https://memento-academy.com/es/learn/safety #CryptoSecurity",
       "language": "es",
       "type": "course_promo",
@@ -186,7 +186,7 @@
       "hashtags_category": "defi"
     },
     {
-      "schedule": "0 10 * * 4",
+      "schedule": "0 18 * * 6",
       "text": "The Lending Lifecycle in DeFi. How your assets work for you.",
       "language": "en",
       "type": "education",
@@ -194,7 +194,7 @@
       "hashtags_category": "defi"
     },
     {
-      "schedule": "0 16 * * 4",
+      "schedule": "0 16 * * 0",
       "text": "El Ciclo de Préstamos en DeFi. Cómo tus activos trabajan para ti.",
       "language": "es",
       "type": "education",
