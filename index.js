@@ -12,7 +12,15 @@ const express = require('express');
 // Keep-alive server for Koyeb/Render
 const app = express();
 const port = process.env.PORT || 3000;
-app.get('/', (req, res) => res.send('Bot funcionando 🚀'));
+
+// Serve static files from 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Fallback route
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(port, () => console.log(`Monitor del bot activo en puerto ${port}`));
 
 // Initialize Lens Client
