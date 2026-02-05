@@ -41,6 +41,8 @@ This bot handles **scheduled tweets**, **course promotions**, **community engage
     │  ┌─────────────────────┐   │
     │  │  Tweet Scheduler    │   │
     │  │  (node-cron)        │   │
+    │  │  Uses standard      │   │
+    │  │  cron syntax        │   │
     │  └──────────┬──────────┘   │
     │             │               │
     │  ┌──────────▼──────────┐   │
@@ -338,6 +340,42 @@ Edit `scheduled-tweets.json`:
 - `0 9 * * 1-5` - Monday to Friday at 9:00 AM
 - `*/30 * * * *` - Every 30 minutes
 - `0 */2 * * *` - Every 2 hours
+
+---
+
+## Automated Scheduling with Cron
+
+This bot uses **[node-cron](https://www.npmjs.com/package/node-cron)** to handle all time-based tasks. Cron allows us to schedule scripts to fun at specific intervals or times.
+
+### Where is it used?
+
+The scheduling logic is centralized in `index.js`. It orchestrates:
+
+1.  **Marketing Tweets**: Reads `scheduled-tweets.json` and creates a cron job for each entry.
+2.  **Mentions Check**: Runs every 30 minutes (`*/30 * * * *`) to reply to users globally.
+3.  **Bot Keep-Alive**: The process stays active indefinitely to respect these schedules.
+
+### Cron Sytax Reference
+
+The schedule format consists of 5 fields:
+
+```
+┌─────────── minute (0 - 59)
+│ ┌───────── hour (0 - 23)
+│ │ ┌─────── day of month (1 - 31)
+│ │ │ ┌───── month (1 - 12)
+│ │ │ │ ┌─── day of week (0 - 7, Sunday = 0 or 7)
+│ │ │ │ │
+* * * * *
+```
+
+**Common Examples in this project**:
+
+- `0 9 * * 1`: Runs at 09:00 AM every Monday.
+- `*/30 * * * *`: Runs every 30 minutes.
+- `0 */2 * * *`: Runs every 2 hours (on the hour).
+
+> **Note**: Times are based on the server's timezone (usually UTC on cloud platforms like Koyeb/Railway).
 
 ---
 
