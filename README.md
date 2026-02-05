@@ -3,7 +3,7 @@
 <div align="center">
     <img src="https://img.shields.io/badge/Node.js-18-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
     <img src="https://img.shields.io/badge/Twitter_API-v2-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter API" />
-    <img src="https://img.shields.io/badge/Railway-Deployed-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="Railway" />
+    <img src="https://img.shields.io/badge/Koyeb-Deployed-000000?style=for-the-badge&logo=koyeb&logoColor=white" alt="Koyeb" />
     <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" alt="Status" />
 </div>
 
@@ -23,7 +23,7 @@ This bot handles **scheduled tweets**, **course promotions**, **community engage
 - **Follower Welcome System** - Auto-greet new followers with personalized messages
 - **Auto-Reply to Mentions** - Smart FAQ system responds to common questions automatically
 - **Community Building** - GitHub and newsletter promotion
-- **Railway Deployment** - Runs 24/7 in the cloud
+- **Koyeb Deployment** - Runs 24/7 in the cloud
 
 ---
 
@@ -50,9 +50,10 @@ This bot handles **scheduled tweets**, **course promotions**, **community engage
     │  │  (Every 2 hours)    │   │
     │  └─────────────────────┘   │
     └─────────────────────────────┘
+    └─────────────────────────────┘
              │
     ┌────────▼────────┐
-    │  Railway Cloud  │
+    │   Koyeb Cloud   │
     │  (24/7 Hosting) │
     └─────────────────┘
 ```
@@ -65,7 +66,7 @@ This bot handles **scheduled tweets**, **course promotions**, **community engage
 
 - Node.js 18+ installed
 - Twitter Developer Account with API access
-- Railway account (for deployment)
+- Koyeb account (for deployment)
 
 ### Installation
 
@@ -269,26 +270,25 @@ twitter-bot/
 ├── .env                              # API credentials (DO NOT COMMIT)
 ├── .env.example                      # Template for credentials
 ├── package.json                      # Dependencies
-├── railway.json                      # Railway deployment config
 └── README.md                         # This file
 ```
 
 ---
 
-## Deployment on Railway
+## Deployment on Koyeb
 
 ### One-Click Deploy
 
 1. Push your code to GitHub
-2. Go to [Railway.app](https://railway.app) and login with GitHub
-3. Click "New Project" → "Deploy from GitHub repo"
+2. Go to [Koyeb.com](https://www.koyeb.com) and login with GitHub
+3. Click "Create Service" → Select **GitHub**
 4. Select `twitter-bot` repository
-5. Add environment variables in Railway dashboard:
+5. Add environment variables in Koyeb dashboard:
    - `TWITTER_API_KEY`
    - `TWITTER_API_SECRET`
    - `TWITTER_ACCESS_TOKEN`
    - `TWITTER_ACCESS_SECRET`
-6. Railway auto-deploys and runs the bot 24/7
+6. Koyeb auto-deploys and runs the bot 24/7
 
 ### Update Deployment
 
@@ -298,7 +298,7 @@ git add .
 git commit -m "Update: new tweet schedule"
 git push
 
-# Railway automatically redeploys!
+# Koyeb automatically redeploys!
 ```
 
 ---
@@ -375,7 +375,7 @@ The schedule format consists of 5 fields:
 - `*/30 * * * *`: Runs every 30 minutes.
 - `0 */2 * * *`: Runs every 2 hours (on the hour).
 
-> **Note**: Times are based on the server's timezone (usually UTC on cloud platforms like Koyeb/Railway).
+> **Note**: Times are based on the server's timezone (usually UTC on cloud platforms like Koyeb).
 
 ---
 

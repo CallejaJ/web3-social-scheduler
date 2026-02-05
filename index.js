@@ -21,6 +21,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Status API
+app.get('/status', (req, res) => {
+    res.json({
+        status: 'online',
+        uptime: process.uptime(),
+        timestamp: Date.now()
+    });
+});
+
 app.listen(port, () => console.log(`Monitor del bot activo en puerto ${port}`));
 
 // Initialize Lens Client

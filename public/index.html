@@ -30,15 +30,15 @@
           <div class="grid">
             <div class="stat-item">
               <span class="label">Platform</span>
-              <span class="value">Koyeb / Railway</span>
+              <span class="value">Koyeb</span>
             </div>
             <div class="stat-item">
               <span class="label">Uptime</span>
               <span class="value" id="uptime">Calculating...</span>
             </div>
             <div class="stat-item">
-              <span class="label">Last Tweet</span>
-              <span class="value">15 min ago</span>
+              <span class="label">Schedule</span>
+              <span class="value">Active</span>
             </div>
           </div>
         </div>
@@ -68,16 +68,52 @@
     </div>
 
     <script>
-      // Simple uptime counter
-      const startTime = Date.now();
-      setInterval(() => {
-        const diff = Date.now() - startTime;
-        const hours = Math.floor(diff / 3600000);
-        const minutes = Math.floor((diff % 3600000) / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-        document.getElementById("uptime").textContent =
-          `${hours}h ${minutes}m ${seconds}s`;
-      }, 1000);
+      const statusBadge = document.getElementById('statusBadge');
+      const dot = statusBadge.querySelector('.dot');
+      const statusText = statusBadge.querySelector('span');
+      const uptimeElement = document.getElementById('uptime');
+
+      function updateStatus(isOnline) {
+          if (isOnline) {
+              statusBadge.style.background = 'rgba(34, 197, 94, 0.2)';
+              statusBadge.style.color = 'var(--success)';
+              dot.style.backgroundColor = 'var(--success)';
+              dot.style.boxShadow = '0 0 10px var(--success)';
+              statusText.textContent = 'Online';
+          } else {
+              statusBadge.style.background = 'rgba(239, 68, 68, 0.2)';
+              statusBadge.style.color = '#ef4444';
+              dot.style.backgroundColor = '#ef4444';
+              dot.style.boxShadow = '0 0 10px #ef4444';
+              statusText.textContent = 'Offline';
+          }
+      }
+
+      function formatUptime(seconds) {
+          const h = Math.floor(seconds / 3600);
+          const m = Math.floor((seconds % 3600) / 60);
+          const s = Math.floor(seconds % 60);
+          return `${h}h ${m}m ${s}s`;
+      }
+
+      async function checkStatus() {
+          try {
+              const response = await fetch('/status');
+              if (response.ok) {
+                  const data = await response.json();
+                  updateStatus(true);
+                  uptimeElement.textContent = formatUptime(data.uptime);
+              } else {
+                  updateStatus(false);
+              }
+          } catch (error) {
+              updateStatus(false);
+          }
+      }
+
+      // Check immediately and then every 5 seconds
+      checkStatus();
+      setInterval(checkStatus, 5000);
     </script>
   </body>
 </html>
