@@ -7,6 +7,13 @@ const { checkNewFollowers } = require('./follower-welcome');
 const { checkMentions } = require('./mention-replies');
 const { loginToBluesky, postToBluesky } = require('./bluesky-client');
 const { LensClient } = require('./lens-client');
+const express = require('express');
+
+// Keep-alive server for Koyeb/Render
+const app = express();
+const port = process.env.PORT || 3000;
+app.get('/', (req, res) => res.send('Bot funcionando 🚀'));
+app.listen(port, () => console.log(`Monitor del bot activo en puerto ${port}`));
 
 // Initialize Lens Client
 const lensClient = new LensClient();
