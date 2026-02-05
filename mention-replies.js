@@ -226,11 +226,37 @@ function findMatchingFAQ(text) {
   return null;
 }
 
-// Reply to a mention
-async function replyToMention(mention, replyText) {
+// Upload media to Twitter
+async function uploadMedia(filePath) {
   try {
-    await rwClient.v2.reply(replyText, mention.id);
-    console.log(`✓ Replied to @${mention.author_id}: "${replyText.substring(0, 60)}..."`);
+    if (!fs.existsSync(filePath)) {
+      console.warn(`! Media file not found: ${filePath}`);
+      return null;
+    }
+    const mediaId = await client.v1.uploadMedia(filePath);
+    console.log(`✓ Media uploaded: ${mediaId}`);
+    return mediaId;
+  } catch (error) {
+    console.error('✗ Error uploading media:', error.message);
+    return null;
+  }
+}
+
+// Reply to a mention
+async function replyToMention(mention, replyText, mediaPath = null) {
+  try {
+    let params = { text: replyText, reply: { in_reply_to_tweet_id: mention.id } };
+
+    // Attach media if provided
+    if (mediaPath) {
+      const mediaId = await uploadMedia(mediaPath);
+      if (mediaId) {
+        params.media = { media_ids: [mediaId] };
+      }
+    }
+
+    await rwClient.v2.reply(params.text, mention.id, { media: params.media });
+    console.log(`✓ Replied to @${mention.author_id}: "${replyText.substring(0, 60)}..." (Media: ${!!params.media})`);
     return true;
   } catch (error) {
     console.error(`✗ Error replying to mention ${mention.id}:`, error.message);
@@ -295,8 +321,11 @@ async function checkMentions() {
         console.log(`Using fallback reply`);
       }
 
+      // Image path (default to generic card)
+      const imagePath = path.join(__dirname, 'images', 'reply-card.png');
+
       // Send reply
-      const replied = await replyToMention(mention, replyText);
+      const replied = await replyToMention(mention, replyText, imagePath);
 
       if (replied) {
         data.repliedTweets.push(mention.id);
