@@ -204,6 +204,8 @@ The bot automatically welcomes new followers every 2 hours:
 
 ### How It Works
 
+> **Note**: This feature requires **Twitter API Basic Tier** ($100/mo) or higher. It is disabled by default on Free Tier to avoid Rate Limit errors.
+
 The bot monitors mentions every 30 minutes and automatically replies with relevant information:
 
 1. **Monitors** mentions using Twitter API v2

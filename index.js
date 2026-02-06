@@ -266,12 +266,15 @@ async function startBot() {
   console.log('⚠ Follower welcome system disabled (requires paid API tier)');
 
   // Schedule mention check every 30 minutes
-  cron.schedule('*/30 * * * *', async () => {
-    console.log(`\n[${new Date().toLocaleString()}] Checking for new mentions...`);
-    await checkMentions();
-  });
-
-  console.log('✓ Auto-reply system enabled (checks every 30 minutes)');
+  // DISABLED: Twitter API Free Tier does not support 'userMentionTimeline' and causes 429 Rate Limit errors.
+  // To enable, you must have Basic Tier ($100/mo) or higher.
+  // cron.schedule('*/30 * * * *', async () => {
+  //   console.log(`\n[${new Date().toLocaleString()}] Checking for new mentions...`);
+  //   await checkMentions();
+  // });
+  // console.log('✓ Auto-reply system enabled (checks every 30 minutes)');
+  
+  console.log('⚠ Auto-reply system DISABLED (requires Basic Tier to avoid Rate Limits)');
   console.log('');
 }
 
