@@ -1,6 +1,13 @@
 {
   "tweets": [
     {
+      "schedule": "50 12 * * *",
+      "text": "Verifying systems. We are back online and ready for the weekend! 🚀 #MementoAcademy #Web3",
+      "language": "en",
+      "type": "verification",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
       "schedule": "0 9 * * 1",
       "text": "New week, new opportunities to expand your knowledge. Ready to master Web3? Start with our free courses. https://memento-academy.com/en/courses #MondayMotivation #Web3",
       "language": "en",
