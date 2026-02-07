@@ -17,7 +17,7 @@
     },
     {
       "schedule": "0 20 * * 1",
-      "text": "Keep up with the latest updates from Memento Academy. Check our Announcements. 📢 https://github.com/orgs/Memento-Academy/discussions/categories/announcements #Web3 #Updates",
+      "text": "Keep up with the latest updates from Memento Academy. Check our Announcements. https://github.com/orgs/Memento-Academy/discussions/categories/announcements #Web3 #Updates",
       "language": "en",
       "type": "announcements",
       "media": "community-announcements-en.png",
@@ -60,7 +60,7 @@
     },
     {
       "schedule": "0 20 * * 6",
-      "text": "¿Nuevo en la comunidad? Lee nuestras reglas y preséntate aquí. 👋 https://github.com/orgs/Memento-Academy/discussions/5 #Comunidad #Web3",
+      "text": "¿Nuevo en la comunidad? Lee nuestras reglas y preséntate aquí. https://github.com/orgs/Memento-Academy/discussions/5 #Comunidad #Web3",
       "language": "es",
       "type": "community_rules",
       "media": "community-rules-es.png",
@@ -70,7 +70,8 @@
       "schedule": "0 14 * * 6",
       "text": "Web3 isn't just about money. It's about returning control of data to individuals. #Decentralization #Web3",
       "language": "en",
-      "type": "educational_value"
+      "type": "educational_value",
+      "media": "centralized-vs-decentralized.png"
     },
     {
       "schedule": "0 14 * * 0",
@@ -119,7 +120,8 @@
       "schedule": "0 16 * * 6",
       "text": "Blockchain = Un libro contable distribuido que ninguna entidad controla. Esa es la revolución. #Web3 #Blockchain",
       "language": "es",
-      "type": "educational_value"
+      "type": "educational_value",
+      "media": "web3-basics-es.png"
     },
     {
       "schedule": "0 10 * * 0",
@@ -242,7 +244,7 @@
     },
     {
       "schedule": "0 12 * * 0",
-      "text": "Challenge your friends and prove your Web3 mastery. Play for free now! 🎮 https://memento-academy.com/en/game #Web3Game #CryptoEducation",
+      "text": "Challenge your friends and prove your Web3 mastery. Play for free now! https://memento-academy.com/en/game #Web3Game #CryptoEducation",
       "language": "en",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-en-1.png",
@@ -257,7 +259,7 @@
     },
     {
       "schedule": "0 11 * * 1",
-      "text": "🧠 Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. 🏆 https://memento-academy.com/quiz #LearnToEarn",
+      "text": "🧠 Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. https://memento-academy.com/quiz #LearnToEarn",
       "language": "en",
       "type": "quiz_learn_to_earn",
       "media": "learn-to-earn.jpg",
@@ -265,7 +267,7 @@
     },
     {
       "schedule": "0 17 * * 1",
-      "text": "🧠 ¡Es hora de probar tus habilidades! Toma nuestro quiz 'Learn to Earn' y demuestra lo que sabes. 🏆 https://memento-academy.com/quiz #LearnToEarn",
+      "text": " ¡Es hora de probar tus habilidades! Toma nuestro quiz 'Learn to Earn' y demuestra lo que sabes. 🏆 https://memento-academy.com/quiz #LearnToEarn",
       "language": "es",
       "type": "quiz_learn_to_earn",
       "media": "learn-to-earn.jpg",
