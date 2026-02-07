@@ -267,11 +267,12 @@ async function startBot() {
 
   // Schedule mention check every 30 minutes
   // Re-enabled with Spam Blocking protection
-  cron.schedule('*/30 * * * *', async () => {
-    console.log(`\n[${new Date().toLocaleString()}] Checking for new mentions...`);
-    await checkMentions();
-  });
-  console.log('✓ Auto-reply system enabled (checks every 30 minutes)');
+  // DISABLED AGAIN: Still hitting 429 Rate Limits on Free Tier
+  // cron.schedule('*/30 * * * *', async () => {
+  //   console.log(`\n[${new Date().toLocaleString()}] Checking for new mentions...`);
+  //   await checkMentions();
+  // });
+  console.log('⚠ Auto-reply system DISABLED (requires Basic Tier to avoid Rate Limits)');
   console.log('');
 }
 
