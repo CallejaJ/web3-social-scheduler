@@ -1,13 +1,6 @@
 {
   "tweets": [
     {
-      "schedule": "35 12 * * 6",
-      "text": "Prueba de sistema: Verificando nueva imagen y protección anti-bots. 🛡️🤖 #Web3 #SecurityTest",
-      "language": "es",
-      "type": "system_test",
-      "media": "security-es.png"
-    },
-    {
       "schedule": "0 9 * * 1",
       "text": "New week, new opportunities to expand your knowledge. Ready to master Web3? Start with our free courses. https://memento-academy.com/en/courses #MondayMotivation #Web3",
       "language": "en",
