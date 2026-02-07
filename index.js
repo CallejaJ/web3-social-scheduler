@@ -141,7 +141,7 @@ function scheduleTwitterBot() {
 
     // Schedule the tweet
     cron.schedule(item.schedule, async () => {
-      console.log(`\n[${new Date().toLocaleString()}] Executing scheduled tweet #${index + 1}`);
+      console.log(`\n[${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}] Executing scheduled tweet #${index + 1}`);
       try {
         // Determine media path - check both generated and content folders
         let mediaPath = null;
@@ -205,6 +205,8 @@ function scheduleTwitterBot() {
       } catch (error) {
         console.error(`Error in scheduled tweet #${index + 1}: ${error.message}`);
       }
+    }, {
+      timezone: "Europe/Madrid"
     });
 
     console.log(`✓ Tweet #${index + 1} scheduled: ${item.schedule}`);

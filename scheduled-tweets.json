@@ -117,7 +117,7 @@
       "media": "web3-basics-en.png"
     },
     {
-      "schedule": "50 12 * * 6",
+      "schedule": "58 12 * * 6",
       "text": "Blockchain = Un libro contable distribuido que ninguna entidad controla. Esa es la revolución. #Web3 #Blockchain",
       "language": "es",
       "type": "educational_value",
