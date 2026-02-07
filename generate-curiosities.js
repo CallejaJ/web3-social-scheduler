@@ -93,27 +93,37 @@ async function generateImage(config) {
 
     // Text settings
     const titleFontSize = 90;
-    const subtitleFontSize = 45;
+    const subtitleFontSize = 38; // Reduced from 45
+    const lineHeight = 1.2;
     
     // Wrap title if it's too long
-    const maxChars = 20; 
-    const titleLines = wrapText(config.title, maxChars);
+    const maxCharsTitle = 20; 
+    const titleLines = wrapText(config.title, maxCharsTitle);
     
-    // Construct tspan lines
+    // Wrap subtitle
+    const maxCharsSubtitle = 40; // Increased char limit per line
+    const subtitleLines = wrapText(config.subtitle, maxCharsSubtitle);
+    
+    // Construct title tspan lines
     const titleSvgLines = titleLines.map((line, i) => {
         const dy = i === 0 ? 0 : '1.1em'; 
         return `<tspan x="50%" dy="${dy}">${escapeXml(line)}</tspan>`;
     }).join('');
 
-    // Adjust main text Y position based on number of lines to keep it centered
-    const startY = titleLines.length > 1 ? '35%' : '42%';
+    // Construct subtitle tspan lines
+    const subtitleSvgLines = subtitleLines.map((line, i) => {
+        const dy = i === 0 ? 0 : '1.2em';
+        return `<tspan x="50%" dy="${dy}">${escapeXml(line)}</tspan>`;
+    }).join('');
+
+    // Adjust vertical positioning
+    // Start Title slightly higher
+    const startY = '35%';
     
-    const safeSubtitle = escapeXml(config.subtitle);
-    
-    let subtitleYPercent = 55;
-    if (titleLines.length > 1) {
-        subtitleYPercent += (titleLines.length - 1) * 12;
-    }
+    // Subtitle starts below title
+    // Calculate rough height of title block
+    const titleBlockHeightPercent = 15 + (titleLines.length - 1) * 10;
+    const subtitleStartYPercent = 45 + (titleLines.length - 1) * 5; 
     
     const svgText = `
     <svg width="${width}" height="${height}">
@@ -122,7 +132,7 @@ async function generateImage(config) {
             .subtitle { fill: #00d2ff; font-size: ${subtitleFontSize}px; font-family: Arial, sans-serif; font-weight: 500; letter-spacing: 1px; }
         </style>
         <text x="50%" y="${startY}" text-anchor="middle" class="title">${titleSvgLines}</text>
-        <text x="50%" y="${subtitleYPercent}%" text-anchor="middle" class="subtitle">${safeSubtitle}</text>
+        <text x="50%" y="${subtitleStartYPercent}%" text-anchor="middle" class="subtitle">${subtitleSvgLines}</text>
     </svg>
     `;
     
