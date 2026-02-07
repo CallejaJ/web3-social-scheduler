@@ -15,23 +15,14 @@
 
 body {
   font-family: "Outfit", sans-serif;
-  background-color: var(--bg-color);
+  background-color: #000000;
   color: var(--text-color);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image:
-    radial-gradient(
-      circle at 10% 20%,
-      rgba(59, 130, 246, 0.15) 0%,
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 90% 80%,
-      rgba(139, 92, 246, 0.15) 0%,
-      transparent 20%
-    );
+  /* Removed modern radial gradients for pure black void */
+  background-image: none;
 }
 
 .container {
@@ -42,7 +33,7 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the logo now that status badge is gone */
   align-items: center;
   margin-bottom: 2rem;
 }
@@ -54,120 +45,147 @@ header {
 }
 
 .logo-img {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 8px; /* Optional: adds subtle curve to corners */
+  display: none; /* Hide old img if present, though removed from HTML */
 }
 
-.logo h1 {
-  font-weight: 600;
-  font-size: 1.5rem;
+/* Pixel Art Logo Styles */
+.pixel-logo {
+  font-family: "Press Start 2P", cursive;
+  font-size: 2.5rem; /* Adjustable */
+  line-height: 1.2;
+  text-transform: uppercase;
+  /* Retro Green Gradient */
+  background: linear-gradient(to bottom, #33ff00, #008f11);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* Use filter for glow/shadow with transparent text */
+  filter: drop-shadow(4px 4px 0px rgba(0, 50, 0, 0.5));
+  margin: 0;
+  padding: 0.5rem 0;
+  letter-spacing: 6px; /* More air between letters */
 }
 
-.status-badge {
-  background: rgba(34, 197, 94, 0.2);
-  color: var(--success);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 600;
+/* .bot-text {
+  Optional: Make "BOT" a slightly different shade or opacity if desired
+  For now keeping same gradient
+} */
+
+@media (max-width: 600px) {
+  .pixel-logo {
+    font-size: 1.5rem;
+  }
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--success);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--success);
-  animation: pulse 2s infinite;
-}
-
-.glass {
-  background: var(--card-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 1rem;
+/* Retro Terminal Styles */
+.terminal-container {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #33ff00;
+  border-radius: 8px;
   padding: 1.5rem;
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.stat-item {
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 0 15px rgba(51, 255, 0, 0.2);
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
 }
 
-.label {
-  font-size: 0.875rem;
-  color: #94a3b8;
-}
-
-.value {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.platforms {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.platform-card {
+.terminal-header {
+  border-bottom: 1px solid #33ff00;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1.5rem;
-  transition: transform 0.2s;
+  justify-content: space-between;
+  color: #33ff00;
+  font-size: 0.8rem;
+  opacity: 0.8;
 }
 
-.platform-card:hover {
-  transform: translateY(-5px);
-  background: rgba(40, 50, 70, 0.8);
+.terminal-body {
+  flex-grow: 1;
+  color: #33ff00;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-shadow: 0 0 2px rgba(51, 255, 0, 0.5);
 }
 
-.icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.line {
+  margin-bottom: 0.25rem;
+  opacity: 0;
+  animation: fadeIn 0.1s forwards;
 }
 
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  color: #64748b;
-  font-size: 0.875rem;
-}
-
-@keyframes pulse {
-  0% {
+@keyframes fadeIn {
+  to {
     opacity: 1;
   }
-  50% {
-    opacity: 0.5;
-  }
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: #33ff00;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
   100% {
     opacity: 1;
   }
+  50% {
+    opacity: 0;
+  }
 }
 
-@media (max-width: 600px) {
-  .platforms {
-    grid-template-columns: 1fr;
+/* Status colors for logs */
+.status-ok {
+  color: #33ff00;
+  font-weight: bold;
+}
+.status-error {
+  color: #ef4444;
+  font-weight: bold;
+}
+.status-warn {
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+/* Scanline effect */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Increased size for visibility */
+  background: rgba(51, 255, 0, 0.1);
+  opacity: 0.1;
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% {
+    top: -10%;
   }
+  100% {
+    top: 110%;
+  }
+}
+
+/* Connect button inside terminal if needed, or footer */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: #33ff00;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  font-family: "Consolas", monospace;
 }

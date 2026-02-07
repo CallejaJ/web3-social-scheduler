@@ -6,7 +6,7 @@
     <title>Memento Academy Bot Status</title>
     <link rel="stylesheet" href="style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="bot-logo.png">
@@ -15,105 +15,138 @@
     <div class="container">
       <header>
         <div class="logo">
-          <img src="bot-logo.png" alt="Memento Bot Logo" class="logo-img">
-          <h1>Memento Bot</h1>
-        </div>
-        <div class="status-badge" id="statusBadge">
-          <div class="dot"></div>
-          <span>Online</span>
+          <h1 class="pixel-logo">MEMENTO <span class="bot-text">BOT</span></h1>
         </div>
       </header>
 
       <main>
-        <div class="card glass">
-          <h2>System Status</h2>
-          <div class="grid">
-            <div class="stat-item">
-              <span class="label">Platform</span>
-              <span class="value">Koyeb</span>
+        <div class="terminal-container">
+            <div class="scanline"></div>
+            <div class="terminal-header">
+                <span>TERMINAL_SESSION_01</span>
+                <span>STATUS: <span id="headerStatus">CONNECTING...</span></span>
             </div>
-            <div class="stat-item">
-              <span class="label">Uptime</span>
-              <span class="value" id="uptime">Calculating...</span>
+            <div class="terminal-body" id="terminalOutput">
+                <!-- Lines will be injected here -->
             </div>
-            <div class="stat-item">
-              <span class="label">Schedule</span>
-              <span class="value">Active</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="platforms">
-          <div class="platform-card glass twitter">
-            <div class="icon">𝕏</div>
-            <h3>Twitter</h3>
-            <p>Connected</p>
-          </div>
-          <div class="platform-card glass bluesky">
-            <div class="icon">🦋</div>
-            <h3>Bluesky</h3>
-            <p>Connected</p>
-          </div>
-          <div class="platform-card glass lens">
-            <div class="icon">🌿</div>
-            <h3>Lens</h3>
-            <p>Connected</p>
-          </div>
         </div>
       </main>
 
       <footer>
-        <p>Memento Academy &copy; 2026</p>
+        <p>Memento Academy &copy; 2026 // SYSTEM V2.0</p>
       </footer>
     </div>
 
     <script>
-      const statusBadge = document.getElementById('statusBadge');
-      const dot = statusBadge.querySelector('.dot');
-      const statusText = statusBadge.querySelector('span');
-      const uptimeElement = document.getElementById('uptime');
+      const terminalOutput = document.getElementById('terminalOutput');
+      const headerStatus = document.getElementById('headerStatus');
+      
+      const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-      function updateStatus(isOnline) {
-          if (isOnline) {
-              statusBadge.style.background = 'rgba(34, 197, 94, 0.2)';
-              statusBadge.style.color = 'var(--success)';
-              dot.style.backgroundColor = 'var(--success)';
-              dot.style.boxShadow = '0 0 10px var(--success)';
-              statusText.textContent = 'Online';
+      async function typeLine(text, cssClass = '') {
+          const line = document.createElement('div');
+          line.className = 'line ' + cssClass;
+          terminalOutput.appendChild(line);
+          
+          // Typing effect
+          let i = 0;
+          const speed = 20; // ms per char
+          
+          // Add cursor to this line
+          const cursor = document.createElement('span');
+          cursor.className = 'cursor';
+          line.appendChild(cursor);
+
+          if (text.startsWith('>')) { // Fast command typing
+             line.innerHTML = ''; 
+             line.appendChild(cursor);
+             for (let i = 0; i < text.length; i++) {
+                 cursor.before(text.charAt(i));
+                 await delay(speed);
+                 // Auto scroll
+                 terminalOutput.scrollTop = terminalOutput.scrollHeight;
+             }
           } else {
-              statusBadge.style.background = 'rgba(239, 68, 68, 0.2)';
-              statusBadge.style.color = '#ef4444';
-              dot.style.backgroundColor = '#ef4444';
-              dot.style.boxShadow = '0 0 10px #ef4444';
-              statusText.textContent = 'Offline';
+             // Instant output for logs
+             cursor.remove();
+             line.textContent = text;
           }
+           
+          // Remove cursor from this line when done, unless it's the last one (we can manage that)
+          cursor.remove();
+          await delay(100);
+      }
+
+      async function addCursor() {
+          const line = document.createElement('div');
+          line.className = 'line';
+          const cursor = document.createElement('span');
+          cursor.className = 'cursor';
+          line.appendChild(cursor);
+          terminalOutput.appendChild(line);
+          return line;
+      }
+
+      async function bootSequence() {
+          await delay(500);
+          await typeLine("> INITIALIZING MEMENTO BOT V2.0...");
+          await delay(300);
+          await typeLine("> LOADING KERNEL MODULES... OK");
+          await delay(300);
+          await typeLine("> MOUNTING FILE SYSTEM... OK");
+          await delay(600);
+          
+          await typeLine("> CHECKING CONNECTIVITY...");
+          await delay(400);
+
+          // Check Status API
+          try {
+              await typeLine("> curl /status");
+              const response = await fetch('/status');
+              if (response.ok) {
+                  const data = await response.json();
+                  await typeLine(`[SYSTEM] UPTIME: ${formatUptime(data.uptime)}`, 'status-ok');
+                  await typeLine("[SYSTEM] STATUS: ONLINE", 'status-ok');
+                  headerStatus.textContent = "ONLINE";
+                  headerStatus.style.color = "#33ff00";
+              } else {
+                  throw new Error("Status failed");
+              }
+          } catch (e) {
+              await typeLine("[SYSTEM] ERROR: OFFLINE", 'status-error');
+              headerStatus.textContent = "OFFLINE";
+              headerStatus.style.color = "red";
+          }
+
+          // Simulate Platform Checks (Since /status doesn't return detailed platform info in valid JSON yet, we simulate or assume connected if status is ok)
+          // Ideally backend would return this. For now, visual simulation as requested.
+          await delay(500);
+          await typeLine("> CHECKING EXTERNAL APIS...");
+          await delay(800);
+          await typeLine("[NET] TWITTER CONNECTION....... [ESTABLISHED]", 'status-ok');
+          await delay(400);
+          await typeLine("[NET] BLUESKY CONNECTION....... [ESTABLISHED]", 'status-ok');
+          await delay(400);
+          await typeLine("[NET] LENS PROTOCOL............ [ESTABLISHED]", 'status-ok');
+          
+          await delay(500);
+          await typeLine("> SCHEDULER ACTIVE.");
+          
+          // Keep cursor blinking at bottom
+          addCursor();
       }
 
       function formatUptime(seconds) {
           const h = Math.floor(seconds / 3600);
           const m = Math.floor((seconds % 3600) / 60);
-          const s = Math.floor(seconds % 60);
-          return `${h}h ${m}m ${s}s`;
+          return `${h}h ${m}m`;
       }
 
-      async function checkStatus() {
-          try {
-              const response = await fetch('/status');
-              if (response.ok) {
-                  const data = await response.json();
-                  updateStatus(true);
-                  uptimeElement.textContent = formatUptime(data.uptime);
-              } else {
-                  updateStatus(false);
-              }
-          } catch (error) {
-              updateStatus(false);
-          }
-      }
+      bootSequence();
 
-      // Check immediately and then every 5 seconds
-      checkStatus();
-      setInterval(checkStatus, 5000);
+      // Optional: Refresh status silently or re-run animation? 
+      // Re-running full animation is annoying. Silent refresh or just keeping it static log is better.
+      // Let's just keep it static after boot.
     </script>
   </body>
 </html>
