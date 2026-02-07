@@ -32,7 +32,7 @@
     },
     {
       "schedule": "0 14 * * 2",
-      "text": "Join the conversation! Ask questions and share ideas in our new GitHub Community. 💬 https://github.com/orgs/Memento-Academy/discussions #Community #Web3",
+      "text": "Join the conversation! Ask questions and share ideas in our new GitHub Community. https://github.com/orgs/Memento-Academy/discussions #Community #Web3",
       "language": "en",
       "type": "community",
       "media": "community-discussion-en.png",
@@ -40,9 +40,10 @@
     },
     {
       "schedule": "0 20 * * 2",
-      "text": "Fun fact: The first Bitcoin transaction was for 2 pizzas. Today they'd be worth millions. #CryptoHistory",
-      "language": "en",
-      "type": "educational_value"
+      "text": "Sabías que...? La primera compra con Bitcoin fueron dos pizzas por 10,000 BTC. Hoy valdrían cientos de millones. #BitcoinHistory #Crypto",
+      "language": "es",
+      "type": "curiosity",
+      "media": "curiosity-bitcoin-pizza.png"
     },
     {
       "schedule": "0 9 * * 3",
@@ -83,13 +84,14 @@
     },
     {
       "schedule": "0 20 * * 4",
-      "text": "A smart contract is simply code that executes automatically when conditions are met. Simple, right? https://memento-academy.com/en/learn/web3-basics #Blockchain #SmartContracts",
-      "language": "en",
-      "type": "educational_value"
+      "text": "Sabías que...? El término 'Smart Contract' fue acuñado por Nick Szabo en 1994, mucho antes de que existiera la tecnología blockchain. #SmartContracts #History",
+      "language": "es",
+      "type": "curiosity",
+      "media": "curiosity-smart-contract.png"
     },
     {
       "schedule": "0 9 * * 5",
-      "text": "El conocimiento es libre. Únete a nuestros debates abiertos en GitHub. 💬 https://github.com/orgs/Memento-Academy/discussions #OpenSource #Educacion",
+      "text": "El conocimiento es libre. Únete a nuestros debates abiertos en GitHub. https://github.com/orgs/Memento-Academy/discussions #OpenSource #Educacion",
       "language": "es",
       "type": "community_discussion",
       "media": "community-discussion-es.png",
@@ -97,7 +99,7 @@
     },
     {
       "schedule": "0 14 * * 5",
-      "text": "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it. 💭",
+      "text": "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it.",
       "language": "en",
       "type": "engagement_question"
     },
@@ -221,7 +223,7 @@
     },
     {
       "schedule": "0 18 * * 1",
-      "text": "¿Cuánto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas. 🧠💰 https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn",
+      "text": "¿Cuánto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas. https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn",
       "language": "es",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-es.png",
@@ -229,14 +231,14 @@
     },
     {
       "schedule": "0 18 * * 3",
-      "text": "Think you know Crypto? Test your skills and earn rewards. 🧠💰 https://memento-academy.com/en/game #CryptoQuiz #Web3",
+      "text": "Think you know Crypto? Test your skills and earn rewards. https://memento-academy.com/en/game #CryptoQuiz #Web3",
       "language": "en",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-en.png"
     },
     {
       "schedule": "0 12 * * 6",
-      "text": "Desafía a tus amigos y demuestra quién sabe más de Web3. ¡Juega gratis ahora! 🎮 https://memento-academy.com/es/game #Web3Gaming #Education",
+      "text": "Desafía a tus amigos y demuestra quién sabe más de Web3. ¡Juega gratis ahora! https://memento-academy.com/es/game #Web3Gaming #Education",
       "language": "es",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-es-1.png",
@@ -252,14 +254,14 @@
     },
     {
       "schedule": "0 15 * * *",
-      "text": "¡Hola Bluesky! Estamos expandiendo nuestra comunidad educativa aquí. Síguenos para aprender sobre Web3, Blockchain y DeFi gratis. 🦋 #Web3 #Educacion",
+      "text": "¡Hola Bluesky! Estamos expandiendo nuestra comunidad educativa aquí. Síguenos para aprender sobre Web3, Blockchain y DeFi gratis. #Web3 #Educacion",
       "language": "es",
       "type": "bluesky_welcome",
       "platforms": ["bluesky", "hey"]
     },
     {
       "schedule": "0 11 * * 1",
-      "text": "🧠 Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. https://memento-academy.com/quiz #LearnToEarn",
+      "text": "Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. https://memento-academy.com/quiz #LearnToEarn",
       "language": "en",
       "type": "quiz_learn_to_earn",
       "media": "learn-to-earn.jpg",
@@ -267,11 +269,32 @@
     },
     {
       "schedule": "0 17 * * 1",
-      "text": " ¡Es hora de probar tus habilidades! Toma nuestro quiz 'Learn to Earn' y demuestra lo que sabes. 🏆 https://memento-academy.com/quiz #LearnToEarn",
+      "text": "¡Es hora de probar tus habilidades! Toma nuestro quiz 'Learn to Earn' y demuestra lo que sabes. https://memento-academy.com/quiz #LearnToEarn",
       "language": "es",
       "type": "quiz_learn_to_earn",
       "media": "learn-to-earn.jpg",
       "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 20 * * 3",
+      "text": "Sabías que...? Se estima que alrededor del 20% de todos los Bitcoin minados se han perdido para siempre en billeteras inaccesibles. #Bitcoin #Facts",
+      "language": "es",
+      "type": "curiosity",
+      "media": "curiosity-lost-bitcoin.png"
+    },
+    {
+      "schedule": "0 20 * * 0",
+      "text": "Sabías que...? Los primeros NFTs no estaban en Ethereum. Los 'Colored Coins' en la red de Bitcoin ya permitían activos únicos en 2012. #NFTs #CryptoHistory",
+      "language": "es",
+      "type": "curiosity",
+      "media": "curiosity-nfts-history.png"
+    },
+    {
+      "schedule": "0 18 * * 5",
+      "text": "Sabías que...? Vitalik Buterin cofundó Ethereum después de que Blizzard debilitara su personaje favorito en World of Warcraft. #Ethereum #Vitalik",
+      "language": "es",
+      "type": "curiosity",
+      "media": "curiosity-vitalik-wow.png"
     }
   ]
 }

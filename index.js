@@ -161,21 +161,30 @@ function scheduleTwitterBot() {
            }
         }
 
-        // Add dynamic hashtags if requested in item config
-        let finalText = item.text;
+        // Prepare text for Twitter
+        let twitterText = item.text;
         if (item.hashtags_category) {
             const addedTags = getRandomHashtags(item.hashtags_category, item.language || 'en');
-            finalText += ` ${addedTags}`;
+            twitterText += ` ${addedTags}`;
         }
 
-        // Determine platforms to post to
+        // Prepare text for Bluesky (fallback to text if not provided)
+        let blueskyText = item.bluesky_text || item.text;
+        if (item.hashtags_category) {
+            const addedTags = getRandomHashtags(item.hashtags_category, item.language || 'en');
+            blueskyText += ` ${addedTags}`;
+        }
+        
+        // Prepare text for Hey/Lens (fallback to bluesky_text or text)
+        let heyText = item.hey_text || blueskyText;
+
         // Determine platforms to post to
         const platforms = item.platforms || ['twitter', 'bluesky', 'hey']; // Default to ALL platforms if not specified
 
         // Post to Twitter
         if (platforms.includes('twitter')) {
           try {
-             await postTweet(finalText, mediaPath);
+             await postTweet(twitterText, mediaPath);
           } catch (tError) {
              console.error('Failed to post to Twitter:', tError.message);
           }
@@ -184,8 +193,8 @@ function scheduleTwitterBot() {
         // Post to Bluesky
         if (platforms.includes('bluesky')) {
           try {
-             console.log(`\n  [Bluesky] Posting: "${finalText.substring(0, 40)}..."`);
-             await postToBluesky(finalText, mediaPath);
+             console.log(`\n  [Bluesky] Posting: "${blueskyText.substring(0, 40)}..."`);
+             await postToBluesky(blueskyText, mediaPath);
           } catch (bError) {
              console.error('Failed to post to Bluesky:', bError.message);
           }
@@ -194,8 +203,8 @@ function scheduleTwitterBot() {
         // Post to Hey / Lens
         if (platforms.includes('hey') || platforms.includes('lens')) {
           try {
-             console.log(`\n  [Hey/Lens] Posting: "${finalText.substring(0, 40)}..."`);
-             await lensClient.post(finalText, mediaPath);
+             console.log(`\n  [Hey/Lens] Posting: "${heyText.substring(0, 40)}..."`);
+             await lensClient.post(heyText, mediaPath);
              console.log('  [Hey/Lens] ✓ Post initiated');
           } catch (lError) {
              console.error('Failed to post to Lens:', lError.message);
