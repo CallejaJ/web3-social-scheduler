@@ -297,9 +297,16 @@ async function checkMentions() {
 
       console.log(`\nNew mention from @${mention.author_id}: "${mention.text.substring(0, 80)}..."`);
 
-      // Check for spam - skip if detected
+      // Check for spam - block and skip if detected
       if (isSpam(mention.text)) {
-        console.log(`  ⏭️  Skipping spam mention`);
+        console.log(`  🚫 SPAM detected from @${mention.author_id}. Blocking user...`);
+        try {
+            await rwClient.v2.block(myUserId, mention.author_id);
+            console.log(`  ✓ Blocked @${mention.author_id}`);
+        } catch (blockError) {
+            console.error(`  ✗ Failed to block @${mention.author_id}:`, blockError.message);
+        }
+
         data.repliedTweets.push(mention.id); // Mark as processed to avoid checking again
         spamCount++;
         continue;
