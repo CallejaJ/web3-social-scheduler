@@ -33,6 +33,37 @@ const CONFIG = [
     title: 'Sabías que...?',
     subtitle: 'Vitalik Buterin creó Ethereum después de que Blizzard debilitara su personaje en WoW.',
     lang: 'es'
+  },
+  // English
+  {
+    file: 'curiosity-bitcoin-pizza-en.png',
+    title: 'Did you know...?',
+    subtitle: 'The first Bitcoin purchase was two pizzas for 10,000 BTC. Today they\'d be worth millions.',
+    lang: 'en'
+  },
+  {
+    file: 'curiosity-smart-contract-en.png',
+    title: 'Did you know...?',
+    subtitle: 'The term "Smart Contract" was coined by Nick Szabo in 1994, long before blockchain existed.',
+    lang: 'en'
+  },
+  {
+    file: 'curiosity-lost-bitcoin-en.png',
+    title: 'Did you know...?',
+    subtitle: 'It\'s estimated that around 20% of all mined Bitcoin is lost forever in inaccessible wallets.',
+    lang: 'en'
+  },
+  {
+    file: 'curiosity-nfts-history-en.png',
+    title: 'Did you know...?',
+    subtitle: 'The first NFTs weren\'t on Ethereum. "Colored Coins" on Bitcoin already allowed unique assets in 2012.',
+    lang: 'en'
+  },
+  {
+    file: 'curiosity-vitalik-wow-en.png',
+    title: 'Did you know...?',
+    subtitle: 'Vitalik Buterin co-founded Ethereum after Blizzard nerfed his favorite character in World of Warcraft.',
+    lang: 'en'
   }
 ];
 
