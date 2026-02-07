@@ -68,7 +68,7 @@
     },
     {
       "schedule": "0 14 * * 6",
-      "text": "Web3 isn't just about money. It's about returning control of data to individuals. #Decentralization #Web3",
+      "text": "Web3 isn't just about money. It's about returning control of data to individuals. https://memento-academy.com/en/courses #Decentralization #Web3",
       "language": "en",
       "type": "educational_value",
       "media": "centralized-vs-decentralized.png"
@@ -83,7 +83,7 @@
     },
     {
       "schedule": "0 20 * * 4",
-      "text": "A smart contract is simply code that executes automatically when conditions are met. Simple, right? #Blockchain #SmartContracts",
+      "text": "A smart contract is simply code that executes automatically when conditions are met. Simple, right? https://memento-academy.com/en/learn/web3-basics #Blockchain #SmartContracts",
       "language": "en",
       "type": "educational_value"
     },
@@ -141,7 +141,7 @@
     },
     {
       "schedule": "0 10 * * 1",
-      "text": "Centralized vs Decentralized systems. Understanding the shift in power and control.",
+      "text": "Centralized vs Decentralized systems. Understanding the shift in power and control. https://memento-academy.com/en/learn/web3-basics",
       "language": "en",
       "type": "education",
       "media": "centralized-vs-decentralized.png",
@@ -149,7 +149,7 @@
     },
     {
       "schedule": "0 16 * * 1",
-      "text": "Capas de Seguridad Blockchain. Entendiendo cómo se protegen tus activos.",
+      "text": "Capas de Seguridad Blockchain. Entendiendo cómo se protegen tus activos. https://memento-academy.com/es/learn/safety",
       "language": "es",
       "type": "education",
       "media": "security_layers_es.png",
@@ -157,7 +157,7 @@
     },
     {
       "schedule": "0 10 * * 2",
-      "text": "The evolution of the web: From static pages (Web1) to social (Web2) to ownership (Web3).",
+      "text": "The evolution of the web: From static pages (Web1) to social (Web2) to ownership (Web3). https://memento-academy.com/en/learn/web3-basics",
       "language": "en",
       "type": "education",
       "media": "web-evolution.png",
@@ -165,7 +165,7 @@
     },
     {
       "schedule": "0 16 * * 2",
-      "text": "Tipos de gráficos Crypto explicados. Domina los básicos del análisis técnico.",
+      "text": "Tipos de gráficos Crypto explicados. Domina los básicos del análisis técnico. https://memento-academy.com/es/learn/crypto-101",
       "language": "es",
       "type": "education",
       "media": "chart-types-es.png",
@@ -173,7 +173,7 @@
     },
     {
       "schedule": "0 10 * * 3",
-      "text": "Crypto Chart Types explained. Master the basics of technical analysis.",
+      "text": "Crypto Chart Types explained. Master the basics of technical analysis. https://memento-academy.com/en/learn/crypto-101",
       "language": "en",
       "type": "education",
       "media": "chart-types.png",
@@ -181,7 +181,7 @@
     },
     {
       "schedule": "0 16 * * 3",
-      "text": "La evolución de la web: De páginas estáticas (Web1) a social (Web2) a propiedad (Web3).",
+      "text": "La evolución de la web: De páginas estáticas (Web1) a social (Web2) a propiedad (Web3). https://memento-academy.com/es/learn/web3-basics",
       "language": "es",
       "type": "education",
       "media": "web-evolution-es.png",
@@ -189,7 +189,7 @@
     },
     {
       "schedule": "0 18 * * 6",
-      "text": "The Lending Lifecycle in DeFi. How your assets work for you.",
+      "text": "The Lending Lifecycle in DeFi. How your assets work for you. https://memento-academy.com/en/courses",
       "language": "en",
       "type": "education",
       "media": "lending-lifecycle.png",
@@ -197,7 +197,7 @@
     },
     {
       "schedule": "0 16 * * 0",
-      "text": "El Ciclo de Préstamos en DeFi. Cómo tus activos trabajan para ti.",
+      "text": "El Ciclo de Préstamos en DeFi. Cómo tus activos trabajan para ti. https://memento-academy.com/es/courses",
       "language": "es",
       "type": "education",
       "media": "lending-lifecycle-es.png",
@@ -205,7 +205,7 @@
     },
     {
       "schedule": "0 10 * * 5",
-      "text": "Blockchain Security Layers. Understanding how your assets are protected.",
+      "text": "Blockchain Security Layers. Understanding how your assets are protected. https://memento-academy.com/en/learn/safety",
       "language": "en",
       "type": "education",
       "media": "security_layers.png",
@@ -213,7 +213,7 @@
     },
     {
       "schedule": "0 16 * * 5",
-      "text": "Sistemas Centralizados vs Descentralizados. Entendiendo el cambio de poder y control.",
+      "text": "Sistemas Centralizados vs Descentralizados. Entendiendo el cambio de poder y control. https://memento-academy.com/es/learn/web3-basics",
       "language": "es",
       "type": "education",
       "media": "centralized-vs-decentralized-es.png",
