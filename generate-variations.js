@@ -20,6 +20,7 @@ const CONFIG = [
     { file: 'crypto-quiz-og-en-1.png', title: 'Web3 Challenge', subtitle: 'Prove Your Mastery', lang: 'en' },
 
     // ES
+    { file: 'telegram-community-es.png', title: 'Comunidad Web3', subtitle: 'Asistente 24/7 en Telegram', lang: 'es' },
     { file: 'web3-basics-es.png', title: 'Web3 Básico', subtitle: 'Fundamentos Blockchain', lang: 'es' },
     { file: 'crypto-101-es.png', title: 'Cripto 101', subtitle: 'Entendiendo las Criptomonedas', lang: 'es' },
     { file: 'community-rules-es.png', title: 'Reglas de Comunidad', subtitle: 'Convivencia y Respeto', lang: 'es' },
