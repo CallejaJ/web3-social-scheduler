@@ -1,6 +1,6 @@
 # Web3 Social Scheduler
 
-<div align="center">
+<div align="left">
     <img src="https://img.shields.io/badge/Node.js-22-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
     <img src="https://img.shields.io/badge/Rettiwt_API-Free-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Rettiwt API" />
     <img src="https://img.shields.io/badge/Multi%E2%80%90Platform-Twitter%20|%20Bluesky%20|%20Lens-7B3FF2?style=for-the-badge" alt="Multi-Platform" />
