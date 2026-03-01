@@ -576,12 +576,12 @@ node index.js
 
 With **Rettiwt API**, you get:
 
-| Feature           | Limit         |
-| ----------------- | ------------- |
-| Monthly Posts     | Unlimited     |
-| Daily Posts       | Unlimited     |
-| API Cost          | FREE          |
-| Rate Limiting     | Per-platform  |
+| Feature       | Limit        |
+| ------------- | ------------ |
+| Monthly Posts | Unlimited    |
+| Daily Posts   | Unlimited    |
+| API Cost      | FREE         |
+| Rate Limiting | Per-platform |
 
 **Current bot usage:** ~600 posts/month (1 main Twitter account + Bluesky + Lens)
 
