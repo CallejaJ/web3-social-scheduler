@@ -17,15 +17,15 @@ This bot handles **scheduled posts** across Twitter, Bluesky, and Lens Protocol,
 
 ## Features
 
-- **Multi-Platform Posting** - Publishes simultaneously to Twitter, Bluesky, and Lens Protocol
-- **Free Forever** - Uses Rettiwt API (100% free, no monthly charges)
-- **Automated Tweet Scheduling** - 14 posts per week on a strategic schedule
-- **Bilingual Content** - English & Spanish posts targeting global crypto community
-- **Course Promotion** - Automated marketing for 4 free Web3 courses
-- **Follower Welcome System** - Auto-greet new followers with personalized messages
-- **Auto-Reply to Mentions** - Smart FAQ system responds to common questions automatically
-- **Community Building** - GitHub and newsletter promotion
-- **24/7 Deployment** - Runs on Koyeb, Render, or any Node.js hosting
+- Multi-Platform Posting - Publishes simultaneously to Twitter, Bluesky, and Lens Protocol
+- Free Forever - Uses Rettiwt API (100% free, no monthly charges)
+- Automated Tweet Scheduling - 14 posts per week on a strategic schedule
+- Bilingual Content - English & Spanish posts targeting global crypto community
+- Course Promotion - Automated marketing for 4 free Web3 courses
+- Follower Welcome System - Auto-greet new followers with personalized messages
+- Auto-Reply to Mentions - Smart FAQ system responds to common questions automatically
+- Community Building - GitHub and newsletter promotion
+- 24/7 Deployment - Runs on Koyeb, Render, or any Node.js hosting
 
 ---
 
@@ -150,11 +150,11 @@ In March 2026, Twitter deprecated its free API tier. All posting now requires a 
 
 **We migrated to Rettiwt API because:**
 
-- ✅ 100% FREE - No monthly charges
-- ✅ No API limits - Post unlimited tweets
-- ✅ Multi-platform - Works with Bluesky and Lens
-- ✅ Easy setup - Browser extension to extract credentials
-- ✅ Reliable - Actively maintained open-source project
+- 100% FREE - No monthly charges
+- No API limits - Post unlimited tweets
+- Multi-platform - Works with Bluesky and Lens
+- Easy setup - Browser extension to extract credentials
+- Reliable - Actively maintained open-source project
 
 ### Getting Your Rettiwt API Key
 
@@ -210,9 +210,9 @@ Quick setup (5 minutes):
 
 Each scheduled tweet is automatically published to:
 
-- ✅ **Twitter** (via Rettiwt API)
-- ✅ **Bluesky** (via Bluesky API)
-- ✅ **Lens Protocol** (via Lens SDK)
+- Twitter (via Rettiwt API)
+- Bluesky (via Bluesky API)
+- Lens Protocol (via Lens SDK)
 
 ### Promoted Courses
 
@@ -538,37 +538,37 @@ node index.js
 
 ### Error 401 (Unauthorized)
 
-- ❌ Invalid credentials
-- ✅ Check your `.env` file values
-- ✅ Regenerate tokens in Twitter Developer Portal
+- Invalid credentials
+- Check your `.env` file values
+- Regenerate tokens in Twitter Developer Portal
 
 ### Error 403 (Forbidden)
 
-- ❌ App doesn't have write permissions
-- ✅ Set app permissions to "Read and Write"
-- ✅ Regenerate Access Token after changing permissions
+- App doesn't have write permissions
+- Set app permissions to "Read and Write"
+- Regenerate Access Token after changing permissions
 
 ### Error 429 (Rate Limit)
 
-- ❌ Too many requests
-- ✅ Wait before retrying
-- ✅ Reduce tweet frequency
+- Too many requests
+- Wait before retrying
+- Reduce tweet frequency
 
 ### Bot Not Posting
 
-- ✅ Check Railway logs for errors
-- ✅ Verify environment variables are set correctly
-- ✅ Confirm `scheduled-tweets.json` has valid cron schedules
+- Check Railway logs for errors
+- Verify environment variables are set correctly
+- Confirm `scheduled-tweets.json` has valid cron schedules
 
 ---
 
 ## Security Best Practices
 
-- ✅ **NEVER** commit `.env` to git
-- ✅ Keep `.env` in `.gitignore`
-- ✅ Regenerate tokens if accidentally exposed
-- ✅ Use Railway environment variables for production
-- ✅ Review Twitter API usage regularly
+- **NEVER** commit `.env` to git
+- Keep `.env` in `.gitignore`
+- Regenerate tokens if accidentally exposed
+- Use Railway environment variables for production
+- Review Twitter API usage regularly
 
 ---
 
@@ -578,10 +578,10 @@ With **Rettiwt API**, you get:
 
 | Feature           | Limit         |
 | ----------------- | ------------- |
-| **Monthly Posts** | **Unlimited** |
-| **Daily Posts**   | **Unlimited** |
-| **API Cost**      | **FREE**      |
-| **Rate Limiting** | Per-platform  |
+| Monthly Posts     | Unlimited     |
+| Daily Posts       | Unlimited     |
+| API Cost          | FREE          |
+| Rate Limiting     | Per-platform  |
 
 **Current bot usage:** ~600 posts/month (1 main Twitter account + Bluesky + Lens)
 
