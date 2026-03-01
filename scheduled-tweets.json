@@ -25,6 +25,23 @@
       "platforms": ["twitter", "bluesky"]
     },
     {
+      "schedule": "0 13 * * 2",
+      "text": "¿Cuál fue tu primera interacción con las criptomonedas? Cuéntanos: ¿Bitcoin, Ethereum o algo más? #Bitcoin #Web3 #HistoriaCripto",
+      "language": "es",
+      "type": "engagement_question",
+      "platforms": ["twitter", "bluesky"],
+      "note": "Recovered tweet from Feb 27"
+    },
+    {
+      "schedule": "30 13 * * 2",
+      "text": "Central Bank Digital Currencies are reshaping finance. Understand how CBDCs will affect your money. Free 40-min course. https://memento-academy.com/en/learn/cbdc #CBDC #Web3",
+      "language": "en",
+      "type": "course_promo",
+      "media": "cbdc-en.png",
+      "platforms": ["twitter", "bluesky", "hey"],
+      "note": "Recovered tweet from Feb 27"
+    },
+    {
       "schedule": "0 19 * * 2",
       "text": "Did you know? The first Bitcoin purchase was two pizzas for 10,000 BTC. Today they'd be worth millions. #BitcoinHistory #Crypto",
       "language": "en",
@@ -109,6 +126,50 @@
       "type": "quiz_promo",
       "media": "crypto-quiz-og-es.png",
       "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 10 * * 2",
+      "text": "Earn MEMOs by inviting friends to Memento Academy. Get 5 MEMO per referral. https://memento-academy.com/en/referral #Web3 #Crypto #LearnAndEarn",
+      "language": "en",
+      "type": "referral_promo",
+      "media": "referral-earn-en.png",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 14 * * 3",
+      "text": "¿Cómo funciona el sistema de referidos? 1️⃣ Genera tu código 2️⃣ Comparte con amigos 3️⃣ ¡Reclama 5 MEMO por cada uno! https://memento-academy.com/es/referral #Web3",
+      "language": "es",
+      "type": "referral_promo",
+      "media": "referral-how-es.png",
+      "platforms": ["twitter", "bluesky"],
+      "note": "Referral system explanation"
+    },
+    {
+      "schedule": "0 11 * * 4",
+      "text": "Who gets the MEMOs? The person who invited (the referrer) gets 5 MEMO. The invited friend gets 0. Transparent system, no hidden rules. https://memento-academy.com/en/referral #Web3",
+      "language": "en",
+      "type": "referral_promo",
+      "media": "referral-rewards-en.png",
+      "platforms": ["twitter", "bluesky"],
+      "note": "Clarify referral rewards"
+    },
+    {
+      "schedule": "0 15 * * 5",
+      "text": "Ya tienes referidos listos para reclamar? Ve a tu Dashboard → Invita Amigos → Click en 'Reclamar 5 MEMO'. ¡Rápido y fácil! https://memento-academy.com/es/dashboard #Web3",
+      "language": "es",
+      "type": "referral_promo",
+      "media": "referral-claim-es.png",
+      "platforms": ["twitter", "bluesky"],
+      "note": "Remind users to claim referral rewards"
+    },
+    {
+      "schedule": "0 12 * * 6",
+      "text": "Referral program is 100% FREE. No hidden fees. No charges. Pure transparency. Invite friends, earn MEMOs. That's it. https://memento-academy.com/en/referral #Web3",
+      "language": "en",
+      "type": "referral_promo",
+      "media": "referral-free-en.png",
+      "platforms": ["twitter", "bluesky"],
+      "note": "Emphasize no hidden costs"
     }
   ]
 }

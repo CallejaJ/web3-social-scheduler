@@ -94,6 +94,7 @@ npm install
 3. **Get your Rettiwt API Key**
 
 Follow the full guide in [RETTIWT_SETUP.md](RETTIWT_SETUP.md):
+
 - Install Rettiwt browser extension
 - Open X.com in incognito mode
 - Click the extension to extract your API key
@@ -126,6 +127,7 @@ npm start
 ```
 
 Expected output:
+
 ```
 [✓ Rettiwt connected]
 [Connected to Bluesky]
@@ -147,6 +149,7 @@ node index.js
 In March 2026, Twitter deprecated its free API tier. All posting now requires a paid **Pro** plan ($200/month or higher).
 
 **We migrated to Rettiwt API because:**
+
 - ✅ 100% FREE - No monthly charges
 - ✅ No API limits - Post unlimited tweets
 - ✅ Multi-platform - Works with Bluesky and Lens
@@ -167,6 +170,7 @@ Quick setup (5 minutes):
 6. Paste it in your `.env` file as `RETTIWT_API_KEY`
 
 **Why incognito?**
+
 - Creates a fresh session
 - Generates an API key valid for 5 years
 - Avoids cookie conflicts
@@ -185,26 +189,27 @@ Quick setup (5 minutes):
 
 **14 tweets per week** distributed across 7 days across all platforms:
 
-| Day           | Time (Madrid) | Content Type           | Language |
-| ------------- | ------------- | ---------------------- | -------- |
-| **Monday**    | 10:00         | Motivation             | EN       |
-|               | 19:00         | Web3 Education         | ES       |
-| **Tuesday**   | 10:00         | Crypto 101 Course      | ES       |
-|               | 19:00         | Bitcoin History        | EN       |
-| **Wednesday** | 10:00         | User Engagement        | ES       |
-|               | 19:00         | CBDC Education         | EN       |
-| **Thursday**  | 10:00         | Quiz Promo             | EN       |
-|               | 19:00         | Telegram Community     | ES       |
-| **Friday**    | 10:00         | Ethereum History       | ES       |
-|               | 19:00         | Engagement Question    | EN       |
-| **Saturday**  | 10:00         | Weekend Learning       | EN       |
-|               | 16:00         | Video Promo            | ES       |
-| **Sunday**    | 10:00         | Week Prep              | ES       |
-|               | 16:00         | Quiz Opportunity       | ES       |
+| Day           | Time (Madrid) | Content Type        | Language |
+| ------------- | ------------- | ------------------- | -------- |
+| **Monday**    | 10:00         | Motivation          | EN       |
+|               | 19:00         | Web3 Education      | ES       |
+| **Tuesday**   | 10:00         | Crypto 101 Course   | ES       |
+|               | 19:00         | Bitcoin History     | EN       |
+| **Wednesday** | 10:00         | User Engagement     | ES       |
+|               | 19:00         | CBDC Education      | EN       |
+| **Thursday**  | 10:00         | Quiz Promo          | EN       |
+|               | 19:00         | Telegram Community  | ES       |
+| **Friday**    | 10:00         | Ethereum History    | ES       |
+|               | 19:00         | Engagement Question | EN       |
+| **Saturday**  | 10:00         | Weekend Learning    | EN       |
+|               | 16:00         | Video Promo         | ES       |
+| **Sunday**    | 10:00         | Week Prep           | ES       |
+|               | 16:00         | Quiz Opportunity    | ES       |
 
 ### Publishing Across Platforms
 
 Each scheduled tweet is automatically published to:
+
 - ✅ **Twitter** (via Rettiwt API)
 - ✅ **Bluesky** (via Bluesky API)
 - ✅ **Lens Protocol** (via Lens SDK)
@@ -362,11 +367,13 @@ git push
 ### Verify Bot is Running
 
 Check the bot status at:
+
 ```
 https://your-bot-url.com/status
 ```
 
 Returns:
+
 ```json
 {
   "status": "online",
@@ -569,12 +576,12 @@ node index.js
 
 With **Rettiwt API**, you get:
 
-| Feature              | Limit         |
-| -------------------- | ------------- |
-| **Monthly Posts**    | **Unlimited** |
-| **Daily Posts**      | **Unlimited** |
-| **API Cost**         | **FREE**      |
-| **Rate Limiting**    | Per-platform  |
+| Feature           | Limit         |
+| ----------------- | ------------- |
+| **Monthly Posts** | **Unlimited** |
+| **Daily Posts**   | **Unlimited** |
+| **API Cost**      | **FREE**      |
+| **Rate Limiting** | Per-platform  |
 
 **Current bot usage:** ~600 posts/month (1 main Twitter account + Bluesky + Lens)
 
