@@ -1,61 +1,67 @@
-# Memento Academy Twitter Bot
+# Web3 Social Scheduler
 
 <div align="center">
-    <img src="https://img.shields.io/badge/Node.js-18-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
-    <img src="https://img.shields.io/badge/Twitter_API-v2-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter API" />
-    <img src="https://img.shields.io/badge/Koyeb-Deployed-000000?style=for-the-badge&logo=koyeb&logoColor=white" alt="Koyeb" />
+    <img src="https://img.shields.io/badge/Node.js-22-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+    <img src="https://img.shields.io/badge/Rettiwt_API-Free-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Rettiwt API" />
+    <img src="https://img.shields.io/badge/Multi%E2%80%90Platform-Twitter%20|%20Bluesky%20|%20Lens-7B3FF2?style=for-the-badge" alt="Multi-Platform" />
     <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" alt="Status" />
 </div>
 
 <br />
 
-Automated Twitter marketing bot for **[Memento Academy](https://memento-academy.com)** - A Web3 education platform with 50K+ students.
+Multi-platform social media scheduler for **[Memento Academy](https://memento-academy.com)** - A Web3 education platform with 50K+ students.
 
-This bot handles **scheduled tweets**, **course promotions**, **community engagement**, and **automatic follower welcomes** in both English and Spanish.
+This bot handles **scheduled posts** across Twitter, Bluesky, and Lens Protocol, featuring **course promotions**, **community engagement**, and **automatic follower welcomes** in both English and Spanish. **100% free to run** - no API charges.
 
 ---
 
 ## Features
 
-- **Automated Tweet Scheduling** - 19 tweets per week on a strategic schedule
-- **Bilingual Content** - English & Spanish tweets targeting global crypto community
+- **Multi-Platform Posting** - Publishes simultaneously to Twitter, Bluesky, and Lens Protocol
+- **Free Forever** - Uses Rettiwt API (100% free, no monthly charges)
+- **Automated Tweet Scheduling** - 14 posts per week on a strategic schedule
+- **Bilingual Content** - English & Spanish posts targeting global crypto community
 - **Course Promotion** - Automated marketing for 4 free Web3 courses
 - **Follower Welcome System** - Auto-greet new followers with personalized messages
 - **Auto-Reply to Mentions** - Smart FAQ system responds to common questions automatically
 - **Community Building** - GitHub and newsletter promotion
-- **Koyeb Deployment** - Runs 24/7 in the cloud
+- **24/7 Deployment** - Runs on Koyeb, Render, or any Node.js hosting
 
 ---
 
 ## Architecture Overview
 
 ```
-┌─────────────────┐
-│   Twitter API   │
-│      (v2)       │
-└────────┬────────┘
-         │
-    ┌────▼────────────────────────┐
-    │   Twitter Bot (Node.js)     │
-    │                             │
-    │  ┌─────────────────────┐   │
-    │  │  Tweet Scheduler    │   │
-    │  │  (node-cron)        │   │
-    │  │  Uses standard      │   │
-    │  │  cron syntax        │   │
-    │  └──────────┬──────────┘   │
-    │             │               │
-    │  ┌──────────▼──────────┐   │
-    │  │  Follower Monitor   │   │
-    │  │  (Every 2 hours)    │   │
-    │  └─────────────────────┘   │
-    └─────────────────────────────┘
-    └─────────────────────────────┘
-             │
-    ┌────────▼────────┐
-    │   Koyeb Cloud   │
-    │  (24/7 Hosting) │
-    └─────────────────┘
+┌──────────────────────┐
+│   Rettiwt API        │  (Free, no API charges)
+│   Twitter Client     │
+└──────────┬───────────┘
+           │
+     ┌─────▼──────────────────────────┐
+     │  Multi-Platform Bot (Node.js)  │
+     │                                 │
+     │  ┌──────────────────────────┐  │
+     │  │  Tweet Scheduler         │  │
+     │  │  (node-cron)             │  │
+     │  │  14 posts/week           │  │
+     │  └────────┬─────────────────┘  │
+     │           │                     │
+     │  ┌────────▼──────────────────┐ │
+     │  │  Multi-Platform Router    │ │
+     │  │  Twitter → Bluesky → Lens │ │
+     │  └────────┬──────────────────┘ │
+     │           │                     │
+     └───────────┼─────────────────────┘
+                 │
+        ┌────────┴────────────┬──────────────┐
+        │                     │              │
+    ┌───▼────┐          ┌────▼────┐    ┌───▼────┐
+    │ Twitter │          │ Bluesky │    │ Lens   │
+    │(Rettiwt)│          │ Protocol│    │Protocol│
+    └────▼────┘          └────▼────┘    └───▼────┘
+        │                     │              │
+        └─────────────────────┴──────────────┘
+             (50K+ followers across platforms)
 ```
 
 ---
@@ -64,17 +70,19 @@ This bot handles **scheduled tweets**, **course promotions**, **community engage
 
 ### Prerequisites
 
-- Node.js 18+ installed
-- Twitter Developer Account with API access
-- Koyeb account (for deployment)
+- Node.js 20+ installed
+- Rettiwt API key (free, get instructions below)
+- Bluesky account (optional, for Bluesky posting)
+- Lens Protocol access (optional, for Lens posting)
+- Koyeb or Render account (for 24/7 hosting)
 
 ### Installation
 
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/CallejaJ/twitter-bot.git
-cd twitter-bot
+git clone https://github.com/CallejaJ/web3-social-scheduler.git
+cd web3-social-scheduler
 ```
 
 2. **Install dependencies**
@@ -83,19 +91,45 @@ cd twitter-bot
 npm install
 ```
 
-3. **Configure environment variables**
+3. **Get your Rettiwt API Key**
+
+Follow the full guide in [RETTIWT_SETUP.md](RETTIWT_SETUP.md):
+- Install Rettiwt browser extension
+- Open X.com in incognito mode
+- Click the extension to extract your API key
+
+4. **Configure environment variables**
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env` with your Twitter API credentials:
+Edit `.env` with your credentials:
 
 ```env
-TWITTER_API_KEY=your_api_key
-TWITTER_API_SECRET=your_api_secret
-TWITTER_ACCESS_TOKEN=your_access_token
-TWITTER_ACCESS_SECRET=your_access_secret
+# Rettiwt API (FREE - no charges!)
+RETTIWT_API_KEY=your_api_key_here
+
+# Bluesky (optional)
+BLUESKY_IDENTIFIER=your.bsky.social
+BLUESKY_PASSWORD=your_password
+
+# Lens Protocol (optional)
+LENS_PRIVATE_KEY=your_key_here
+LENS_ACCESS_TOKEN=your_token_here
+```
+
+5. **Run the bot**
+
+```bash
+npm start
+```
+
+Expected output:
+```
+[✓ Rettiwt connected]
+[Connected to Bluesky]
+=== Bot running... Press Ctrl+C to stop ===
 ```
 
 4. **Run the bot**
@@ -106,25 +140,42 @@ node index.js
 
 ---
 
-## Twitter API Setup
+## Rettiwt API Setup
 
-### 1. Create Twitter Developer App
+### Why Rettiwt Instead of Official Twitter API?
 
-1. Go to [Twitter Developer Portal](https://developer.twitter.com/en/portal/dashboard)
-2. Create a new Project and App
-3. Navigate to "Settings" → "User authentication settings"
-4. Set **App permissions** to: **Read and Write**
-5. Select **App type**: **Web App, Automated App or Bot**
-6. Fill required URLs (use `http://localhost:3000` for callback if needed)
+In March 2026, Twitter deprecated its free API tier. All posting now requires a paid **Pro** plan ($200/month or higher).
 
-### 2. Generate Tokens
+**We migrated to Rettiwt API because:**
+- ✅ 100% FREE - No monthly charges
+- ✅ No API limits - Post unlimited tweets
+- ✅ Multi-platform - Works with Bluesky and Lens
+- ✅ Easy setup - Browser extension to extract credentials
+- ✅ Reliable - Actively maintained open-source project
 
-1. Go to "Keys and tokens" tab
-2. Click **"Regenerate"** on API Key and Secret
-3. Click **"Generate"** on Access Token and Secret
-4. Copy all 4 credentials to your `.env` file
+### Getting Your Rettiwt API Key
 
-⚠️ **Important**: You MUST regenerate tokens AFTER changing permissions to "Read and Write"
+**Full guide available in [RETTIWT_SETUP.md](RETTIWT_SETUP.md)**
+
+Quick setup (5 minutes):
+
+1. Go to: https://github.com/Rishikant181/Rettiwt-API#readme
+2. Install the Rettiwt browser extension
+3. Open X.com in **incognito mode**
+4. Login with your Twitter account
+5. Click the extension → Copy the API key
+6. Paste it in your `.env` file as `RETTIWT_API_KEY`
+
+**Why incognito?**
+- Creates a fresh session
+- Generates an API key valid for 5 years
+- Avoids cookie conflicts
+
+### API Key Validity
+
+- **Duration:** 5 years (if extracted in incognito mode)
+- **Refresh:** Repeat steps 2-5 if needed
+- **Security:** Keep it private - anyone with it can post tweets on your behalf
 
 ---
 
@@ -132,37 +183,31 @@ node index.js
 
 ### Weekly Posting Schedule
 
-**19 tweets per week** distributed across 7 days:
+**14 tweets per week** distributed across 7 days across all platforms:
 
-| Day           | Time (UTC) | Type               | Language |
-| ------------- | ---------- | ------------------ | -------- |
-| **Monday**    | 09:00      | Motivation         | EN       |
-|               | 14:00      | Web3 Basics Course | EN       |
-|               | 20:00      | Industry Insight   | ES       |
-| **Tuesday**   | 09:00      | Crypto 101 Course  | ES       |
-|               | 14:00      | Community          | EN       |
-|               | 20:00      | Educational Value  | EN       |
-| **Wednesday** | 09:00      | Question           | ES       |
-|               | 14:00      | CBDC Course        | EN       |
-|               | 20:00      | Community          | ES       |
-| **Thursday**  | 09:00      | Educational Value  | EN       |
-|               | 14:00      | Security Course    | ES       |
-|               | 20:00      | Educational Value  | EN       |
-| **Friday**    | 09:00      | Call-to-Action     | ES       |
-|               | 14:00      | Question           | EN       |
-|               | 20:00      | Web3 Basics Course | ES       |
-| **Saturday**  | 10:00      | Weekend Learning   | EN       |
-|               | 16:00      | Educational Value  | ES       |
-| **Sunday**    | 10:00      | Week Prep          | ES       |
-|               | 18:00      | Call-to-Action     | EN       |
+| Day           | Time (Madrid) | Content Type           | Language |
+| ------------- | ------------- | ---------------------- | -------- |
+| **Monday**    | 10:00         | Motivation             | EN       |
+|               | 19:00         | Web3 Education         | ES       |
+| **Tuesday**   | 10:00         | Crypto 101 Course      | ES       |
+|               | 19:00         | Bitcoin History        | EN       |
+| **Wednesday** | 10:00         | User Engagement        | ES       |
+|               | 19:00         | CBDC Education         | EN       |
+| **Thursday**  | 10:00         | Quiz Promo             | EN       |
+|               | 19:00         | Telegram Community     | ES       |
+| **Friday**    | 10:00         | Ethereum History       | ES       |
+|               | 19:00         | Engagement Question    | EN       |
+| **Saturday**  | 10:00         | Weekend Learning       | EN       |
+|               | 16:00         | Video Promo            | ES       |
+| **Sunday**    | 10:00         | Week Prep              | ES       |
+|               | 16:00         | Quiz Opportunity       | ES       |
 
-### Content Distribution
+### Publishing Across Platforms
 
-- **40%** - Course Promotions
-- **25%** - Educational Value (tips, insights)
-- **20%** - Community Building (GitHub)
-- **10%** - Engagement Questions
-- **5%** - Calls-to-Action
+Each scheduled tweet is automatically published to:
+- ✅ **Twitter** (via Rettiwt API)
+- ✅ **Bluesky** (via Bluesky API)
+- ✅ **Lens Protocol** (via Lens SDK)
 
 ### Promoted Courses
 
@@ -260,37 +305,48 @@ This protects your account from engaging with scammers and maintains professiona
 ## Project Structure
 
 ```
-twitter-bot/
+web3-social-scheduler/
 ├── index.js                          # Main bot entry point
+├── rettiwt-client.js                 # Rettiwt API wrapper (NEW)
+├── bluesky-client.js                 # Bluesky API client
+├── lens-client.js                    # Lens Protocol client
 ├── follower-welcome.js               # Follower detection & welcome logic
-├── mention-replies.js                # Auto-reply to mentions (NEW)
+├── mention-replies.js                # Auto-reply to mentions
 ├── scheduled-tweets.json             # Active marketing tweet schedule
-├── scheduled-tweets-basic.json.backup # Original basic tweets
 ├── marketing-tweets-bilingual.json   # Full tweet library (reference)
 ├── followers-data.json               # Tracked followers (auto-generated)
 ├── mentions-data.json                # Tracked mentions (auto-generated)
 ├── .env                              # API credentials (DO NOT COMMIT)
 ├── .env.example                      # Template for credentials
+├── RETTIWT_SETUP.md                  # Rettiwt API setup guide (NEW)
 ├── package.json                      # Dependencies
 └── README.md                         # This file
 ```
 
 ---
 
-## Deployment on Koyeb
+## Deployment on Koyeb or Render
 
-### One-Click Deploy
+### One-Click Deploy to Koyeb
 
 1. Push your code to GitHub
 2. Go to [Koyeb.com](https://www.koyeb.com) and login with GitHub
 3. Click "Create Service" → Select **GitHub**
-4. Select `twitter-bot` repository
+4. Select `web3-social-scheduler` repository
 5. Add environment variables in Koyeb dashboard:
-   - `TWITTER_API_KEY`
-   - `TWITTER_API_SECRET`
-   - `TWITTER_ACCESS_TOKEN`
-   - `TWITTER_ACCESS_SECRET`
+   - `RETTIWT_API_KEY` (required)
+   - `BLUESKY_IDENTIFIER` (optional)
+   - `BLUESKY_PASSWORD` (optional)
+   - `LENS_*` variables (optional)
 6. Koyeb auto-deploys and runs the bot 24/7
+
+### One-Click Deploy to Render
+
+1. Go to [Render.com](https://render.com)
+2. Click "New +" → Choose "Web Service"
+3. Connect your GitHub repository
+4. Set environment variables
+5. Deploy - bot runs continuously
 
 ### Update Deployment
 
@@ -300,7 +356,23 @@ git add .
 git commit -m "Update: new tweet schedule"
 git push
 
-# Koyeb automatically redeploys!
+# Koyeb/Render automatically redeploy!
+```
+
+### Verify Bot is Running
+
+Check the bot status at:
+```
+https://your-bot-url.com/status
+```
+
+Returns:
+```json
+{
+  "status": "online",
+  "uptime": 12345678,
+  "timestamp": 1704067200000
+}
 ```
 
 ---
@@ -495,13 +567,18 @@ node index.js
 
 ## API Rate Limits
 
-| Tier      | Monthly Tweets | Rate Limit        |
-| --------- | -------------- | ----------------- |
-| **Free**  | 1,500          | 50 tweets/15 min  |
-| **Basic** | 3,000          | 100 tweets/15 min |
-| **Pro**   | 10,000         | 300 tweets/15 min |
+With **Rettiwt API**, you get:
 
-Current bot usage: **~570 tweets/month** (well within Free tier)
+| Feature              | Limit         |
+| -------------------- | ------------- |
+| **Monthly Posts**    | **Unlimited** |
+| **Daily Posts**      | **Unlimited** |
+| **API Cost**         | **FREE**      |
+| **Rate Limiting**    | Per-platform  |
+
+**Current bot usage:** ~600 posts/month (1 main Twitter account + Bluesky + Lens)
+
+**Note:** Although posts are unlimited with Rettiwt, each platform (Twitter, Bluesky, Lens) has its own rate limits. This bot respects those limits automatically.
 
 ---
 
@@ -564,7 +641,9 @@ Need help? Reach out:
 ---
 
 <div align="center">
-  <strong>Built with ❤️ for the Web3 community</strong>
+  <strong>Multi-platform scheduler built for the Web3 community</strong>
   <br />
-  <sub>Last updated: January 2026 | Bot Version: 2.0 (Marketing Edition)</sub>
+  <sub>Last updated: March 2026 | Version: 3.0 (Rettiwt Edition)</sub>
+  <br />
+  <sub>Migrated from Twitter API v2 (paid) to Rettiwt API (free)</sub>
 </div>
