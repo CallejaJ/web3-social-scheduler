@@ -299,7 +299,7 @@ The bot includes intelligent spam filtering to avoid responding to scam/spam men
 
 **Spam examples** (bot will ignore):
 
-- "🔥 BIGGEST Crypto PUMP! Join now! 🚀"
+- "BIGGEST Crypto PUMP! Join now!"
 - "$TOKEN airdrop LIVE! Claim rewards: link"
 - "Free tokens! Click here! Limited time!"
 
