@@ -102,10 +102,10 @@ async function sendWelcomeTweet(username) {
     }
 
     await rwClient.v2.tweet(welcomeText);
-    console.log(`✓ Welcome tweet sent to @${username}`);
+    console.log(`[Welcome tweet sent] to @${username}`);
     return true;
   } catch (error) {
-    console.error(`✗ Error sending welcome tweet to @${username}:`, error.message);
+    console.error(`[Error sending welcome tweet] to @${username}:`, error.message);
     return false;
   }
 }
@@ -167,9 +167,9 @@ async function checkNewFollowers() {
     data.lastCheck = new Date().toISOString();
     saveFollowersData(data);
 
-    console.log('✓ Follower check completed\n');
+    console.log('[Follower check completed]\n');
   } catch (error) {
-    console.error('✗ Error checking followers:', error.message);
+    console.error('[Error checking followers]:', error.message);
     if (error.data) {
       console.error('  Details:', JSON.stringify(error.data, null, 2));
     }

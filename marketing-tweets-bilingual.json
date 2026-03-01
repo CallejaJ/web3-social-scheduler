@@ -68,14 +68,14 @@
   ],
   "engagement_tweets": {
     "questions_en": [
-      "What was your first interaction with cryptocurrency? Share your story below. 👇",
-      "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it. 💭",
-      "What's the biggest barrier stopping you from learning about blockchain? Let's solve it together. 🤔"
+      "What was your first interaction with cryptocurrency? Share your story below.",
+      "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it.",
+      "What's the biggest barrier stopping you from learning about blockchain? Let's solve it together."
     ],
     "questions_es": [
       "¿Cuál fue tu primera interacción con las criptomonedas? Cuéntanos tu historia: ¿Fue Bitcoin, Ethereum o algo más?\n\n#Bitcoin #Web3 #HistoriaCripto",
-      "¿Qué tema de Web3 te confunde más? Dinos y crearemos contenido para aclararlo. 💭",
-      "¿Cuál es la mayor barrera que te impide aprender sobre blockchain? Resolvámosla juntos. 🤔"
+      "¿Qué tema de Web3 te confunde más? Dinos y crearemos contenido para aclararlo.",
+      "¿Cuál es la mayor barrera que te impide aprender sobre blockchain? Resolvámosla juntos."
     ],
     "educational_value_en": [
       "Fun fact: The first Bitcoin transaction was for 2 pizzas. Today they'd be worth millions. #CryptoHistory",
@@ -128,14 +128,14 @@
       "El futuro de internet se está construyendo ahora mismo. No te quedes atrás. Empieza a aprender hoy. #Web3"
     ],
     "quiz_en": [
-      "🧠 Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. 🏆 https://memento-academy.com/quiz #LearnToEarn",
-      "Thinking you know Web3? Prove it in our new quiz! 🚀 https://memento-academy.com/quiz #Web3Quiz",
-      "Educational challenge! 🤓 Complete the quiz and level up your knowledge. https://memento-academy.com/quiz"
+      "Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. https://memento-academy.com/quiz #LearnToEarn",
+      "Thinking you know Web3? Prove it in our new quiz! https://memento-academy.com/quiz #Web3Quiz",
+      "Educational challenge! Complete the quiz and level up your knowledge. https://memento-academy.com/quiz"
     ],
     "quiz_es": [
-      "🧠 ¡Es hora de probar tus habilidades! Toma nuestro quiz 'Learn to Earn' y demuestra lo que sabes. 🏆 https://memento-academy.com/quiz #LearnToEarn",
-      "¿Crees que sabes de Web3? ¡Pruébalo en nuestro nuevo quiz! 🚀 https://memento-academy.com/quiz #Web3Quiz",
-      "¡Reto educativo! 🤓 Completa el quiz y sube de nivel tu conocimiento. https://memento-academy.com/quiz"
+      "¡Es hora de probar tus habilidades! Toma nuestro quiz 'Learn to Earn' y demuestra lo que sabes. https://memento-academy.com/quiz #LearnToEarn",
+      "¿Crees que sabes de Web3? ¡Pruébalo en nuestro nuevo quiz! https://memento-academy.com/quiz #Web3Quiz",
+      "¡Reto educativo! Completa el quiz y sube de nivel tu conocimiento. https://memento-academy.com/quiz"
     ]
   }
 }

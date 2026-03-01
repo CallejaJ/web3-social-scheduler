@@ -41,16 +41,16 @@
     {
       "type": "question",
       "tweets": [
-        "¿Cuál fue tu primer contacto con las criptomonedas? Cuéntanos tu historia. 👇",
-        "¿Qué tema de Web3 te gustaría entender mejor? Dinos y creamos contenido para ti. 💭",
-        "¿Prefieres tutoriales en video o artículos escritos? Ayúdanos a mejorar nuestros cursos. 🎓",
-        "¿Qué es lo más confuso de blockchain para ti? Queremos explicarlo mejor. 🤔"
+        "¿Cuál fue tu primer contacto con las criptomonedas? Cuéntanos tu historia.",
+        "¿Qué tema de Web3 te gustaría entender mejor? Dinos y creamos contenido para ti.",
+        "¿Prefieres tutoriales en video o artículos escritos? Ayúdanos a mejorar nuestros cursos.",
+        "¿Qué es lo más confuso de blockchain para ti? Queremos explicarlo mejor."
       ]
     },
     {
       "type": "value_content",
       "tweets": [
-        "Dato curioso: La primera transacción de Bitcoin fue por... ¡2 pizzas! 🍕 Hoy valdrían millones. #CryptoHistory",
+        "Dato curioso: La primera transacción de Bitcoin fue por... ¡2 pizzas! Hoy valdrían millones. #CryptoHistory",
         "Web3 no es solo sobre dinero. Es sobre devolver el control de los datos a las personas. #Decentralization",
         "Un smart contract es como un contrato que se ejecuta solo cuando se cumplen las condiciones. Simple, ¿verdad? #Blockchain",
         "La diferencia clave: Bitcoin es una moneda. Ethereum es una plataforma para crear aplicaciones. #Crypto101"
@@ -85,10 +85,10 @@
     {
       "type": "quiz",
       "tweets": [
-        "🧠 Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. 🏆 https://memento-academy.com/quiz #LearnToEarn",
-        "Thinking you know Web3? Prove it in our new quiz! 🚀 https://memento-academy.com/quiz #Web3Quiz",
-        "Educational challenge! 🤓 Complete the quiz and level up your knowledge. https://memento-academy.com/quiz",
-        "¿Listo para un reto? Participa en nuestro quiz 'Learn to Earn' y demuestra tus conocimientos. 💡 https://memento-academy.com/quiz"
+        "Time to test your skills! Take our 'Learn to Earn' quiz and show what you know. https://memento-academy.com/quiz #LearnToEarn",
+        "Thinking you know Web3? Prove it in our new quiz! https://memento-academy.com/quiz #Web3Quiz",
+        "Educational challenge! Complete the quiz and level up your knowledge. https://memento-academy.com/quiz",
+        "¿Listo para un reto? Participa en nuestro quiz 'Learn to Earn' y demuestra tus conocimientos. https://memento-academy.com/quiz"
       ],
       "media": "learn-to-earn.jpg"
     }

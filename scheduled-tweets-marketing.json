@@ -80,7 +80,7 @@
     },
     {
       "schedule": "0 14 * * 5",
-      "text": "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it. 💭",
+      "text": "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it.",
       "language": "en",
       "type": "engagement_question"
     },

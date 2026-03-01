@@ -101,7 +101,7 @@ const FALLBACK_REPLY = {
 const SPAM_INDICATORS = {
   // Pump & dump / scam keywords
   scamKeywords: [
-    'pump', 'dump', 'moon', 'lambo', '🚀', '🔥', '💎',
+    'pump', 'dump', 'moon', 'lambo',
     'claim', 'airdrop', 'free tokens', 'free coins', 'tokens',
     'reward', 'rewards', 'giveaway', 'win',
     'pool', 'staking pool', 'liquidity pool',
@@ -132,34 +132,34 @@ function isSpam(text) {
   ).length;
 
   if (spamKeywordCount >= 2) {
-    console.log(`  🚫 SPAM: Contains ${spamKeywordCount} spam keywords`);
+    console.log(`  [SPAM] Contains ${spamKeywordCount} spam keywords`);
     return true;
   }
 
   // 2. Check for multiple token mentions (e.g., $ENA, $USDT)
   const tokenMatches = text.match(SPAM_INDICATORS.tokenPattern);
   if (tokenMatches && tokenMatches.length >= 2) {
-    console.log(`  🚫 SPAM: Contains ${tokenMatches.length} token symbols`);
+    console.log(`  [SPAM] Contains ${tokenMatches.length} token symbols`);
     return true;
   }
 
   // 2b. Single token + spam keyword = spam (e.g., "claim $TOKEN")
   if (tokenMatches && tokenMatches.length >= 1 && spamKeywordCount >= 1) {
-    console.log(`  🚫 SPAM: Token symbol + spam keyword`);
+    console.log(`  [SPAM] Token symbol + spam keyword`);
     return true;
   }
 
   // 3. Check for multiple URLs (spam tweets often have many links)
   const urlMatches = text.match(SPAM_INDICATORS.urlPattern);
   if (urlMatches && urlMatches.length >= 2) {
-    console.log(`  🚫 SPAM: Contains ${urlMatches.length} URLs`);
+    console.log(`  [SPAM] Contains ${urlMatches.length} URLs`);
     return true;
   }
 
   // 4. Check for excessive emojis (more than 5)
   const emojiMatches = text.match(SPAM_INDICATORS.emojiPattern);
   if (emojiMatches && emojiMatches.length >= 5) {
-    console.log(`  🚫 SPAM: Contains ${emojiMatches.length} emojis`);
+    console.log(`  [SPAM] Contains ${emojiMatches.length} emojis`);
     return true;
   }
 
@@ -167,7 +167,7 @@ function isSpam(text) {
   if (text.length < 50 && urlMatches && urlMatches.length >= 1) {
     const textWithoutUrls = text.replace(SPAM_INDICATORS.urlPattern, '').trim();
     if (textWithoutUrls.length < 20) {
-      console.log(`  🚫 SPAM: Too short with URL (${textWithoutUrls.length} chars)`);
+      console.log(`  [SPAM] Too short with URL (${textWithoutUrls.length} chars)`);
       return true;
     }
   }
@@ -234,10 +234,10 @@ async function uploadMedia(filePath) {
       return null;
     }
     const mediaId = await client.v1.uploadMedia(filePath);
-    console.log(`✓ Media uploaded: ${mediaId}`);
+    console.log(`[Media uploaded]: ${mediaId}`);
     return mediaId;
   } catch (error) {
-    console.error('✗ Error uploading media:', error.message);
+    console.error('[Error uploading media]:', error.message);
     return null;
   }
 }
@@ -256,10 +256,10 @@ async function replyToMention(mention, replyText, mediaPath = null) {
     }
 
     await rwClient.v2.reply(params.text, mention.id, { media: params.media });
-    console.log(`✓ Replied to @${mention.author_id}: "${replyText.substring(0, 60)}..." (Media: ${!!params.media})`);
+    console.log(`[Replied] to @${mention.author_id}: "${replyText.substring(0, 60)}..." (Media: ${!!params.media})`);
     return true;
   } catch (error) {
-    console.error(`✗ Error replying to mention ${mention.id}:`, error.message);
+    console.error(`[Error replying] to mention ${mention.id}:`, error.message);
     return false;
   }
 }
@@ -299,12 +299,12 @@ async function checkMentions() {
 
       // Check for spam - block and skip if detected
       if (isSpam(mention.text)) {
-        console.log(`  🚫 SPAM detected from @${mention.author_id}. Blocking user...`);
+        console.log(`  [SPAM detected] from @${mention.author_id}. Blocking user...`);
         try {
             await rwClient.v2.block(myUserId, mention.author_id);
-            console.log(`  ✓ Blocked @${mention.author_id}`);
+            console.log(`  [Blocked] @${mention.author_id}`);
         } catch (blockError) {
-            console.error(`  ✗ Failed to block @${mention.author_id}:`, blockError.message);
+            console.error(`  [Failed to block] @${mention.author_id}:`, blockError.message);
         }
 
         data.repliedTweets.push(mention.id); // Mark as processed to avoid checking again
@@ -356,9 +356,9 @@ async function checkMentions() {
     // Save updated data
     saveMentionsData(data);
 
-    console.log('✓ Mention check completed\n');
+    console.log('[Mention check completed]\n');
   } catch (error) {
-    console.error('✗ Error checking mentions:', error.message);
+    console.error('[Error checking mentions]:', error.message);
     if (error.data) {
       console.error('  Details:', JSON.stringify(error.data, null, 2));
     }

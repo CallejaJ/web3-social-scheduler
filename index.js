@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { TwitterApi } = require('twitter-api-v2');
+const { RettwitwClient } = require('./rettiwt-client');
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
@@ -35,15 +35,8 @@ app.listen(port, () => console.log(`Monitor del bot activo en puerto ${port}`));
 // Initialize Lens Client
 const lensClient = new LensClient();
 
-// Configure Twitter client
-const client = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_ACCESS_SECRET,
-});
-
-const rwClient = client.readWrite;
+// Configure Rettiwt client (alternative to official Twitter API - FREE!)
+const twitterClient = new RettwitwClient();
 
 // Load scheduled tweets from JSON file
 function loadScheduledTweets() {
@@ -90,30 +83,16 @@ function getRandomHashtags(category = 'general', language = 'en', count = 2) {
 // Post a tweet with optional media attachment
 async function postTweet(text, mediaPath = null) {
   try {
-    let tweetData = { text };
-
-    // Upload media if provided
-    if (mediaPath) {
-      console.log(`  Uploading media: ${mediaPath}`);
-      // Check if file exists in either location
-      if (!fs.existsSync(mediaPath)) {
-         throw new Error(`Media file not found: ${mediaPath}`);
-      }
-      
-      const mediaId = await rwClient.v1.uploadMedia(mediaPath);
-      tweetData.media = { media_ids: [mediaId] };
-      console.log(`  ✓ Media uploaded: ${mediaId}`);
+    // Note: Rettiwt API simplifies media handling compared to official API
+    if (mediaPath && !fs.existsSync(mediaPath)) {
+      console.warn(`  [Warning] Media file not found: ${mediaPath}`);
     }
 
-    const tweet = await rwClient.v2.tweet(tweetData);
-    console.log(`✓ Tweet posted successfully: "${text.substring(0, 50)}..."`);
-    console.log(`  Tweet ID: ${tweet.data.id}`);
+    const tweet = await twitterClient.postTweet(text, mediaPath);
+    console.log(`[Tweet posted successfully]: "${text.substring(0, 50)}..."`);
     return tweet;
   } catch (error) {
-    console.error('✗ Error posting tweet:', error.message);
-    if (error.data) {
-      console.error('  Details:', JSON.stringify(error.data, null, 2));
-    }
+    console.error('[Error posting tweet]:', error.message);
     throw error;
   }
 }
@@ -129,13 +108,13 @@ function scheduleTwitterBot() {
   // Create scheduled jobs for each tweet
   config.tweets.forEach((item, index) => {
     if (!item.schedule || !item.text) {
-      console.warn(`⚠ Tweet #${index + 1} missing schedule or text, skipping...`);
+      console.warn(`[Warning] Tweet #${index + 1} missing schedule or text, skipping...`);
       return;
     }
 
     // Validate cron format
     if (!cron.validate(item.schedule)) {
-      console.error(`✗ Invalid schedule for tweet #${index + 1}: "${item.schedule}"`);
+      console.error(`[Invalid schedule] for tweet #${index + 1}: "${item.schedule}"`);
       return;
     }
 
@@ -205,7 +184,7 @@ function scheduleTwitterBot() {
           try {
              console.log(`\n  [Hey/Lens] Posting: "${heyText.substring(0, 40)}..."`);
              await lensClient.post(heyText, mediaPath);
-             console.log('  [Hey/Lens] ✓ Post initiated');
+             console.log('  [Hey/Lens] [Post initiated]');
           } catch (lError) {
              console.error('Failed to post to Lens:', lError.message);
           }
@@ -218,7 +197,7 @@ function scheduleTwitterBot() {
       timezone: "Europe/Madrid"
     });
 
-    console.log(`✓ Tweet #${index + 1} scheduled: ${item.schedule}`);
+    console.log(`[Tweet scheduled] #${index + 1}: ${item.schedule}`);
     console.log(`  Content: "${item.text.substring(0, 60)}..."`);
   });
 
@@ -228,16 +207,21 @@ function scheduleTwitterBot() {
 // Test API connection
 async function testConnection() {
   try {
-    console.log('Testing Twitter API connection...');
-    const user = await rwClient.v2.me();
-    console.log(`✓ Connected as: @${user.data.username} (${user.data.name})`);
+    console.log('Testing Rettiwt API connection...');
+    const connected = await twitterClient.connect();
+    
+    if (!connected) {
+      console.error('  Failed to connect to Rettiwt API');
+      console.error('  Check your RETTIWT_API_KEY in .env file');
+      return false;
+    }
+    
+    console.log('[Connected as]: Rettiwt API Ready');
     console.log('');
     return true;
   } catch (error) {
-    console.error('✗ Twitter API connection error:', error.message);
-    if (error.code === 401) {
-      console.error('  Credentials are invalid. Check your .env file');
-    }
+    console.error('[Twitter API connection error]:', error.message);
+    console.error('  Make sure RETTIWT_API_KEY is set in your .env file');
     return false;
   }
 }
@@ -247,7 +231,7 @@ async function testBlueskyConnection() {
   console.log('Testing Bluesky connection...');
   const success = await loginToBluesky();
   if (success) {
-    console.log('✓ Connected to Bluesky');
+    console.log('[Connected to Bluesky]');
   } 
   console.log('');
   return success;
@@ -263,8 +247,8 @@ async function startBot() {
     process.exit(1);
   }
   
-  if (!connected) console.warn('⚠ Twitter connection failed. Bot will only run for Bluesky (if configured).');
-  if (!blueskyConnected) console.warn('⚠ Bluesky connection failed. Bot will only run for Twitter.');
+  if (!connected) console.warn('[Warning] Twitter connection failed. Bot will only run for Bluesky (if configured).');
+  if (!blueskyConnected) console.warn('[Warning] Bluesky connection failed. Bot will only run for Twitter.');
 
   scheduleTwitterBot();
 
@@ -274,7 +258,7 @@ async function startBot() {
   //   await checkNewFollowers();
   // });
 
-  console.log('⚠ Follower welcome system disabled (requires paid API tier)');
+  console.log('[Warning] Follower welcome system disabled (requires paid API tier)');
 
   // Schedule mention check every 30 minutes
   // Re-enabled with Spam Blocking protection
@@ -283,7 +267,7 @@ async function startBot() {
   //   console.log(`\n[${new Date().toLocaleString()}] Checking for new mentions...`);
   //   await checkMentions();
   // });
-  console.log('⚠ Auto-reply system DISABLED (requires Basic Tier to avoid Rate Limits)');
+  console.log('[Warning] Auto-reply system DISABLED (requires Basic Tier to avoid Rate Limits)');
   console.log('');
 }
 
