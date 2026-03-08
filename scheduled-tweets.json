@@ -1,101 +1,6 @@
 {
   "tweets": [
     {
-      "schedule": "0 10 * * 1",
-      "text": "New week, new opportunities. Ready to master Web3? Start with our free courses. https://memento-academy.com/en/courses #MondayMotivation #Web3",
-      "language": "en",
-      "type": "motivation",
-      "media": "web3-basics-en.png",
-      "platforms": ["twitter", "bluesky", "hey"]
-    },
-    {
-      "schedule": "0 19 * * 1",
-      "text": "Capas de Seguridad Blockchain. Entiende cómo se protegen tus activos digitales. https://memento-academy.com/es/learn/safety",
-      "language": "es",
-      "type": "education",
-      "media": "security_layers_es.png",
-      "hashtags_category": "security"
-    },
-    {
-      "schedule": "0 10 * * 2",
-      "text": "Bitcoin, Ethereum, altcoins... ¿te sientes perdido? Todo lo que necesitas saber en un curso gratuito. https://memento-academy.com/es/learn/crypto-101 #Crypto #Web3",
-      "language": "es",
-      "type": "course_promo",
-      "media": "crypto-101-es.png",
-      "platforms": ["twitter", "bluesky"]
-    },
-    {
-      "schedule": "0 13 * * 2",
-      "text": "¿Cuál fue tu primera interacción con las criptomonedas? Cuéntanos: ¿Bitcoin, Ethereum o algo más? #Bitcoin #Web3 #HistoriaCripto",
-      "language": "es",
-      "type": "engagement_question",
-      "platforms": ["twitter", "bluesky"],
-      "note": "Recovered tweet from Feb 27"
-    },
-    {
-      "schedule": "30 13 * * 2",
-      "text": "Central Bank Digital Currencies are reshaping finance. Understand how CBDCs will affect your money. Free 40-min course. https://memento-academy.com/en/learn/cbdc #CBDC #Web3",
-      "language": "en",
-      "type": "course_promo",
-      "media": "cbdc-en.png",
-      "platforms": ["twitter", "bluesky", "hey"],
-      "note": "Recovered tweet from Feb 27"
-    },
-    {
-      "schedule": "0 19 * * 2",
-      "text": "Did you know? The first Bitcoin purchase was two pizzas for 10,000 BTC. Today they'd be worth millions. #BitcoinHistory #Crypto",
-      "language": "en",
-      "type": "curiosity",
-      "media": "curiosity-bitcoin-pizza-en.png",
-      "platforms": ["twitter", "bluesky"]
-    },
-    {
-      "schedule": "0 10 * * 3",
-      "text": "¿Cuál fue tu primera interacción con las criptomonedas? Cuéntanos: ¿Bitcoin, Ethereum o algo más? #Bitcoin #Web3 #HistoriaCripto",
-      "language": "es",
-      "type": "engagement_question",
-      "platforms": ["twitter", "bluesky"]
-    },
-    {
-      "schedule": "0 19 * * 3",
-      "text": "Central Bank Digital Currencies are reshaping finance. Understand how CBDCs will affect your money. Free 40-min course. https://memento-academy.com/en/learn/cbdc #CBDC #Web3",
-      "language": "en",
-      "type": "course_promo",
-      "media": "cbdc-en.png",
-      "platforms": ["twitter", "bluesky", "hey"]
-    },
-    {
-      "schedule": "0 10 * * 4",
-      "text": "Think you know Crypto? Test your skills and earn MEMO token rewards. https://memento-academy.com/en/game #CryptoQuiz #Web3 #LearnAndEarn",
-      "language": "en",
-      "type": "quiz_promo",
-      "media": "crypto-quiz-og-en.png",
-      "platforms": ["twitter", "bluesky"]
-    },
-    {
-      "schedule": "0 19 * * 4",
-      "text": "Si aprendes Web3, blockchain o crypto — este grupo es para ti.\n\nUn agente IA que responde dudas en tiempo real, hace quizzes semanales con tokens MEMO y modera sin spam.\n\nEntra gratis: https://t.me/memento_academy #Web3 #AI #Crypto #Telegram",
-      "language": "es",
-      "type": "telegram_community",
-      "media": "telegram-community-es.png",
-      "platforms": ["twitter", "bluesky", "hey"]
-    },
-    {
-      "schedule": "0 10 * * 5",
-      "text": "¿Sabías que Vitalik Buterin cofundó Ethereum después de que Blizzard debilitara su personaje favorito en World of Warcraft? #Ethereum #Vitalik #CryptoHistory",
-      "language": "es",
-      "type": "curiosity",
-      "media": "curiosity-vitalik-wow.png",
-      "platforms": ["twitter", "bluesky"]
-    },
-    {
-      "schedule": "0 19 * * 5",
-      "text": "Which Web3 topic confuses you the most? Tell us and we'll create content to clarify it. #Web3 #Education",
-      "language": "en",
-      "type": "engagement_question",
-      "platforms": ["twitter"]
-    },
-    {
       "schedule": "0 10 * * 6",
       "text": "Weekend learning: Dive into blockchain fundamentals with our free courses. Perfect for your Saturday coffee. https://memento-academy.com/en/courses #WeekendLearning #Web3",
       "language": "en",
@@ -113,7 +18,7 @@
     },
     {
       "schedule": "0 10 * * 0",
-      "text": "Prepárate para la semana: ¿Qué aprenderás sobre Web3? Explora nuestros cursos gratuitos. https://memento-academy.com/es/courses #DomingoDeAprendizaje #Web3",
+      "text": "Prepárate para la semana: ¿Qué aprenderás sobre Web3? Explora nuestros cursos gratuitos y certifícate. https://memento-academy.com/es/courses #DomingoDeAprendizaje #Web3",
       "language": "es",
       "type": "week_prep",
       "media": "web3-basics-es.png",
@@ -121,55 +26,89 @@
     },
     {
       "schedule": "0 16 * * 0",
-      "text": "¿Cuánto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas. https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn #Web3",
+      "text": "¿Cuánto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas en MEMO tokens. https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn #Web3",
       "language": "es",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-es.png",
       "platforms": ["twitter", "bluesky"]
     },
     {
-      "schedule": "0 10 * * 2",
-      "text": "Earn MEMOs by inviting friends to Memento Academy. Get 5 MEMO per referral. https://memento-academy.com/en/referral #Web3 #Crypto #LearnAndEarn",
+      "schedule": "0 10 * * 1",
+      "text": "New week, new opportunities 💪 Ready to master Web3? Start with our free courses, from basics to advanced topics. https://memento-academy.com/en/courses #MondayMotivation #Web3",
       "language": "en",
-      "type": "referral_promo",
-      "media": "referral-earn-en.png",
+      "type": "motivation",
+      "media": "web3-basics-en.png",
       "platforms": ["twitter", "bluesky"]
     },
     {
-      "schedule": "0 14 * * 3",
-      "text": "¿Cómo funciona el sistema de referidos? 1️⃣ Genera tu código 2️⃣ Comparte con amigos 3️⃣ ¡Reclama 5 MEMO por cada uno! https://memento-academy.com/es/referral #Web3",
+      "schedule": "0 19 * * 1",
+      "text": "Capas de Seguridad Blockchain: Entiende cómo se protegen tus activos digitales antes de hacer tu primer movimiento en Web3. 🔐 https://memento-academy.com/es/learn/safety #Ciberseguridad #Web3",
       "language": "es",
-      "type": "referral_promo",
-      "media": "referral-how-es.png",
-      "platforms": ["twitter", "bluesky"],
-      "note": "Referral system explanation"
+      "type": "education",
+      "media": "security_layers_es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
-      "schedule": "0 11 * * 4",
-      "text": "Who gets the MEMOs? The person who invited (the referrer) gets 5 MEMO. The invited friend gets 0. Transparent system, no hidden rules. https://memento-academy.com/en/referral #Web3",
-      "language": "en",
-      "type": "referral_promo",
-      "media": "referral-rewards-en.png",
-      "platforms": ["twitter", "bluesky"],
-      "note": "Clarify referral rewards"
-    },
-    {
-      "schedule": "0 15 * * 5",
-      "text": "Ya tienes referidos listos para reclamar? Ve a tu Dashboard → Invita Amigos → Click en 'Reclamar 5 MEMO'. ¡Rápido y fácil! https://memento-academy.com/es/dashboard #Web3",
+      "schedule": "0 10 * * 2",
+      "text": "Bitcoin, Ethereum, altcoins... ¿te sientes perdido? Descubre todo lo que necesitas saber en 60 minutos. https://memento-academy.com/es/learn/crypto-101 #Crypto #Web3",
       "language": "es",
-      "type": "referral_promo",
-      "media": "referral-claim-es.png",
-      "platforms": ["twitter", "bluesky"],
-      "note": "Remind users to claim referral rewards"
+      "type": "course_promo",
+      "media": "crypto-101-es.png",
+      "platforms": ["twitter", "bluesky"]
     },
     {
-      "schedule": "0 12 * * 6",
-      "text": "Referral program is 100% FREE. No hidden fees. No charges. Pure transparency. Invite friends, earn MEMOs. That's it. https://memento-academy.com/en/referral #Web3",
+      "schedule": "0 19 * * 2",
+      "text": "Fun fact: The first Bitcoin purchase was 2 pizzas for 10,000 BTC 🍕 If you had made that trade, you'd be a billionaire today! #BitcoinHistory #Crypto #Web3",
       "language": "en",
-      "type": "referral_promo",
-      "media": "referral-free-en.png",
-      "platforms": ["twitter", "bluesky"],
-      "note": "Emphasize no hidden costs"
+      "type": "curiosity",
+      "media": "curiosity-bitcoin-pizza-en.png",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 10 * * 3",
+      "text": "¿Cuál fue tu primera interacción con las criptomonedas? 🤔 Cuéntanos en los comentarios: ¿Bitcoin, Ethereum o algo completamente diferente? #Bitcoin #Web3 #HistoriaCripto",
+      "language": "es",
+      "type": "engagement_question",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 19 * * 3",
+      "text": "Central Bank Digital Currencies (CBDCs) are reshaping global finance. Understand how they'll affect your money and privacy. Free course. https://memento-academy.com/en/learn/cbdc #CBDC #Web3",
+      "language": "en",
+      "type": "course_promo",
+      "media": "cbdc-en.png",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 10 * * 4",
+      "text": "Think you know Crypto? 🧠 Test your skills in our interactive game and earn MEMO token rewards. No fees, real rewards. https://memento-academy.com/en/game #CryptoQuiz #Web3 #LearnAndEarn",
+      "language": "en",
+      "type": "quiz_promo",
+      "media": "crypto-quiz-og-en.png",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 19 * * 4",
+      "text": "Aprende Web3, blockchain y crypto de forma interactiva. Un agente IA responde dudas en tiempo real + quizzes con recompensas. Gratis. https://t.me/memento_academy #Web3 #AI #Telegram",
+      "language": "es",
+      "type": "telegram_community",
+      "media": "telegram-community-es.png",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 10 * * 5",
+      "text": "Did you know? Vitalik Buterin created Ethereum after Blizzard nerfed his favorite World of Warcraft character 😄 #Ethereum #Vitalik #CryptoHistory",
+      "language": "en",
+      "type": "curiosity",
+      "media": "curiosity-vitalik-wow.png",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
+      "schedule": "0 19 * * 5",
+      "text": "¿Cuál es el tema de Web3 que más te confunde? 🤷 Cuéntanos y crearemos contenido educativo especialmente para ti. Tu feedback moldea nuestro plan.",
+      "language": "es",
+      "type": "engagement_question",
+      "platforms": ["twitter", "bluesky"]
     }
   ]
 }
