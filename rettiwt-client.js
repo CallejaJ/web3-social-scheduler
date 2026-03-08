@@ -9,6 +9,9 @@ class RettwitwClient {
   constructor() {
     this.client = null;
     this.isConnected = false;
+    this.apiKey = null;
+    this.reconnectAttempts = 0;
+    this.maxReconnectAttempts = 3;
   }
 
   /**
@@ -31,15 +34,47 @@ class RettwitwClient {
         );
       }
 
+      this.apiKey = apiKey; // Store for reconnection
       this.client = new Rettiwt({ apiKey });
       this.isConnected = true;
+      this.reconnectAttempts = 0; // Reset counter on successful connection
       
       console.log('[✓ Rettiwt connected]');
       return true;
     } catch (error) {
       console.error('[✗ Rettiwt connection error]:', error.message);
+      this.isConnected = false;
       return false;
     }
+  }
+
+  /**
+   * Attempt to reconnect if connection is lost
+   * @returns {Promise<boolean>} - True if reconnected successfully
+   */
+  async reconnect() {
+    if (this.reconnectAttempts >= this.maxReconnectAttempts) {
+      console.error('[✗ Max reconnection attempts reached]');
+      return false;
+    }
+
+    this.reconnectAttempts++;
+    console.log(`[Rettiwt] Attempting to reconnect... (${this.reconnectAttempts}/${this.maxReconnectAttempts})`);
+    
+    try {
+      // Try to create a fresh client
+      if (this.apiKey) {
+        this.client = new Rettiwt({ apiKey: this.apiKey });
+        this.isConnected = true;
+        this.reconnectAttempts = 0; // Reset on success
+        console.log('[✓ Rettiwt reconnected]');
+        return true;
+      }
+    } catch (error) {
+      console.error('[✗ Reconnection failed]:', error.message);
+    }
+    
+    return false;
   }
 
   /**
@@ -50,20 +85,29 @@ class RettwitwClient {
    */
   async postTweet(text, mediaPath = null) {
     try {
+      // Auto-reconnect if connection lost
       if (!this.isConnected) {
-        throw new Error('Rettiwt client not connected');
+        console.log('[Rettiwt] Connection lost, attempting to reconnect...');
+        const reconnected = await this.reconnect();
+        if (!reconnected) {
+          throw new Error('Rettiwt client not connected and reconnection failed');
+        }
       }
 
-      // Post tweet (Rettiwt handles media directly if needed)
-      const response = await this.client.tweet.post(text);
+      // Post tweet (Rettiwt expects an object with 'text' property)
+      const response = await this.client.tweet.post({ text: text });
       
       console.log('[✓ Tweet posted successfully]');
-      console.log(`  Tweet ID: ${response.id || 'N/A'}`);
+      if (response && response.id) {
+        console.log(`  Tweet ID: ${response.id}`);
+      }
       console.log(`  Text: "${text.substring(0, 50)}..."`);
       
       return response;
     } catch (error) {
       console.error('[✗ Error posting tweet]:', error.message);
+      // Mark as disconnected on failure for next attempt
+      this.isConnected = false;
       throw error;
     }
   }
@@ -77,11 +121,16 @@ class RettwitwClient {
    */
   async scheduleTweet(text, scheduledTime, mediaPath = null) {
     try {
+      // Auto-reconnect if connection lost
       if (!this.isConnected) {
-        throw new Error('Rettiwt client not connected');
+        console.log('[Rettiwt] Connection lost, attempting to reconnect...');
+        const reconnected = await this.reconnect();
+        if (!reconnected) {
+          throw new Error('Rettiwt client not connected and reconnection failed');
+        }
       }
 
-      // Rettiwt API supports scheduling
+      // Rettiwt API supports scheduling with object format
       const response = await this.client.tweet.schedule({
         text: text,
         scheduledTime: scheduledTime
@@ -94,6 +143,8 @@ class RettwitwClient {
       return response;
     } catch (error) {
       console.error('[✗ Error scheduling tweet]:', error.message);
+      // Mark as disconnected on failure for next attempt
+      this.isConnected = false;
       throw error;
     }
   }
@@ -105,13 +156,19 @@ class RettwitwClient {
    */
   async getUser(username) {
     try {
+      // Auto-reconnect if connection lost
       if (!this.isConnected) {
-        throw new Error('Rettiwt client not connected');
+        const reconnected = await this.reconnect();
+        if (!reconnected) {
+          throw new Error('Rettiwt client not connected and reconnection failed');
+        }
       }
 
       return await this.client.user.getByUsername(username);
     } catch (error) {
       console.error('[✗ Error getting user]:', error.message);
+      // Mark as disconnected on failure for next attempt
+      this.isConnected = false;
       throw error;
     }
   }
