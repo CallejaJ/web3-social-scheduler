@@ -19,6 +19,7 @@ async function loginToBluesky() {
       password: process.env.BLUESKY_PASSWORD
     });
     
+    console.log('[✓ Bluesky session refreshed]');
     return true;
   } catch (error) {
     console.error('✗ Bluesky Login Failed:', error.message);
@@ -26,13 +27,20 @@ async function loginToBluesky() {
   }
 }
 
+// Re-login every 2 hours to prevent token expiry
+setInterval(async () => {
+  console.log('[Bluesky] Refreshing session token...');
+  await loginToBluesky();
+}, 2 * 60 * 60 * 1000);
+
 async function postToBluesky(text, mediaPath = null) {
   try {
-    // Ensure we are logged in (or re-login if needed - simplistic check)
+    // Always ensure we have a valid session before posting
     if (!agent.session) {
       const loggedIn = await loginToBluesky();
       if (!loggedIn) throw new Error('Could not log in to Bluesky');
     }
+
 
     const rt = new RichText({ text });
     await rt.detectFacets(agent); // Automatically detects links and mentions
@@ -92,6 +100,29 @@ async function postToBluesky(text, mediaPath = null) {
     console.log(`✓ Bluesky post successful! CID: ${response.cid}`);
     return response;
   } catch (error) {
+    // If token expired, re-login and retry once
+    const isTokenError = error.message && (
+      error.message.includes('Token has expired') ||
+      error.message.includes('ExpiredToken') ||
+      error.message.includes('Invalid token') ||
+      error.status === 400 || error.status === 401
+    );
+
+    if (isTokenError) {
+      console.warn('[Bluesky] Token expired, re-logging and retrying...');
+      const relogged = await loginToBluesky();
+      if (relogged) {
+        try {
+          const response = await agent.post(postRecord);
+          console.log(`✓ Bluesky post successful after re-login! CID: ${response.cid}`);
+          return response;
+        } catch (retryError) {
+          console.error('✗ Bluesky retry also failed:', retryError.message);
+          throw retryError;
+        }
+      }
+    }
+
     console.error('✗ Error posting to Bluesky:', error.message);
     throw error;
   }
