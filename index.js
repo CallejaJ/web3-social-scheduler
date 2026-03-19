@@ -30,6 +30,36 @@ app.get('/status', (req, res) => {
     });
 });
 
+// Real-time Test API
+app.get('/test-now', async (req, res) => {
+    console.log('\n=== REAL-TIME TEST TRIGGERED VIA URL ===');
+    const timestamp = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' });
+    const testMessage = `Prueba de funcionamiento en tiempo real (${timestamp}). El bot está de vuelta. #Web3 #Testing`;
+    const results = { twitter: null, bluesky: null };
+
+    // 1. Twitter
+    try {
+        await twitterClient.postTweet(testMessage);
+        results.twitter = 'Success';
+    } catch (err) {
+        results.twitter = `Error: ${err.message}`;
+    }
+
+    // 2. Bluesky
+    try {
+        await postToBluesky(testMessage);
+        results.bluesky = 'Success';
+    } catch (err) {
+        results.bluesky = `Error: ${err.message}`;
+    }
+
+    res.json({
+        message: 'Test completed',
+        timestamp,
+        results
+    });
+});
+
 app.listen(port, () => console.log(`Monitor del bot activo en puerto ${port}`));
 
 // Initialize Lens Client
