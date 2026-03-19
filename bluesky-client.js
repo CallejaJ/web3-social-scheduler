@@ -19,7 +19,7 @@ async function loginToBluesky() {
       password: process.env.BLUESKY_PASSWORD
     });
     
-    console.log('[✓ Bluesky session refreshed]');
+    console.log(`[✓ Bluesky session refreshed as: ${agent.session.handle}]`);
     return true;
   } catch (error) {
     console.error('✗ Bluesky Login Failed:', error.message);

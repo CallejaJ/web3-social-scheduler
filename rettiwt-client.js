@@ -36,10 +36,17 @@ class RettwitwClient {
 
       this.apiKey = apiKey; // Store for reconnection
       this.client = new Rettiwt({ apiKey });
+      
+      // Verify identity
+      try {
+        const me = await this.client.user.me();
+        console.log(`[✓ Rettiwt connected as: @${me.userName}]`);
+      } catch (meError) {
+        console.warn('[! Rettiwt connected but user.me() failed]:', meError.message);
+      }
+
       this.isConnected = true;
       this.reconnectAttempts = 0; // Reset counter on successful connection
-      
-      console.log('[✓ Rettiwt connected]');
       return true;
     } catch (error) {
       console.error('[✗ Rettiwt connection error]:', error.message);
