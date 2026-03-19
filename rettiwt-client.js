@@ -26,10 +26,19 @@ class RettwitwClient {
       this.client = new Rettiwt(apiKey);
       
       // Verification: Try to get account details (this verifies the token)
-      // Note: We avoid me() as it was causing issues.
-      this.isConnected = true;
-      console.log('[✓ Rettiwt connected and ready]');
-      return true;
+      try {
+        const me = await this.client.user.me();
+        if (me && me.rest_id) {
+          this.isConnected = true;
+          console.log(`[✓ Rettiwt connected as: @${me.userName}]`);
+          return true;
+        }
+      } catch (verifyError) {
+        console.error('  [Rettiwt] Identity verification failed:', verifyError.message);
+        throw verifyError;
+      }
+
+      return false;
     } catch (error) {
       console.error('[✗ Rettiwt connection error]:', error.message);
       this.isConnected = false;
