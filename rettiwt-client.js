@@ -92,16 +92,11 @@ class RettwitwClient {
         media: mediaId ? [{ id: mediaId }] : undefined
       });
 
-      if (response && (response.id || response.rest_id)) {
-        const tweetId = response.id || response.rest_id;
-        console.log(`[✓ Rettiwt] Tweet posted successfully! ID: ${tweetId}`);
+      if (response) {
+        console.log(`[✓ Rettiwt] Tweet posted successfully! ID: ${response}`);
         return response;
       } else {
-        const respStr = JSON.stringify(response);
-        console.warn('  [Rettiwt] Post returned no ID. Raw response:', respStr);
-        // Sometimes Rettiwt returns a truthy value if it worked but the ID is buried
-        if (response) return response;
-        throw new Error(`Twitter post failed (empty response). API Response: ${respStr}`);
+        throw new Error(`Twitter post failed (empty response). API Response: ${JSON.stringify(response)}`);
       }
     } catch (error) {
       console.error('[✗ Rettiwt] Error posting tweet:', error.message);
