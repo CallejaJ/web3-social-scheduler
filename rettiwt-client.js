@@ -95,11 +95,19 @@ class RettwitwClient {
         }
       }
 
-      // Post tweet (Rettiwt expects an object with 'text' property)
-      const response = await this.client.tweet.post({ text: text });
+      // Try posting as a direct string (common in Rettiwt v4 for simple text)
+      console.log('[Rettiwt] Attempting post...');
+      let response;
+      try {
+        response = await this.client.tweet.post(text);
+      } catch (postErr) {
+        console.warn('[Rettiwt] post(text) failed, trying post({ text }):', postErr.message);
+        response = await this.client.tweet.post({ text: text });
+      }
       
-      if (response && response.id) {
-        console.log(`[✓ Tweet posted successfully] ID: ${response.id}`);
+      if (response && (response.id || response.rest_id)) {
+        const id = response.id || response.rest_id;
+        console.log(`[✓ Tweet posted successfully] ID: ${id}`);
         return response;
       } else {
         const responseStr = JSON.stringify(response);
