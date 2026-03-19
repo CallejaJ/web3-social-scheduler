@@ -3,15 +3,23 @@ const { TwitterApi } = require('twitter-api-v2');
 const fs = require('fs');
 const path = require('path');
 
-// Configure Twitter client
-const client = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_ACCESS_SECRET,
-});
+// Configure Twitter client (gracefully handled if keys are missing/invalid)
+let client = null;
+let rwClient = null;
 
-const rwClient = client.readWrite;
+try {
+  if (process.env.TWITTER_API_KEY && process.env.TWITTER_API_SECRET) {
+    client = new TwitterApi({
+      appKey: process.env.TWITTER_API_KEY,
+      appSecret: process.env.TWITTER_API_SECRET,
+      accessToken: process.env.TWITTER_ACCESS_TOKEN,
+      accessSecret: process.env.TWITTER_ACCESS_SECRET,
+    });
+    rwClient = client.readWrite;
+  }
+} catch (e) {
+  console.warn('[Warning] Auto-reply system: Could not initialize Twitter client (Invalid or missing tokens).');
+}
 
 // File to track replied mentions
 const MENTIONS_FILE = path.join(__dirname, 'mentions-data.json');
@@ -266,6 +274,10 @@ async function replyToMention(mention, replyText, mediaPath = null) {
 
 // Check and respond to mentions
 async function checkMentions() {
+  if (!rwClient) {
+    console.log('[Mention Check] Disabled: Twitter client not initialized.');
+    return;
+  }
   try {
     console.log('\n[Mention Check] Checking for new mentions...');
 

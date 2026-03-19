@@ -3,15 +3,23 @@ const { TwitterApi } = require('twitter-api-v2');
 const fs = require('fs');
 const path = require('path');
 
-// Configure Twitter client
-const client = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_ACCESS_SECRET,
-});
+// Configure Twitter client (gracefully handled if keys are missing/invalid)
+let client = null;
+let rwClient = null;
 
-const rwClient = client.readWrite;
+try {
+  if (process.env.TWITTER_API_KEY && process.env.TWITTER_API_SECRET) {
+    client = new TwitterApi({
+      appKey: process.env.TWITTER_API_KEY,
+      appSecret: process.env.TWITTER_API_SECRET,
+      accessToken: process.env.TWITTER_ACCESS_TOKEN,
+      accessSecret: process.env.TWITTER_ACCESS_SECRET,
+    });
+    rwClient = client.readWrite;
+  }
+} catch (e) {
+  console.warn('[Warning] Follower welcome system: Could not initialize Twitter client (Invalid or missing tokens).');
+}
 
 // File to track followers
 const FOLLOWERS_FILE = path.join(__dirname, 'followers-data.json');
@@ -112,6 +120,10 @@ async function sendWelcomeTweet(username) {
 
 // Check for new followers
 async function checkNewFollowers() {
+  if (!rwClient) {
+    console.log('[Follower Check] Disabled: Twitter client not initialized.');
+    return;
+  }
   try {
     console.log('\n[Follower Check] Checking for new followers...');
 
