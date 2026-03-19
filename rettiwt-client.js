@@ -98,13 +98,13 @@ class RettwitwClient {
       // Post tweet (Rettiwt expects an object with 'text' property)
       const response = await this.client.tweet.post({ text: text });
       
-      console.log('[✓ Tweet posted successfully]');
       if (response && response.id) {
-        console.log(`  Tweet ID: ${response.id}`);
+        console.log(`[✓ Tweet posted successfully] ID: ${response.id}`);
+        return response;
+      } else {
+        console.warn('[! Rettiwt] Post returned no ID. Response:', JSON.stringify(response));
+        throw new Error('Twitter post returned no ID (may be shadowbanned or account restricted)');
       }
-      console.log(`  Text: "${text.substring(0, 50)}..."`);
-      
-      return response;
     } catch (error) {
       console.error('[✗ Error posting tweet]:', error.message);
       // Mark as disconnected on failure for next attempt
