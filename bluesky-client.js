@@ -27,19 +27,15 @@ async function loginToBluesky() {
   }
 }
 
-// Re-login every 2 hours to prevent token expiry
-setInterval(async () => {
-  console.log('[Bluesky] Refreshing session token...');
-  await loginToBluesky();
-}, 2 * 60 * 60 * 1000);
-
 async function postToBluesky(text, mediaPath = null) {
   try {
-    // Always ensure we have a valid session before posting
+    // Ensure we have a session. agent.login is only called if session is missing.
+    // The catch block below handles expired sessions.
     if (!agent.session) {
       const loggedIn = await loginToBluesky();
       if (!loggedIn) throw new Error('Could not log in to Bluesky');
     }
+
 
 
     const rt = new RichText({ text });

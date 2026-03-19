@@ -26,7 +26,7 @@
     },
     {
       "schedule": "0 16 * * 0",
-      "text": "¿Cuánto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas en MEMO tokens. https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn #Web3",
+      "text": "¿Quanto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas en MEMO tokens. https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn #Web3",
       "language": "es",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-es.png",
@@ -34,7 +34,7 @@
     },
     {
       "schedule": "0 10 * * 1",
-      "text": "New week, new opportunities 💪 Ready to master Web3? Start with our free courses, from basics to advanced topics. https://memento-academy.com/en/courses #MondayMotivation #Web3",
+      "text": "New week, new opportunities. Ready to master Web3? Start with our free courses, from basics to advanced topics. https://memento-academy.com/en/courses #MondayMotivation #Web3",
       "language": "en",
       "type": "motivation",
       "media": "web3-basics-en.png",
@@ -42,7 +42,7 @@
     },
     {
       "schedule": "0 19 * * 1",
-      "text": "Capas de Seguridad Blockchain: Entiende cómo se protegen tus activos digitales antes de hacer tu primer movimiento en Web3. 🔐 https://memento-academy.com/es/learn/safety #Ciberseguridad #Web3",
+      "text": "Capas de Seguridad Blockchain: Entiende cómo se protegen tus activos digitales antes de hacer tu primer movimiento en Web3. https://memento-academy.com/es/learn/safety #Ciberseguridad #Web3",
       "language": "es",
       "type": "education",
       "media": "security_layers_es.png",
@@ -58,7 +58,7 @@
     },
     {
       "schedule": "0 19 * * 2",
-      "text": "Fun fact: The first Bitcoin purchase was 2 pizzas for 10,000 BTC 🍕 If you had made that trade, you'd be a billionaire today! #BitcoinHistory #Crypto #Web3",
+      "text": "Fun fact: The first Bitcoin purchase was 2 pizzas for 10,000 BTC. If you had made that trade, you'd be a billionaire today! #BitcoinHistory #Crypto #Web3",
       "language": "en",
       "type": "curiosity",
       "media": "curiosity-bitcoin-pizza-en.png",
@@ -66,7 +66,7 @@
     },
     {
       "schedule": "0 10 * * 3",
-      "text": "¿Cuál fue tu primera interacción con las criptomonedas? 🤔 Cuéntanos en los comentarios: ¿Bitcoin, Ethereum o algo completamente diferente? #Bitcoin #Web3 #HistoriaCripto",
+      "text": "¿Cuál fue tu primera interacción con las criptomonedas? Cuéntanos en los comentarios: ¿Bitcoin, Ethereum o algo completamente diferente? #Bitcoin #Web3 #HistoriaCripto",
       "language": "es",
       "type": "engagement_question",
       "platforms": ["twitter", "bluesky"]
@@ -81,7 +81,7 @@
     },
     {
       "schedule": "0 10 * * 4",
-      "text": "Think you know Crypto? 🧠 Test your skills in our interactive game and earn MEMO token rewards. No fees, real rewards. https://memento-academy.com/en/game #CryptoQuiz #Web3 #LearnAndEarn",
+      "text": "Think you know Crypto? Test your skills in our interactive game and earn MEMO token rewards. No fees, real rewards. https://memento-academy.com/en/game #CryptoQuiz #Web3 #LearnAndEarn",
       "language": "en",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-en.png",
@@ -97,15 +97,23 @@
     },
     {
       "schedule": "0 10 * * 5",
-      "text": "Did you know? Vitalik Buterin created Ethereum after Blizzard nerfed his favorite World of Warcraft character 😄 #Ethereum #Vitalik #CryptoHistory",
-      "language": "en",
+      "text": "¿Alguna vez un videojuego te ha hecho replantearte cómo funciona el mundo?\n\nA Vitalik Buterin le pasó. En 2010, un cambio inesperado en su personaje de World of Warcraft le abrió los ojos sobre quién tiene realmente el control de nuestras vidas digitales.\n\nEse momento de frustración fue la semilla de algo mucho más grande... ¿te imaginas qué nació de ahí?",
+      "language": "es",
       "type": "curiosity",
       "media": "curiosity-vitalik-wow.png",
       "platforms": ["twitter", "bluesky"]
     },
     {
+      "schedule": "0 16 * * 5",
+      "text": "¿Sabías que los smart contracts son más antiguos que la propia tecnología blockchain?\n\nNick Szabo acuñó el término en 1994, más de una década antes de que apareciera Bitcoin. Su visión era un mundo donde los acuerdos se ejecutaran solos a través del código.\n\nSi quieres saber qué objeto cotidiano usó para explicar este concepto revolucionario... sigue leyendo.",
+      "language": "es",
+      "type": "curiosity",
+      "media": "crypto-101-es.png",
+      "platforms": ["twitter", "bluesky"]
+    },
+    {
       "schedule": "0 19 * * 5",
-      "text": "¿Cuál es el tema de Web3 que más te confunde? 🤷 Cuéntanos y crearemos contenido educativo especialmente para ti. Tu feedback moldea nuestro plan.",
+      "text": "¿Cuál es el tema de Web3 que más te confunde? Cuéntanos y crearemos contenido educativo especialmente para ti. Tu feedback moldea nuestro plan. #Web3 #Educacion #Blockchain",
       "language": "es",
       "type": "engagement_question",
       "platforms": ["twitter", "bluesky"]
