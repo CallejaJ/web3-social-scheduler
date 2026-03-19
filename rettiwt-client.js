@@ -13,12 +13,20 @@ class RettwitwClient {
    */
   async connect() {
     try {
-      // The RETTIWT_API_KEY should be your Twitter auth_token cookie
-      const apiKey = process.env.RETTIWT_API_KEY;
+      let apiKey = process.env.RETTIWT_API_KEY;
       
       if (!apiKey) {
         console.error('[✗ Error]: RETTIWT_API_KEY is missing in environment variables');
         return false;
+      }
+
+      // Handle the case where user pasted the full cookie string: auth_token=XXX; ct0=YYY
+      if (apiKey.includes('auth_token=')) {
+        const match = apiKey.match(/auth_token=([^;]+)/);
+        if (match) {
+          apiKey = match[1];
+          console.log('[Rettiwt] Extracted auth_token value from cookie string.');
+        }
       }
 
       console.log(`[Rettiwt] Connecting with token starting with: ${apiKey.substring(0, 5)}...`);
