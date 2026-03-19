@@ -261,14 +261,14 @@ function scheduleTwitterBot() {
 // Test Twitter connection
 async function testConnection() {
   try {
-    console.log('Testing Official Twitter API connection...');
+    console.log(`Testing Official Twitter API connection with API_KEY starting with: ${process.env.TWITTER_API_KEY ? process.env.TWITTER_API_KEY.substring(0, 4) : 'MISSING'}`);
     const me = await twitterRwClient.v2.me();
     console.log(`[✓ Twitter connected as: @${me.data.username}]`);
     return true;
   } catch (error) {
     console.error('[✗ Twitter API connection error]:', error.message);
     if (error.data) {
-      console.error('  Details:', JSON.stringify(error.data, null, 2));
+      console.error('  Raw Data from Twitter:', JSON.stringify(error.data, null, 2));
     }
     return false;
   }
