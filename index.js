@@ -49,6 +49,9 @@ app.get('/test-now', async (req, res) => {
 
     // 1. Twitter
     try {
+        const twitterMe = await twitterRwClient.v2.me();
+        results.twitter_account = `@${twitterMe.data.username}`;
+        
         await postTweet(testMessage);
         results.twitter = 'Success';
     } catch (err) {
