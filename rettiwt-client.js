@@ -102,8 +102,9 @@ class RettwitwClient {
         console.log(`[✓ Tweet posted successfully] ID: ${response.id}`);
         return response;
       } else {
-        console.warn('[! Rettiwt] Post returned no ID. Response:', JSON.stringify(response));
-        throw new Error('Twitter post returned no ID (may be shadowbanned or account restricted)');
+        const responseStr = JSON.stringify(response);
+        console.warn('[! Rettiwt] Post returned no ID. Response:', responseStr);
+        throw new Error(`Twitter post failed. Response from API: ${responseStr}`);
       }
     } catch (error) {
       console.error('[✗ Error posting tweet]:', error.message);
