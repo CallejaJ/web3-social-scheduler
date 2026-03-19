@@ -27,8 +27,8 @@ class RettwitwClient {
       
       // Verification: Try to get account details (this verifies the token)
       try {
-        const me = await this.client.user.me();
-        if (me && me.rest_id) {
+        const me = await this.client.user.details('memento_academy');
+        if (me && me.id) {
           this.isConnected = true;
           console.log(`[✓ Rettiwt connected as: @${me.userName}]`);
           return true;
