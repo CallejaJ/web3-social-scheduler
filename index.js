@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { TwitterApi } = require('twitter-api-v2');
+const { RettwitwClient } = require('./rettiwt-client');
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
@@ -30,15 +30,8 @@ app.get('/status', (req, res) => {
     });
 });
 
-// Initialize Twitter Client (Official v2)
-const twitterClient = new TwitterApi({
-  appKey: process.env.TWITTER_API_KEY,
-  appSecret: process.env.TWITTER_API_SECRET,
-  accessToken: process.env.TWITTER_ACCESS_TOKEN,
-  accessSecret: process.env.TWITTER_ACCESS_SECRET,
-});
-
-const twitterRwClient = twitterClient.readWrite;
+// Initialize Twitter Client (Rettiwt - Scraper Mode)
+const twitterClient = new RettwitwClient();
 
 // Real-time Test API
 app.get('/test-now', async (req, res) => {
@@ -49,17 +42,10 @@ app.get('/test-now', async (req, res) => {
 
     // 1. Twitter
     try {
-        const twitterMe = await twitterRwClient.v2.me();
-        results.twitter_account = `@${twitterMe.data.username}`;
-        
-        await postTweet(testMessage);
+        await twitterClient.postTweet(testMessage);
         results.twitter = 'Success';
     } catch (err) {
         results.twitter = `Error: ${err.message}`;
-        if (err.data) {
-            console.error('Twitter Error Details:', JSON.stringify(err.data, null, 2));
-            results.twitter_details = err.data;
-        }
     }
 
     // 2. Bluesky
@@ -127,27 +113,11 @@ function getRandomHashtags(category = 'general', language = 'en', count = 2) {
 // Post a tweet with optional media attachment
 async function postTweet(text, mediaPath = null) {
   try {
-    let mediaId = null;
-
-    if (mediaPath && fs.existsSync(mediaPath)) {
-      console.log(`  [Twitter] Uploading media: ${path.basename(mediaPath)}`);
-      mediaId = await twitterClient.v1.uploadMedia(mediaPath);
-      console.log(`  [Twitter] Media uploaded ID: ${mediaId}`);
-    }
-
-    const tweetParams = { text: text };
-    if (mediaId) {
-      tweetParams.media = { media_ids: [mediaId] };
-    }
-
-    const { data: createdTweet } = await twitterRwClient.v2.tweet(tweetParams);
-    console.log(`[✓ Twitter] Tweet posted successfully! ID: ${createdTweet.id}`);
-    return createdTweet;
+    const tweet = await twitterClient.postTweet(text, mediaPath);
+    console.log(`[✓ Twitter] Tweet posted successfully!`);
+    return tweet;
   } catch (error) {
     console.error('[✗ Twitter] Error posting tweet:', error.message);
-    if (error.data) {
-        console.error('  Details:', JSON.stringify(error.data, null, 2));
-    }
     throw error;
   }
 }
@@ -261,15 +231,11 @@ function scheduleTwitterBot() {
 // Test Twitter connection
 async function testConnection() {
   try {
-    console.log(`Testing Official Twitter API connection with API_KEY starting with: ${process.env.TWITTER_API_KEY ? process.env.TWITTER_API_KEY.substring(0, 4) : 'MISSING'}`);
-    const me = await twitterRwClient.v2.me();
-    console.log(`[✓ Twitter connected as: @${me.data.username}]`);
-    return true;
+    console.log('Testing Rettiwt connection...');
+    const connected = await twitterClient.connect();
+    return connected;
   } catch (error) {
-    console.error('[✗ Twitter API connection error]:', error.message);
-    if (error.data) {
-      console.error('  Raw Data from Twitter:', JSON.stringify(error.data, null, 2));
-    }
+    console.error('[✗ Rettiwt connection error]:', error.message);
     return false;
   }
 }
@@ -295,7 +261,7 @@ async function startBot() {
     process.exit(1);
   }
   
-  if (!twitterConnected) console.warn('[Warning] Twitter connection failed.');
+  if (!twitterConnected) console.warn('[Warning] Twitter (Rettiwt) connection failed.');
   if (!blueskyConnected) console.warn('[Warning] Bluesky connection failed.');
 
   scheduleTwitterBot();

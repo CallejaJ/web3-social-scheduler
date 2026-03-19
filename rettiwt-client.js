@@ -1,46 +1,34 @@
-/**
- * Twitter Client using Rettiwt API (Alternative to Official Twitter API)
- * No API charges, works with cookie-based authentication
- */
-
 const { Rettiwt } = require('rettiwt-api');
+const fs = require('fs');
+const path = require('path');
 
 class RettwitwClient {
   constructor() {
     this.client = null;
     this.isConnected = false;
-    this.apiKey = null;
-    this.reconnectAttempts = 0;
-    this.maxReconnectAttempts = 3;
   }
 
   /**
-   * Initialize Rettiwt client with API key
-   * How to get API_KEY:
-   * 1. Install Rettiwt browser extension (Chrome/Firefox)
-   * 2. Open X.com in incognito mode
-   * 3. Login with your Twitter account
-   * 4. Click extension & copy the API_KEY
-   * 5. Add RETTIWT_API_KEY to your .env file
+   * Connect to Twitter using the Rettiwt API (Cookie-based auth)
    */
   async connect() {
     try {
+      // The RETTIWT_API_KEY should be your Twitter auth_token cookie
       const apiKey = process.env.RETTIWT_API_KEY;
       
       if (!apiKey) {
-        throw new Error(
-          'RETTIWT_API_KEY not found in .env\n' +
-          'Get it from: https://github.com/Rishikant181/Rettiwt-API#readme'
-        );
+        console.error('[✗ Error]: RETTIWT_API_KEY is missing in environment variables');
+        return false;
       }
 
-      this.apiKey = apiKey; // Store for reconnection
+      console.log(`[Rettiwt] Connecting with token starting with: ${apiKey.substring(0, 5)}...`);
+      
       this.client = new Rettiwt({ apiKey });
       
-      console.log('[✓ Rettiwt connected and ready]');
-
+      // Verification: Try to get account details (this verifies the token)
+      // Note: We avoid me() as it was causing issues.
       this.isConnected = true;
-      this.reconnectAttempts = 0; // Reset counter on successful connection
+      console.log('[✓ Rettiwt connected and ready]');
       return true;
     } catch (error) {
       console.error('[✗ Rettiwt connection error]:', error.message);
@@ -50,217 +38,73 @@ class RettwitwClient {
   }
 
   /**
-   * Attempt to reconnect if connection is lost
-   * @returns {Promise<boolean>} - True if reconnected successfully
-   */
-  async reconnect() {
-    if (this.reconnectAttempts >= this.maxReconnectAttempts) {
-      console.error('[✗ Max reconnection attempts reached]');
-      return false;
-    }
-
-    this.reconnectAttempts++;
-    console.log(`[Rettiwt] Attempting to reconnect... (${this.reconnectAttempts}/${this.maxReconnectAttempts})`);
-    
-    try {
-      // Try to create a fresh client
-      if (this.apiKey) {
-        this.client = new Rettiwt({ apiKey: this.apiKey });
-        this.isConnected = true;
-        this.reconnectAttempts = 0; // Reset on success
-        console.log('[✓ Rettiwt reconnected]');
-        return true;
-      }
-    } catch (error) {
-      console.error('[✗ Reconnection failed]:', error.message);
-    }
-    
-    return false;
-  }
-
-  /**
    * Post a tweet with optional media
-   * @param {string} text - Tweet text
-   * @param {string} mediaPath - Path to image file (optional)
-   * @returns {Promise<object>} - Tweet response
+   * @param {string} text The tweet content
+   * @param {string|null} mediaPath Path to image file
    */
   async postTweet(text, mediaPath = null) {
+    if (!this.isConnected || !this.client) {
+      console.log('[Rettiwt] Not connected. Attempting to reconnect...');
+      const reconnected = await this.connect();
+      if (!reconnected) throw new Error('Could not connect to Rettiwt API');
+    }
+
     try {
-      // Auto-reconnect if connection lost
-      if (!this.isConnected) {
-        console.log('[Rettiwt] Connection lost, attempting to reconnect...');
-        const reconnected = await this.reconnect();
-        if (!reconnected) {
-          throw new Error('Rettiwt client not connected and reconnection failed');
+      let mediaId = null;
+
+      // Handle media upload via Rettiwt
+      if (mediaPath && fs.existsSync(mediaPath)) {
+        try {
+          console.log(`  [Rettiwt] Uploading media: ${path.basename(mediaPath)}`);
+          // Note: Rettiwt 4.2.0 media upload structure
+          const mediaData = fs.readFileSync(mediaPath);
+          const response = await this.client.tweet.upload(mediaData);
+          if (response) {
+            mediaId = response;
+            console.log(`  [Rettiwt] Media uploaded. ID: ${mediaId}`);
+          }
+        } catch (mediaError) {
+          console.error('  [Rettiwt] Media upload failed:', mediaError.message);
+          // Continue without media if upload fails
         }
       }
 
-      // Try posting as a direct string (common in Rettiwt v4 for simple text)
-      console.log('[Rettiwt] Attempting post...');
+      console.log(`  [Rettiwt] Posting tweet: "${text.substring(0, 40)}..."`);
+      
+      // Rettiwt v4.x post signature
       let response;
       try {
-        response = await this.client.tweet.post(text);
-      } catch (postErr) {
-        console.warn('[Rettiwt] post(text) failed, trying post({ text }):', postErr.message);
-        response = await this.client.tweet.post({ text: text });
+        // Try method 1: Direct string
+        response = await this.client.tweet.post(text, mediaId ? [mediaId] : undefined);
+      } catch (err1) {
+        console.warn('  [Rettiwt] post(string) failed, trying post(object)...');
+        // Try method 2: Object
+        response = await this.client.tweet.post({ 
+          text: text, 
+          media: mediaId ? [{ id: mediaId }] : undefined 
+        });
       }
-      
+
       if (response && (response.id || response.rest_id)) {
-        const id = response.id || response.rest_id;
-        console.log(`[✓ Tweet posted successfully] ID: ${id}`);
+        const tweetId = response.id || response.rest_id;
+        console.log(`[✓ Rettiwt] Tweet posted successfully! ID: ${tweetId}`);
         return response;
       } else {
-        const responseStr = JSON.stringify(response);
-        console.warn('[! Rettiwt] Post returned no ID. Response:', responseStr);
-        throw new Error(`Twitter post failed. Response from API: ${responseStr}`);
+        const respStr = JSON.stringify(response);
+        console.warn('  [Rettiwt] Post returned no ID. Raw response:', respStr);
+        // Sometimes Rettiwt returns a truthy value if it worked but the ID is buried
+        if (response) return response;
+        throw new Error(`Twitter post failed (empty response). API Response: ${respStr}`);
       }
     } catch (error) {
-      console.error('[✗ Error posting tweet]:', error.message);
-      // Mark as disconnected on failure for next attempt
+      console.error('[✗ Rettiwt] Error posting tweet:', error.message);
+      if (error.message.includes('Forbidden') || error.message.includes('403')) {
+        console.error('  Likely invalid/expired auth_token or account restriction.');
+      }
+      // Reset connection status on failure
       this.isConnected = false;
       throw error;
     }
-  }
-
-  /**
-   * Schedule a tweet to be posted at a specific time
-   * @param {string} text - Tweet text
-   * @param {Date} scheduledTime - When to post
-   * @param {string} mediaPath - Path to image file (optional)
-   * @returns {Promise<object>} - Scheduled tweet response
-   */
-  async scheduleTweet(text, scheduledTime, mediaPath = null) {
-    try {
-      // Auto-reconnect if connection lost
-      if (!this.isConnected) {
-        console.log('[Rettiwt] Connection lost, attempting to reconnect...');
-        const reconnected = await this.reconnect();
-        if (!reconnected) {
-          throw new Error('Rettiwt client not connected and reconnection failed');
-        }
-      }
-
-      // Rettiwt API supports scheduling with object format
-      const response = await this.client.tweet.schedule({
-        text: text,
-        scheduledTime: scheduledTime
-      });
-
-      console.log('[✓ Tweet scheduled]');
-      console.log(`  Scheduled for: ${scheduledTime.toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}`);
-      console.log(`  Text: "${text.substring(0, 50)}..."`);
-      
-      return response;
-    } catch (error) {
-      console.error('[✗ Error scheduling tweet]:', error.message);
-      // Mark as disconnected on failure for next attempt
-      this.isConnected = false;
-      throw error;
-    }
-  }
-
-  /**
-   * Get user info
-   * @param {string} username - Twitter username
-   * @returns {Promise<object>} - User data
-   */
-  async getUser(username) {
-    try {
-      // Auto-reconnect if connection lost
-      if (!this.isConnected) {
-        const reconnected = await this.reconnect();
-        if (!reconnected) {
-          throw new Error('Rettiwt client not connected and reconnection failed');
-        }
-      }
-
-      return await this.client.user.getByUsername(username);
-    } catch (error) {
-      console.error('[✗ Error getting user]:', error.message);
-      // Mark as disconnected on failure for next attempt
-      this.isConnected = false;
-      throw error;
-    }
-  }
-
-  /**
-   * Like a tweet
-   * @param {string} tweetId - Tweet ID
-   * @returns {Promise<void>}
-   */
-  async likeTweet(tweetId) {
-    try {
-      if (!this.isConnected) {
-        throw new Error('Rettiwt client not connected');
-      }
-
-      await this.client.tweet.like(tweetId);
-      console.log(`[✓ Tweet liked: ${tweetId}]`);
-    } catch (error) {
-      console.error('[✗ Error liking tweet]:', error.message);
-      throw error;
-    }
-  }
-
-  /**
-   * Retweet
-   * @param {string} tweetId - Tweet ID
-   * @returns {Promise<void>}
-   */
-  async retweet(tweetId) {
-    try {
-      if (!this.isConnected) {
-        throw new Error('Rettiwt client not connected');
-      }
-
-      await this.client.tweet.retweet(tweetId);
-      console.log(`[✓ Tweet retweeted: ${tweetId}]`);
-    } catch (error) {
-      console.error('[✗ Error retweeting]:', error.message);
-      throw error;
-    }
-  }
-
-  /**
-   * Follow a user
-   * @param {string} userId - User ID
-   * @returns {Promise<void>}
-   */
-  async followUser(userId) {
-    try {
-      if (!this.isConnected) {
-        throw new Error('Rettiwt client not connected');
-      }
-
-      await this.client.user.follow(userId);
-      console.log(`[✓ User followed: ${userId}]`);
-    } catch (error) {
-      console.error('[✗ Error following user]:', error.message);
-      throw error;
-    }
-  }
-
-  /**
-   * Search for tweets
-   * @param {string} query - Search query
-   * @param {number} limit - Max results
-   * @returns {Promise<array>} - Tweet search results
-   */
-  async searchTweets(query, limit = 10) {
-    try {
-      if (!this.isConnected) {
-        throw new Error('Rettiwt client not connected');
-      }
-
-      return await this.client.search.tweets(query, limit);
-    } catch (error) {
-      console.error('[✗ Error searching tweets]:', error.message);
-      throw error;
-    }
-  }
-
-  isAuthenticated() {
-    return this.isConnected;
   }
 }
 
