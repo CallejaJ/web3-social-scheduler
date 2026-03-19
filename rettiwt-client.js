@@ -23,7 +23,7 @@ class RettwitwClient {
 
       console.log(`[Rettiwt] Connecting with token starting with: ${apiKey.substring(0, 5)}...`);
       
-      this.client = new Rettiwt({ apiKey });
+      this.client = new Rettiwt(apiKey);
       
       // Verification: Try to get account details (this verifies the token)
       // Note: We avoid me() as it was causing issues.
