@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { RettwitwClient } = require('./rettiwt-client');
+const { TwitterApi } = require('twitter-api-v2');
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
@@ -30,6 +30,16 @@ app.get('/status', (req, res) => {
     });
 });
 
+// Initialize Twitter Client (Official v2)
+const twitterClient = new TwitterApi({
+  appKey: process.env.TWITTER_API_KEY,
+  appSecret: process.env.TWITTER_API_SECRET,
+  accessToken: process.env.TWITTER_ACCESS_TOKEN,
+  accessSecret: process.env.TWITTER_ACCESS_SECRET,
+});
+
+const twitterRwClient = twitterClient.readWrite;
+
 // Real-time Test API
 app.get('/test-now', async (req, res) => {
     console.log('\n=== REAL-TIME TEST TRIGGERED VIA URL ===');
@@ -39,10 +49,14 @@ app.get('/test-now', async (req, res) => {
 
     // 1. Twitter
     try {
-        await twitterClient.postTweet(testMessage);
+        await postTweet(testMessage);
         results.twitter = 'Success';
     } catch (err) {
         results.twitter = `Error: ${err.message}`;
+        if (err.data) {
+            console.error('Twitter Error Details:', JSON.stringify(err.data, null, 2));
+            results.twitter_details = err.data;
+        }
     }
 
     // 2. Bluesky
@@ -64,9 +78,6 @@ app.listen(port, () => console.log(`Monitor del bot activo en puerto ${port}`));
 
 // Initialize Lens Client
 const lensClient = new LensClient();
-
-// Configure Rettiwt client (alternative to official Twitter API - FREE!)
-const twitterClient = new RettwitwClient();
 
 // Load scheduled tweets from JSON file
 function loadScheduledTweets() {
@@ -113,16 +124,27 @@ function getRandomHashtags(category = 'general', language = 'en', count = 2) {
 // Post a tweet with optional media attachment
 async function postTweet(text, mediaPath = null) {
   try {
-    // Note: Rettiwt API simplifies media handling compared to official API
-    if (mediaPath && !fs.existsSync(mediaPath)) {
-      console.warn(`  [Warning] Media file not found: ${mediaPath}`);
+    let mediaId = null;
+
+    if (mediaPath && fs.existsSync(mediaPath)) {
+      console.log(`  [Twitter] Uploading media: ${path.basename(mediaPath)}`);
+      mediaId = await twitterClient.v1.uploadMedia(mediaPath);
+      console.log(`  [Twitter] Media uploaded ID: ${mediaId}`);
     }
 
-    const tweet = await twitterClient.postTweet(text, mediaPath);
-    console.log(`[Tweet posted successfully]: "${text.substring(0, 50)}..."`);
-    return tweet;
+    const tweetParams = { text: text };
+    if (mediaId) {
+      tweetParams.media = { media_ids: [mediaId] };
+    }
+
+    const { data: createdTweet } = await twitterRwClient.v2.tweet(tweetParams);
+    console.log(`[✓ Twitter] Tweet posted successfully! ID: ${createdTweet.id}`);
+    return createdTweet;
   } catch (error) {
-    console.error('[Error posting tweet]:', error.message);
+    console.error('[✗ Twitter] Error posting tweet:', error.message);
+    if (error.data) {
+        console.error('  Details:', JSON.stringify(error.data, null, 2));
+    }
     throw error;
   }
 }
@@ -152,7 +174,7 @@ function scheduleTwitterBot() {
     cron.schedule(item.schedule, async () => {
       console.log(`\n[${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}] Executing scheduled tweet #${index + 1}`);
       try {
-        // Determine media path - check both generated and content folders
+        // Determine media path - check generated, content, and quizz folders
         let mediaPath = null;
         if (item.media) {
            const generatedPath = path.join(__dirname, 'images', 'generated', item.media);
@@ -166,7 +188,7 @@ function scheduleTwitterBot() {
            } else if (fs.existsSync(quizzPath)) {
              mediaPath = quizzPath;
            } else {
-             console.warn(`Warning: Media ${item.media} not found in generated, content, or quizz folders`);
+             console.warn(`Warning: Media ${item.media} not found in any folder`);
            }
         }
 
@@ -177,18 +199,18 @@ function scheduleTwitterBot() {
             twitterText += ` ${addedTags}`;
         }
 
-        // Prepare text for Bluesky (fallback to text if not provided)
+        // Prepare text for Bluesky
         let blueskyText = item.bluesky_text || item.text;
         if (item.hashtags_category) {
             const addedTags = getRandomHashtags(item.hashtags_category, item.language || 'en');
             blueskyText += ` ${addedTags}`;
         }
         
-        // Prepare text for Hey/Lens (fallback to bluesky_text or text)
+        // Prepare text for Hey/Lens
         let heyText = item.hey_text || blueskyText;
 
         // Determine platforms to post to
-        const platforms = item.platforms || ['twitter', 'bluesky', 'hey']; // Default to ALL platforms if not specified
+        const platforms = item.platforms || ['twitter', 'bluesky', 'hey'];
 
         // Post to Twitter
         if (platforms.includes('twitter')) {
@@ -214,7 +236,6 @@ function scheduleTwitterBot() {
           try {
              console.log(`\n  [Hey/Lens] Posting: "${heyText.substring(0, 40)}..."`);
              await lensClient.post(heyText, mediaPath);
-             console.log('  [Hey/Lens] [Post initiated]');
           } catch (lError) {
              console.error('Failed to post to Lens:', lError.message);
           }
@@ -234,24 +255,18 @@ function scheduleTwitterBot() {
   console.log('\n=== Bot running... Press Ctrl+C to stop ===\n');
 }
 
-// Test API connection
+// Test Twitter connection
 async function testConnection() {
   try {
-    console.log('Testing Rettiwt API connection...');
-    const connected = await twitterClient.connect();
-    
-    if (!connected) {
-      console.error('  Failed to connect to Rettiwt API');
-      console.error('  Check your RETTIWT_API_KEY in .env file');
-      return false;
-    }
-    
-    console.log('[Connected as]: Rettiwt API Ready');
-    console.log('');
+    console.log('Testing Official Twitter API connection...');
+    const me = await twitterRwClient.v2.me();
+    console.log(`[✓ Twitter connected as: @${me.data.username}]`);
     return true;
   } catch (error) {
-    console.error('[Twitter API connection error]:', error.message);
-    console.error('  Make sure RETTIWT_API_KEY is set in your .env file');
+    console.error('[✗ Twitter API connection error]:', error.message);
+    if (error.data) {
+      console.error('  Details:', JSON.stringify(error.data, null, 2));
+    }
     return false;
   }
 }
@@ -269,34 +284,20 @@ async function testBlueskyConnection() {
 
 // Start the bot
 async function startBot() {
-  const connected = await testConnection();
+  const twitterConnected = await testConnection();
   const blueskyConnected = await testBlueskyConnection();
 
-  if (!connected && !blueskyConnected) {
+  if (!twitterConnected && !blueskyConnected) {
     console.error('\nCould not connect to ANY platform. Check your configuration.');
     process.exit(1);
   }
   
-  if (!connected) console.warn('[Warning] Twitter connection failed. Bot will only run for Bluesky (if configured).');
-  if (!blueskyConnected) console.warn('[Warning] Bluesky connection failed. Bot will only run for Twitter.');
+  if (!twitterConnected) console.warn('[Warning] Twitter connection failed.');
+  if (!blueskyConnected) console.warn('[Warning] Bluesky connection failed.');
 
   scheduleTwitterBot();
 
-  // Follower welcome disabled - requires Twitter API Basic tier ($100/month)
-  // cron.schedule('0 */2 * * *', async () => {
-  //   console.log(`\n[${new Date().toLocaleString()}] Checking for new followers...`);
-  //   await checkNewFollowers();
-  // });
-
   console.log('[Warning] Follower welcome system disabled (requires paid API tier)');
-
-  // Schedule mention check every 30 minutes
-  // Re-enabled with Spam Blocking protection
-  // DISABLED AGAIN: Still hitting 429 Rate Limits on Free Tier
-  // cron.schedule('*/30 * * * *', async () => {
-  //   console.log(`\n[${new Date().toLocaleString()}] Checking for new mentions...`);
-  //   await checkMentions();
-  // });
   console.log('[Warning] Auto-reply system DISABLED (requires Basic Tier to avoid Rate Limits)');
   console.log('');
 }
