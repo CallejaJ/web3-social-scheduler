@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find c:UserscalleDocumentsGitHubtwitter-bot -maxdepth 1 -name *.js -o -name .env*)",
+      "Bash(grep -E \"\\\\.\\(js|json|env\\)$\")"
+    ]
+  }
+}

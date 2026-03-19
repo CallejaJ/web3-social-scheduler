@@ -21,17 +21,15 @@ class RettwitwClient {
       }
 
       // Handle the case where user pasted the full cookie string: auth_token=XXX; ct0=YYY
+      // Rettiwt needs the full cookie string (including ct0) base64-encoded for write operations
       if (apiKey.includes('auth_token=')) {
-        const match = apiKey.match(/auth_token=([^;]+)/);
-        if (match) {
-          apiKey = match[1];
-          console.log('[Rettiwt] Extracted auth_token value from cookie string.');
-        }
+        apiKey = Buffer.from(apiKey).toString('base64');
+        console.log('[Rettiwt] Encoded full cookie string for Rettiwt.');
       }
 
       console.log(`[Rettiwt] Connecting with token starting with: ${apiKey.substring(0, 5)}...`);
-      
-      this.client = new Rettiwt(apiKey);
+
+      this.client = new Rettiwt({ apiKey });
       
       // Verification: Try to get account details (this verifies the token)
       try {
@@ -88,19 +86,11 @@ class RettwitwClient {
 
       console.log(`  [Rettiwt] Posting tweet: "${text.substring(0, 40)}..."`);
       
-      // Rettiwt v4.x post signature
-      let response;
-      try {
-        // Try method 1: Direct string
-        response = await this.client.tweet.post(text, mediaId ? [mediaId] : undefined);
-      } catch (err1) {
-        console.warn('  [Rettiwt] post(string) failed, trying post(object)...');
-        // Try method 2: Object
-        response = await this.client.tweet.post({ 
-          text: text, 
-          media: mediaId ? [{ id: mediaId }] : undefined 
-        });
-      }
+      // Rettiwt v4.x post signature: post(TweetArgs)
+      const response = await this.client.tweet.post({
+        text,
+        media: mediaId ? [{ id: mediaId }] : undefined
+      });
 
       if (response && (response.id || response.rest_id)) {
         const tweetId = response.id || response.rest_id;
