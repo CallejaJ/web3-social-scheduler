@@ -66,8 +66,8 @@ async function postTweet(text) {
     await page.waitForTimeout(1000);
 
     console.log('Submitting tweet...');
-    const submitBtn = page.locator('[data-testid="tweetButtonInline"]').first();
-    await submitBtn.click();
+    // Use keyboard shortcut to bypass overlay intercepting clicks
+    await tweetBox.press('Control+Enter');
     await page.waitForTimeout(3000);
 
     console.log('[✓] Tweet posted successfully!');
