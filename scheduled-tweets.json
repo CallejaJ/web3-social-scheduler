@@ -1,7 +1,7 @@
 {
   "tweets": [
     {
-      "schedule": "0 20 * * 5",
+      "schedule": "0 21 * * 5",
       "text": "Test desde GitHub Actions 🤖 El bot de @memento_academy está de vuelta. #Web3 #Blockchain",
       "language": "es",
       "type": "test",
