@@ -1,0 +1,24 @@
+name: Tweet Scheduler
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour at :00 — script checks Madrid time and posts if scheduled
+  workflow_dispatch:       # Manual trigger for testing
+
+jobs:
+  tweet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Post scheduled tweet
+        run: node tweet-poster.js
+        env:
+          RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
