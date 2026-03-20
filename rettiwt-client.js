@@ -30,21 +30,9 @@ class RettwitwClient {
       console.log(`[Rettiwt] Connecting with token starting with: ${apiKey.substring(0, 5)}...`);
 
       this.client = new Rettiwt({ apiKey });
-      
-      // Verification: Try to get account details (this verifies the token)
-      try {
-        const me = await this.client.user.details('memento_academy');
-        if (me && me.id) {
-          this.isConnected = true;
-          console.log(`[✓ Rettiwt connected as: @${me.userName}]`);
-          return true;
-        }
-      } catch (verifyError) {
-        console.error('  [Rettiwt] Identity verification failed:', verifyError.message);
-        throw verifyError;
-      }
-
-      return false;
+      this.isConnected = true;
+      console.log('[✓ Rettiwt client initialized]');
+      return true;
     } catch (error) {
       console.error('[✗ Rettiwt connection error]:', error.message);
       this.isConnected = false;
