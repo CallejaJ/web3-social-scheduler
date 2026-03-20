@@ -48,16 +48,8 @@ app.get('/test-now', async (req, res) => {
         results.twitter = `Error: ${err.message}`;
     }
 
-    // 2. Bluesky
-    try {
-        await postToBluesky(testMessage);
-        results.bluesky = 'Success';
-    } catch (err) {
-        results.bluesky = `Error: ${err.message}`;
-    }
-
     res.json({
-        message: 'Test completed',
+        message: 'Test completed (Twitter only)',
         timestamp,
         results
     });
