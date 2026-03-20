@@ -29,7 +29,11 @@ class RettwitwClient {
 
       console.log(`[Rettiwt] Connecting with token starting with: ${apiKey.substring(0, 5)}...`);
 
-      this.client = new Rettiwt({ apiKey });
+      const proxyUrl = process.env.PROXY_URL ? new URL(process.env.PROXY_URL) : undefined;
+      if (proxyUrl) console.log(`[Rettiwt] Using proxy: ${proxyUrl.host}`);
+      else console.warn('[Rettiwt] No PROXY_URL set — may fail on cloud platforms');
+
+      this.client = new Rettiwt({ apiKey, proxyUrl });
       this.isConnected = true;
       console.log('[✓ Rettiwt client initialized]');
       return true;
