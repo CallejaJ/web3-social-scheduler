@@ -1,129 +1,197 @@
 {
-  "tweets": [
-    {
-      "schedule": "0 21 * * 5",
-      "text": "Test desde GitHub Actions 🤖 El bot de @memento_academy está de vuelta. #Web3 #Blockchain",
-      "language": "es",
-      "type": "test",
-      "platforms": ["twitter"]
-    },
+  "slots": [
     {
       "schedule": "0 10 * * 6",
-      "text": "Weekend learning: Dive into blockchain fundamentals with our free courses. Perfect for your Saturday coffee. https://memento-academy.com/en/courses #WeekendLearning #Web3",
       "language": "en",
       "type": "weekend_learning",
       "media": "web3-basics-en.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Weekend learning: Dive into blockchain fundamentals with our free courses. Perfect for your Saturday coffee. https://memento-academy.com/en/courses #WeekendLearning #Web3",
+        "Your weekend just got better! Explore DeFi, NFTs, and blockchain basics with our free interactive courses. https://memento-academy.com/en/courses #WeekendVibes #Web3",
+        "Saturday crypto school: From zero to blockchain hero. Our free courses + AI tutor make it simple. https://memento-academy.com/en/courses #WeekendLearning #Blockchain",
+        "This weekend, learn something that could change your financial future. Free Web3 courses, real MEMO token rewards. https://memento-academy.com/en/courses #Saturday #Web3"
+      ]
     },
     {
       "schedule": "0 16 * * 6",
-      "text": "¿Te has perdido las curiosidades de la semana? Descubre datos increíbles sobre la historia de Web3 en este vídeo. https://www.youtube.com/watch?v=WhQrUxNcpZo #Web3 #Curiosidades #Blockchain #YouTube",
       "language": "es",
       "type": "video_promo",
       "media": "promo-video.mp4",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "¿Te has perdido las curiosidades de la semana? Descubre datos increíbles sobre la historia de Web3 en este vídeo. https://www.youtube.com/watch?v=WhQrUxNcpZo #Web3 #Curiosidades #Blockchain #YouTube",
+        "Historia, tecnología y futuro: todo sobre Web3 en un solo vídeo. https://www.youtube.com/watch?v=WhQrUxNcpZo #Web3 #YouTube #Blockchain",
+        "¿Qué pasaría si el dinero no necesitara bancos? Respuesta en este vídeo. https://www.youtube.com/watch?v=WhQrUxNcpZo #DeFi #Web3 #YouTube",
+        "El vídeo que todo el que empieza en crypto necesita ver. Sin tecnicismos, sin trampa. https://www.youtube.com/watch?v=WhQrUxNcpZo #Crypto #Web3"
+      ]
     },
     {
       "schedule": "0 10 * * 0",
-      "text": "Prepárate para la semana: ¿Qué aprenderás sobre Web3? Explora nuestros cursos gratuitos y certifícate. https://memento-academy.com/es/courses #DomingoDeAprendizaje #Web3",
       "language": "es",
       "type": "week_prep",
       "media": "web3-basics-es.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Prepárate para la semana: ¿Qué aprenderás sobre Web3? Explora nuestros cursos gratuitos y certifícate. https://memento-academy.com/es/courses #DomingoDeAprendizaje #Web3",
+        "Domingo = día de recarga. Empieza la semana con ventaja: aprende blockchain mientras otros descansan. https://memento-academy.com/es/courses #DomingoProductivo #Web3",
+        "¿Lista tu agenda para la semana? Reserva 30 minutos para aprender Web3. Te lo agradecerás. https://memento-academy.com/es/courses #DomingoDeAprendizaje #Blockchain",
+        "El mejor domingo es el que empiezas con curiosidad. ¿Qué sabes sobre Ethereum? Aprende hoy, gratis. https://memento-academy.com/es/courses #Web3 #Ethereum"
+      ]
     },
     {
       "schedule": "0 16 * * 0",
-      "text": "¿Quanto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas en MEMO tokens. https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn #Web3",
       "language": "es",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-es.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "¿Quanto sabes realmente sobre Crypto? Pon a prueba tus conocimientos y gana recompensas en MEMO tokens. https://memento-academy.com/es/game #CryptoQuiz #LearnAndEarn #Web3",
+        "Demuestra lo que sabes de blockchain y gana MEMO tokens. El quiz que pone a prueba a todos. https://memento-academy.com/es/game #CryptoQuiz #Web3",
+        "Domingo de retos crypto: ¿Puedes llegar a la cima del ranking? Gana MEMO tokens con cada respuesta correcta. https://memento-academy.com/es/game #LearnAndEarn #Blockchain",
+        "Quiz semanal de Web3: preguntas sobre Bitcoin, Ethereum, DeFi y más. ¿Te atreves? https://memento-academy.com/es/game #CryptoQuiz #Web3 #MEMO"
+      ]
     },
     {
       "schedule": "0 10 * * 1",
-      "text": "New week, new opportunities. Ready to master Web3? Start with our free courses, from basics to advanced topics. https://memento-academy.com/en/courses #MondayMotivation #Web3",
       "language": "en",
       "type": "motivation",
       "media": "web3-basics-en.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "New week, new opportunities. Ready to master Web3? Start with our free courses, from basics to advanced topics. https://memento-academy.com/en/courses #MondayMotivation #Web3",
+        "Monday mindset: The best investment you can make is in your knowledge. Start with free Web3 courses. https://memento-academy.com/en/courses #MondayMotivation #Blockchain",
+        "A new week = a new chance to understand the future of finance. Dive into Web3 today. https://memento-academy.com/en/courses #MondayMotivation #Web3",
+        "This week, be the person who understands what everyone else is just talking about. Free Web3 courses. https://memento-academy.com/en/courses #MondayMotivation #Crypto"
+      ]
     },
     {
       "schedule": "0 19 * * 1",
-      "text": "Capas de Seguridad Blockchain: Entiende cómo se protegen tus activos digitales antes de hacer tu primer movimiento en Web3. https://memento-academy.com/es/learn/safety #Ciberseguridad #Web3",
       "language": "es",
       "type": "education",
       "media": "security_layers_es.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Capas de Seguridad Blockchain: Entiende cómo se protegen tus activos digitales antes de hacer tu primer movimiento en Web3. https://memento-academy.com/es/learn/safety #Ciberseguridad #Web3",
+        "¿Sabes qué es una seed phrase y por qué podría salvarte la vida digital? Aprende a proteger tus activos crypto. https://memento-academy.com/es/learn/safety #Ciberseguridad #Web3 #Crypto",
+        "Cold wallet vs hot wallet: una decisión que puede costar miles si la haces mal. Aprende la diferencia hoy. https://memento-academy.com/es/learn/safety #Seguridad #Crypto #Web3",
+        "El 95% de los hackeos en crypto se deben a errores humanos. ¿Sabes cómo protegerte? Curso gratuito de seguridad. https://memento-academy.com/es/learn/safety #Ciberseguridad #Blockchain"
+      ]
     },
     {
       "schedule": "0 10 * * 2",
-      "text": "Bitcoin, Ethereum, altcoins... ¿te sientes perdido? Descubre todo lo que necesitas saber en 60 minutos. https://memento-academy.com/es/learn/crypto-101 #Crypto #Web3",
       "language": "es",
       "type": "course_promo",
       "media": "crypto-101-es.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Bitcoin, Ethereum, altcoins... ¿te sientes perdido? Descubre todo lo que necesitas saber en 60 minutos. https://memento-academy.com/es/learn/crypto-101 #Crypto #Web3",
+        "¿Qué diferencia hay entre una moneda y un token? Si no lo sabes, empieza por aquí. Curso gratuito. https://memento-academy.com/es/learn/crypto-101 #Crypto #Web3 #Blockchain",
+        "DeFi, NFTs, DAOs... ¿siglas sin sentido para ti? Aprende qué hay detrás en nuestro curso gratuito. https://memento-academy.com/es/learn/crypto-101 #DeFi #Web3 #NFT",
+        "De 0 a saber de crypto en un fin de semana. Nuestro curso Crypto 101 es el punto de partida perfecto. https://memento-academy.com/es/learn/crypto-101 #Crypto101 #Web3"
+      ]
     },
     {
       "schedule": "0 19 * * 2",
-      "text": "Fun fact: The first Bitcoin purchase was 2 pizzas for 10,000 BTC. If you had made that trade, you'd be a billionaire today! #BitcoinHistory #Crypto #Web3",
       "language": "en",
       "type": "curiosity",
       "media": "curiosity-bitcoin-pizza-en.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Fun fact: The first Bitcoin purchase was 2 pizzas for 10,000 BTC. If you had made that trade, you'd be a billionaire today! #BitcoinHistory #Crypto #Web3",
+        "Fun fact: Satoshi Nakamoto's Bitcoin wallet holds over 1 million BTC worth billions — and not a single satoshi has ever been moved. Why? No one knows. #Bitcoin #Crypto #Web3",
+        "Fun fact: Ethereum was almost called 'Quantum', 'Prometheus', or 'Frontier'. Vitalik chose Ethereum after reading a sci-fi encyclopedia. #Ethereum #Web3 #Blockchain",
+        "Fun fact: The total number of Bitcoin that will EVER exist is 21 million. Nobody can change this rule — not even Satoshi. #Bitcoin #Scarcity #Web3"
+      ]
     },
     {
       "schedule": "0 10 * * 3",
-      "text": "¿Cuál fue tu primera interacción con las criptomonedas? Cuéntanos en los comentarios: ¿Bitcoin, Ethereum o algo completamente diferente? #Bitcoin #Web3 #HistoriaCripto",
       "language": "es",
       "type": "engagement_question",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "¿Cuál fue tu primera interacción con las criptomonedas? Cuéntanos en los comentarios: ¿Bitcoin, Ethereum o algo completamente diferente? #Bitcoin #Web3 #HistoriaCripto",
+        "Si pudieras explicar Bitcoin en una sola frase, ¿cómo lo harías? 🤔 #Bitcoin #Web3 #Crypto",
+        "¿Crees que en 2030 usaremos más crypto que dinero tradicional? Cuéntanos por qué. #Futuro #Crypto #Web3",
+        "¿Qué personaje histórico crees que habría sido el mayor fan de Bitcoin? 😄 #Bitcoin #Historia #Web3"
+      ]
     },
     {
       "schedule": "0 19 * * 3",
-      "text": "Central Bank Digital Currencies (CBDCs) are reshaping global finance. Understand how they'll affect your money and privacy. Free course. https://memento-academy.com/en/learn/cbdc #CBDC #Web3",
       "language": "en",
       "type": "course_promo",
       "media": "cbdc-en.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Central Bank Digital Currencies (CBDCs) are reshaping global finance. Understand how they'll affect your money and privacy. Free course. https://memento-academy.com/en/learn/cbdc #CBDC #Web3",
+        "DeFi is rebuilding finance without banks. Understand how lending, trading and earning work in Web3. Free course. https://memento-academy.com/en/courses #DeFi #Web3",
+        "What if you could earn interest on your crypto without trusting a centralized exchange? Learn DeFi from scratch. https://memento-academy.com/en/courses #DeFi #Blockchain #Web3",
+        "NFTs are more than JPEGs. Understand the technology, the use cases, and where it's actually going. Free course. https://memento-academy.com/en/courses #NFT #Web3 #Blockchain"
+      ]
     },
     {
       "schedule": "0 10 * * 4",
-      "text": "Think you know Crypto? Test your skills in our interactive game and earn MEMO token rewards. No fees, real rewards. https://memento-academy.com/en/game #CryptoQuiz #Web3 #LearnAndEarn",
       "language": "en",
       "type": "quiz_promo",
       "media": "crypto-quiz-og-en.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Think you know Crypto? Test your skills in our interactive game and earn MEMO token rewards. No fees, real rewards. https://memento-academy.com/en/game #CryptoQuiz #Web3 #LearnAndEarn",
+        "Put your blockchain knowledge to the test. Our crypto quiz gives you real MEMO token rewards for every right answer. https://memento-academy.com/en/game #CryptoQuiz #Web3",
+        "Thursday challenge: Can you answer 10 crypto questions correctly? Real MEMO token rewards await. https://memento-academy.com/en/game #Web3 #LearnAndEarn #Blockchain",
+        "Do you know more about crypto than your friends? Prove it. Quiz available now with real token rewards. https://memento-academy.com/en/game #CryptoQuiz #MEMO #Web3"
+      ]
     },
     {
       "schedule": "0 19 * * 4",
-      "text": "Aprende Web3, blockchain y crypto de forma interactiva. Un agente IA responde dudas en tiempo real + quizzes con recompensas. Gratis. https://t.me/memento_academy #Web3 #AI #Telegram",
       "language": "es",
       "type": "telegram_community",
       "media": "telegram-community-es.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "Aprende Web3, blockchain y crypto de forma interactiva. Un agente IA responde dudas en tiempo real + quizzes con recompensas. Gratis. https://t.me/memento_academy #Web3 #AI #Telegram",
+        "¿Tienes dudas sobre crypto que Google no responde bien? Nuestro agente IA en Telegram sí sabe. Únete gratis. https://t.me/memento_academy #Web3 #AI #Crypto",
+        "Comunidad de estudiantes de Web3. Aprende, pregunta y gana MEMO tokens. ¿Te unes? https://t.me/memento_academy #Telegram #Web3 #Blockchain",
+        "Tu mejor profesor de crypto está en Telegram: disponible 24/7, gratis y habla español. https://t.me/memento_academy #Web3 #AI #Educación"
+      ]
     },
     {
       "schedule": "0 10 * * 5",
-      "text": "¿Alguna vez un videojuego te ha hecho replantearte cómo funciona el mundo?\n\nA Vitalik Buterin le pasó. En 2010, un cambio inesperado en su personaje de World of Warcraft le abrió los ojos sobre quién tiene realmente el control de nuestras vidas digitales.\n\nEse momento de frustración fue la semilla de algo mucho más grande... ¿te imaginas qué nació de ahí?",
       "language": "es",
       "type": "curiosity",
       "media": "curiosity-vitalik-wow.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "¿Alguna vez un videojuego te ha hecho replantearte cómo funciona el mundo?\n\nA Vitalik Buterin le pasó. En 2010, un cambio inesperado en su personaje de World of Warcraft le abrió los ojos sobre quién tiene realmente el control de nuestras vidas digitales.\n\nEse momento de frustración fue la semilla de algo mucho más grande... ¿te imaginas qué nació de ahí?",
+        "Satoshi Nakamoto publicó el whitepaper de Bitcoin el 31 de octubre de 2008: Halloween.\n\nCasualidad o no, fue el inicio de una revolución financiera que nadie esperaba.\n\n¿Qué estabas haciendo tú ese año? #Bitcoin #Historia #Web3",
+        "En 2010, un programador pagó 10.000 bitcoins por dos pizzas.\n\nHoy eso equivale a cientos de millones de euros.\n\nSe llama Laszlo Hanyecz y lo recuerda cada año con una pizza. ¿Qué harías tú en su lugar? #Bitcoin #Crypto",
+        "El fundador de Ethereum tenía 19 años cuando publicó su whitepaper.\n\nVitalik Buterin lo escribió después de que un videojuego le enseñara algo que ninguna universidad le había explicado.\n\n¿Qué te ha enseñado el gaming a ti? #Ethereum #Web3"
+      ]
     },
     {
       "schedule": "0 16 * * 5",
-      "text": "¿Sabías que los smart contracts son más antiguos que la propia tecnología blockchain?\n\nNick Szabo acuñó el término en 1994, más de una década antes de que apareciera Bitcoin. Su visión era un mundo donde los acuerdos se ejecutaran solos a través del código.\n\nSi quieres saber qué objeto cotidiano usó para explicar este concepto revolucionario... sigue leyendo.",
       "language": "es",
       "type": "curiosity",
       "media": "crypto-101-es.png",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "¿Sabías que los smart contracts son más antiguos que la propia tecnología blockchain?\n\nNick Szabo acuñó el término en 1994, más de una década antes de que apareciera Bitcoin. Su visión era un mundo donde los acuerdos se ejecutaran solos a través del código.\n\nSi quieres saber qué objeto cotidiano usó para explicar este concepto revolucionario... sigue leyendo.",
+        "El primer exchange de criptomonedas nació en 2010 con una interfaz de apenas 3 botones.\n\nHoy mueven billones de dólares al día.\n\nLa evolución tecnológica que muy pocos vieron venir. #Crypto #Web3 #Historia",
+        "Las transacciones de Bitcoin son irreversibles.\n\nNo hay servicio al cliente. No hay disputa. No hay vuelta atrás.\n\n¿Suena peligroso o libertador? #Bitcoin #Web3 #Crypto",
+        "¿Sabías que hay más de 20.000 criptomonedas en el mercado, pero solo un puñado importan realmente?\n\nAprender a distinguirlas puede ser la diferencia entre invertir bien e iluminarse. #Crypto #Web3 #Blockchain"
+      ]
     },
     {
       "schedule": "0 19 * * 5",
-      "text": "¿Cuál es el tema de Web3 que más te confunde? Cuéntanos y crearemos contenido educativo especialmente para ti. Tu feedback moldea nuestro plan. #Web3 #Educacion #Blockchain",
       "language": "es",
       "type": "engagement_question",
-      "platforms": ["twitter", "bluesky"]
+      "platforms": ["twitter", "bluesky"],
+      "tweets": [
+        "¿Cuál es el tema de Web3 que más te confunde? Cuéntanos y crearemos contenido educativo especialmente para ti. Tu feedback moldea nuestro plan. #Web3 #Educacion #Blockchain",
+        "Si tuvieras que aprender UNA sola cosa sobre Web3 esta semana, ¿qué sería? Cuéntanos y te preparamos el contenido. #Web3 #Educacion #Blockchain",
+        "Fin de semana pregunta: ¿Qué momento te hizo pensar 'esto del crypto puede ser algo real'? #Crypto #Web3 #Historia",
+        "¿Cuál es el mayor mito sobre Bitcoin que crees que mucha gente sigue creyendo? Cuéntanos. #Bitcoin #Cripto #Web3"
+      ]
     }
   ]
 }

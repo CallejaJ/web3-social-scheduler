@@ -119,13 +119,21 @@ function scheduleTwitterBot() {
   const config = loadScheduledTweets();
 
   console.log('=== Twitter Bot Started ===');
-  console.log(`Scheduled tweets loaded: ${config.tweets.length}`);
+  console.log(`Scheduled tweets loaded: ${config.slots.length}`);
   console.log('');
 
-  // Create scheduled jobs for each tweet
-  config.tweets.forEach((item, index) => {
-    if (!item.schedule || !item.text) {
-      console.warn(`[Warning] Tweet #${index + 1} missing schedule or text, skipping...`);
+  function getISOWeekNumber(date) {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  }
+
+  // Create scheduled jobs for each slot
+  config.slots.forEach((item, index) => {
+    if (!item.schedule || !item.tweets || !item.tweets.length) {
+      console.warn(`[Warning] Slot #${index + 1} missing schedule or tweets, skipping...`);
       return;
     }
 
@@ -137,15 +145,20 @@ function scheduleTwitterBot() {
 
     // Schedule the tweet
     cron.schedule(item.schedule, async () => {
-      console.log(`\n[${new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}] Executing scheduled tweet #${index + 1}`);
+      const now = new Date();
+      const weekNum = getISOWeekNumber(now);
+      const tweetIndex = weekNum % item.tweets.length;
+      const selectedText = item.tweets[tweetIndex];
+
+      console.log(`\n[${now.toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })}] Executing scheduled slot #${index + 1} (week ${weekNum}, variant ${tweetIndex + 1})`);
       try {
-        // Determine media path - check generated, content, and quizz folders
+        // Determine media path
         let mediaPath = null;
         if (item.media) {
            const generatedPath = path.join(__dirname, 'images', 'generated', item.media);
            const contentPath = path.join(__dirname, 'images', 'content', item.media);
            const quizzPath = path.join(__dirname, 'images', 'quizz', item.media);
-           
+
            if (fs.existsSync(generatedPath)) {
              mediaPath = generatedPath;
            } else if (fs.existsSync(contentPath)) {
@@ -157,34 +170,11 @@ function scheduleTwitterBot() {
            }
         }
 
-        // Prepare text for Twitter
-        let twitterText = item.text;
-        if (item.hashtags_category) {
-            const addedTags = getRandomHashtags(item.hashtags_category, item.language || 'en');
-            twitterText += ` ${addedTags}`;
-        }
-
         // Prepare text for Bluesky
-        let blueskyText = item.bluesky_text || item.text;
-        if (item.hashtags_category) {
-            const addedTags = getRandomHashtags(item.hashtags_category, item.language || 'en');
-            blueskyText += ` ${addedTags}`;
-        }
+        let blueskyText = selectedText;
         
-        // Prepare text for Hey/Lens
-        let heyText = item.hey_text || blueskyText;
-
-        // Determine platforms to post to
-        const platforms = item.platforms || ['twitter', 'bluesky', 'hey'];
-
-        // Post to Twitter
-        if (platforms.includes('twitter')) {
-          try {
-             await postTweet(twitterText, mediaPath);
-          } catch (tError) {
-             console.error('Failed to post to Twitter:', tError.message);
-          }
-        }
+        // Determine platforms to post to (Twitter handled by GitHub Actions)
+        const platforms = item.platforms || ['bluesky'];
 
         // Post to Bluesky
         if (platforms.includes('bluesky')) {
@@ -196,25 +186,15 @@ function scheduleTwitterBot() {
           }
         }
 
-        // Post to Hey / Lens
-        if (platforms.includes('hey') || platforms.includes('lens')) {
-          try {
-             console.log(`\n  [Hey/Lens] Posting: "${heyText.substring(0, 40)}..."`);
-             await lensClient.post(heyText, mediaPath);
-          } catch (lError) {
-             console.error('Failed to post to Lens:', lError.message);
-          }
-        }
-
       } catch (error) {
-        console.error(`Error in scheduled tweet #${index + 1}: ${error.message}`);
+        console.error(`Error in scheduled slot #${index + 1}: ${error.message}`);
       }
     }, {
       timezone: "Europe/Madrid"
     });
 
     console.log(`[Tweet scheduled] #${index + 1}: ${item.schedule}`);
-    console.log(`  Content: "${item.text.substring(0, 60)}..."`);
+    console.log(`  Content: "${item.tweets[0].substring(0, 60)}..."`);
   });
 
   console.log('\n=== Bot running... Press Ctrl+C to stop ===\n');

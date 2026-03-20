@@ -76,9 +76,17 @@ async function postTweet(text) {
   }
 }
 
+function getISOWeekNumber(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+}
+
 async function main() {
   const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'scheduled-tweets.json'), 'utf8'));
-  const tweets = data.tweets;
+  const slots = data.slots;
 
   const now = new Date();
   const madrid = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Madrid' }));
@@ -87,19 +95,24 @@ async function main() {
 
   console.log(`Current Madrid time: day=${day} hour=${hour}:${String(madrid.getMinutes()).padStart(2,'0')}`);
 
-  const match = tweets.find(t => {
-    if (!t.platforms || !t.platforms.includes('twitter')) return false;
-    const parts = t.schedule.split(' ');
+  const slot = slots.find(s => {
+    if (!s.platforms || !s.platforms.includes('twitter')) return false;
+    const parts = s.schedule.split(' ');
     return parseInt(parts[1]) === hour && parseInt(parts[4]) === day;
   });
 
-  if (!match) {
+  if (!slot) {
     console.log('No tweet scheduled for this time. Exiting.');
     return;
   }
 
-  console.log(`Posting: "${match.text.substring(0, 60)}..."`);
-  await postTweet(match.text);
+  const weekNum = getISOWeekNumber(madrid);
+  const tweetIndex = weekNum % slot.tweets.length;
+  const text = slot.tweets[tweetIndex];
+
+  console.log(`Week ${weekNum} → tweet variant ${tweetIndex + 1}/${slot.tweets.length}`);
+  console.log(`Posting: "${text.substring(0, 60)}..."`);
+  await postTweet(text);
 }
 
 main().catch(err => {
