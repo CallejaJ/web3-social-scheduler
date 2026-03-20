@@ -1,6 +1,13 @@
 {
   "tweets": [
     {
+      "schedule": "0 20 * * 5",
+      "text": "Test desde GitHub Actions 🤖 El bot de @memento_academy está de vuelta. #Web3 #Blockchain",
+      "language": "es",
+      "type": "test",
+      "platforms": ["twitter"]
+    },
+    {
       "schedule": "0 10 * * 6",
       "text": "Weekend learning: Dive into blockchain fundamentals with our free courses. Perfect for your Saturday coffee. https://memento-academy.com/en/courses #WeekendLearning #Web3",
       "language": "en",
