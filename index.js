@@ -6,7 +6,6 @@ const path = require('path');
 const { checkNewFollowers } = require('./follower-welcome');
 const { checkMentions } = require('./mention-replies');
 const { loginToBluesky, postToBluesky } = require('./bluesky-client');
-const { LensClient } = require('./lens-client');
 const express = require('express');
 
 // Keep-alive server for Koyeb/Render
@@ -57,8 +56,6 @@ app.get('/test-now', async (req, res) => {
 
 app.listen(port, () => console.log(`Monitor del bot activo en puerto ${port}`));
 
-// Initialize Lens Client
-const lensClient = new LensClient();
 
 // Load scheduled tweets from JSON file
 function loadScheduledTweets() {
