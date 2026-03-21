@@ -52,12 +52,17 @@ async function postTweet(text) {
 
   try {
     console.log('Opening Twitter...');
-    await page.goto('https://x.com/home', { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForTimeout(3000);
+    await page.goto('https://x.com/home', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await page.waitForTimeout(5000);
+
+    // Check if redirected to login
+    if (page.url().includes('/login') || page.url().includes('/i/flow')) {
+      throw new Error('Redirected to login — cookies may have expired. Update RETTIWT_API_KEY secret.');
+    }
 
     console.log('Looking for tweet compose box...');
     const tweetBox = page.locator('[data-testid="tweetTextarea_0"]').first();
-    await tweetBox.waitFor({ timeout: 15000 });
+    await tweetBox.waitFor({ timeout: 30000 });
     await tweetBox.click();
     await page.waitForTimeout(500);
 
