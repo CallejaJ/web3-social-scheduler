@@ -95,13 +95,27 @@
       "schedule": "0 19 * * 2",
       "language": "en",
       "type": "curiosity",
-      "media": "curiosity-bitcoin-pizza-en.png",
+      "media": [
+        "curiosity-bitcoin-pizza-en.png",
+        "curiosity-smart-contract-en.png",
+        "curiosity-lost-bitcoin-en.png",
+        "curiosity-nfts-history-en.png",
+        "curiosity-vitalik-wow-en.png",
+        "curiosity-utxo-model-en.png",
+        "curiosity-eth-gas-en.png",
+        "curiosity-blockchain-risks-en.png",
+        "curiosity-smart-contract-bugs-en.png"
+      ],
       "platforms": ["twitter", "bluesky"],
       "tweets": [
         "Fun fact: The first Bitcoin purchase was 2 pizzas for 10,000 BTC. If you had made that trade, you'd be a billionaire today! #BitcoinHistory #Crypto #Web3",
         "Fun fact: Satoshi Nakamoto's Bitcoin wallet holds over 1 million BTC worth billions — and not a single satoshi has ever been moved. Why? No one knows. #Bitcoin #Crypto #Web3",
         "Fun fact: Ethereum was almost called 'Quantum', 'Prometheus', or 'Frontier'. Vitalik chose Ethereum after reading a sci-fi encyclopedia. #Ethereum #Web3 #Blockchain",
-        "Fun fact: The total number of Bitcoin that will EVER exist is 21 million. Nobody can change this rule — not even Satoshi. #Bitcoin #Scarcity #Web3"
+        "Fun fact: The total number of Bitcoin that will EVER exist is 21 million. Nobody can change this rule — not even Satoshi. #Bitcoin #Scarcity #Web3",
+        "Did you know? Bitcoin's UTXO model works like physical coins: to spend 5 BTC, you must 'melt' a larger block and receive change. #Bitcoin #UTXO #Blockchain",
+        "Did you know? Ethereum uses an account-based system rather than UTXO. 'Gas' prevents network collapse from infinite loops in smart contracts. #Ethereum #Gas #Web3",
+        "The '51% Attack' is a risk where a miner controls the network, allowing them to double-spend and reverse transactions. Stay safe! #BlockchainRisk #Security #Web3",
+        "Code is law! But any bug in a Smart Contract's code is immutable. If there is an error, funds can be locked forever. #SmartContracts #Audit #Web3"
       ]
     },
     {
@@ -159,13 +173,27 @@
       "schedule": "0 10 * * 5",
       "language": "es",
       "type": "curiosity",
-      "media": "curiosity-vitalik-wow.png",
+      "media": [
+        "curiosity-bitcoin-pizza.png",
+        "curiosity-smart-contract.png",
+        "curiosity-lost-bitcoin.png",
+        "curiosity-nfts-history.png",
+        "curiosity-vitalik-wow.png",
+        "curiosity-utxo-model.png",
+        "curiosity-eth-gas.png",
+        "curiosity-blockchain-risks.png",
+        "curiosity-smart-contract-bugs.png"
+      ],
       "platforms": ["twitter", "bluesky"],
       "tweets": [
         "¿Alguna vez un videojuego te ha hecho replantearte cómo funciona el mundo?\n\nA Vitalik Buterin le pasó. En 2010, un cambio inesperado en su personaje de World of Warcraft le abrió los ojos sobre quién tiene realmente el control de nuestras vidas digitales.\n\nEse momento de frustración fue la semilla de algo mucho más grande... ¿te imaginas qué nació de ahí?",
         "Satoshi Nakamoto publicó el whitepaper de Bitcoin el 31 de octubre de 2008: Halloween.\n\nCasualidad o no, fue el inicio de una revolución financiera que nadie esperaba.\n\n¿Qué estabas haciendo tú ese año? #Bitcoin #Historia #Web3",
         "En 2010, un programador pagó 10.000 bitcoins por dos pizzas.\n\nHoy eso equivale a cientos de millones de euros.\n\nSe llama Laszlo Hanyecz y lo recuerda cada año con una pizza. ¿Qué harías tú en su lugar? #Bitcoin #Crypto",
-        "El fundador de Ethereum tenía 19 años cuando publicó su whitepaper.\n\nVitalik Buterin lo escribió después de que un videojuego le enseñara algo que ninguna universidad le había explicado.\n\n¿Qué te ha enseñado el gaming a ti? #Ethereum #Web3"
+        "El fundador de Ethereum tenía 19 años cuando publicó su whitepaper.\n\nVitalik Buterin lo escribió después de que un videojuego le enseñara algo que ninguna universidad le había explicado.\n\n¿Qué te ha enseñado el gaming a ti? #Ethereum #Web3",
+        "¿Sabías que Bitcoin usa el modelo UTXO? Funciona como monedas físicas: para gastar 5 BTC, debes 'fundir' un bloque mayor y recibir el cambio. #Bitcoin #UTXO #Blockchain",
+        "Ethereum usa un sistema de cuentas, no UTXO. El 'Gas' es vital: evita que la red colapse por bucles infinitos en contratos inteligentes. #Ethereum #Gas #Web3",
+        "El 'Ataque del 51%' es un riesgo real donde un minero controla la red, permitiéndole gastar dos veces sus monedas. ¡La seguridad importa! #Blockchain #Seguridad #Web3",
+        "¡El código es ley! Pero cualquier error en un Smart Contract es inmutable. Si hay un fallo, los fondos pueden quedar bloqueados para siempre. #SmartContracts #Audit #Web3"
       ]
     },
     {

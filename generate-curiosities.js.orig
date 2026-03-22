@@ -34,30 +34,6 @@ const CONFIG = [
     subtitle: 'Vitalik Buterin creó Ethereum después de que Blizzard debilitara su personaje en WoW.',
     lang: 'es'
   },
-  {
-    file: 'curiosity-utxo-model.png',
-    title: 'Sabías que...?',
-    subtitle: 'El modelo UTXO (Unspent Transaction Output) de Bitcoin funciona como monedas físicas: para gastar 5 BTC, debes "fundir" un bloque mayor y recibir el cambio.',
-    lang: 'es'
-  },
-  {
-    file: 'curiosity-eth-gas.png',
-    title: 'Sabías que...?',
-    subtitle: 'Ethereum no usa UTXO, sino un sistema basado en cuentas. El "Gas" evita que la red colapse por bucles infinitos en contratos inteligentes.',
-    lang: 'es'
-  },
-  {
-    file: 'curiosity-blockchain-risks.png',
-    title: 'Sabías que...?',
-    subtitle: 'El "Ataque del 51%" es un riesgo donde un minero controla la red, permitiéndole gastar dos veces sus monedas y revertir transacciones.',
-    lang: 'es'
-  },
-  {
-    file: 'curiosity-smart-contract-bugs.png',
-    title: 'Sabías que...?',
-    subtitle: 'Cualquier error en el código de un Smart Contract es inmutable. Si hay un error, los fondos pueden quedar bloqueados para siempre.',
-    lang: 'es'
-  },
   // English
   {
     file: 'curiosity-bitcoin-pizza-en.png',
@@ -87,30 +63,6 @@ const CONFIG = [
     file: 'curiosity-vitalik-wow-en.png',
     title: 'Did you know...?',
     subtitle: 'Vitalik Buterin co-founded Ethereum after Blizzard nerfed his favorite character in World of Warcraft.',
-    lang: 'en'
-  },
-  {
-    file: 'curiosity-utxo-model-en.png',
-    title: 'Did you know...?',
-    subtitle: 'Bitcoin\'s UTXO model works like physical coins: to spend 5 BTC, you must "melt" a larger block and receive change.',
-    lang: 'en'
-  },
-  {
-    file: 'curiosity-eth-gas-en.png',
-    title: 'Did you know...?',
-    subtitle: 'Ethereum uses an account-based system rather than UTXO. "Gas" prevents network collapse from infinite loops in smart contracts.',
-    lang: 'en'
-  },
-  {
-    file: 'curiosity-blockchain-risks-en.png',
-    title: 'Did you know...?',
-    subtitle: 'The "51% Attack" is a risk where a miner controls the network, allowing them to double-spend and reverse transactions.',
-    lang: 'en'
-  },
-  {
-    file: 'curiosity-smart-contract-bugs-en.png',
-    title: 'Did you know...?',
-    subtitle: 'Any bug in a Smart Contract\'s code is immutable. If there is an error, funds can be locked forever.',
     lang: 'en'
   }
 ];
