@@ -45,6 +45,40 @@ We refactored `follower-welcome.js` and `mention-replies.js` to disable themselv
 
 ---
 
-## 5. Current Status
-*   **Bluesky**: Fully functional.
-*   **Twitter**: Connection (Reading) is verified and working. Posting is currently being tested with the combined `auth_token` and `ct0` cookies.
+## 5. Evolution: Playwright & GitHub Actions
+To bypass Twitter/X's increased blocking of datacenter IPs (like Koyeb/Render) and their stricter non-browser bot detection, we evolved the architecture.
+
+### New Architecture:
+*   **Executor**: GitHub Actions (`tweet-scheduler.yml`).
+*   **Engine**: Playwright (headless Chromium).
+*   **Script**: `tweet-poster.js`.
+
+### Why Playwright?
+*   **Real Browser Simulation**: Handles dynamic challenges and mimics human interactions.
+*   **Bypasses Rate Limits**: GitHub Actions IPs are generally more trusted than standard cloud IPs.
+*   **Visual Debugging**: Allows capturing screenshots if errors occur (can be added to workflows).
+
+---
+
+## 6. Troubleshooting Checklist (Updated)
+
+| Symptom | Cause | Solution |
+| :--- | :--- | :--- |
+| **Crash on startup** | Secondary modules (Welcome/Replies) failing on `new TwitterApi` | Wrap initialization in `try/catch` (Implemented) |
+| **Rettiwt connection error** | Provided token is an object, not a string | Fix constructor call (Implemented) |
+| **"Redirected to login"** (Playwright) | **Cookies expired or rejected** | **Update GitHub Secret `RETTIWT_API_KEY` with fresh cookies.** |
+| **No post in Bluesky** | Account credential issue | Check `BLUESKY_IDENTIFIER`/`PASSWORD`. |
+
+---
+
+## 7. Current Status & Next Steps
+*   **Bluesky**: Stable and working via Koyeb.
+*   **Twitter/X**: Switched to GitHub Actions + Playwright for reliability.
+*   **Action Required**: The recent failure (April 2026) indicates that the `auth_token` in the GitHub Secrets has expired. 
+
+### How to Renew:
+1.  Open **x.com** in an incognito window.
+2.  Inspect Element → Application → Cookies → `https://x.com`.
+3.  Copy the value of **`auth_token`** and **`ct0`** (and `twid` if available).
+4.  Update the `RETTIWT_API_KEY` secret in your GitHub Repository Settings.
+5.  Format: `auth_token=VALUE; ct0=VALUE; twid=VALUE`

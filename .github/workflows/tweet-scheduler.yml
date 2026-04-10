@@ -25,3 +25,10 @@ jobs:
         run: node tweet-poster.js
         env:
           RETTIWT_API_KEY: ${{ secrets.RETTIWT_API_KEY }}
+
+      - name: Upload Error Screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: error-screenshot
+          path: error-screenshot.png

@@ -76,6 +76,11 @@ async function postTweet(text) {
     await page.waitForTimeout(3000);
 
     console.log('[✓] Tweet posted successfully!');
+  } catch (err) {
+    console.error(`[✗] Error during tweet process: ${err.message}`);
+    await page.screenshot({ path: 'error-screenshot.png', fullPage: true });
+    console.log('Error screenshot saved to error-screenshot.png');
+    throw err;
   } finally {
     await browser.close();
   }
